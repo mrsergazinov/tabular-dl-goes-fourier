@@ -1,0 +1,79 @@
+using gpu: 4
+{'batch_size': 1024,
+ 'cat_min_frequency': 0.0,
+ 'cat_nan_policy': 'new',
+ 'cat_policy': 'ordinal',
+ 'config': {'general': {},
+            'model': {'d_layers': [384, 384], 'dropout': 0.1},
+            'training': {'lr': 0.0003, 'weight_decay': 1e-05}},
+ 'dataset': 'bank',
+ 'dataset_path': './TabLLM/data',
+ 'evaluate_option': 'best-val',
+ 'gpu': '4',
+ 'max_epoch': 5,
+ 'model_path': 'results_model',
+ 'model_type': 'mlp',
+ 'n_bins': 2,
+ 'n_trials': 100,
+ 'normalization': 'standard',
+ 'num_nan_policy': 'mean',
+ 'num_policy': 'none',
+ 'retune': False,
+ 'save_path': 'results_model/bank-mlp/Epoch5BZ1024-Norm-standard-Nan-mean-new-Cat-ordinal',
+ 'seed': 0,
+ 'seed_num': 1,
+ 'tune': False,
+ 'workers': 0}
+{'model': {'d_layers': [384, 384], 'dropout': 0.1}, 'training': {'lr': 0.0003, 'weight_decay': 1e-05, 'n_bins': 2}, 'general': {}}
+epoch 0, train 1/29, loss=0.6717 lr=0.0003
+epoch 0, train 29/29, loss=0.3364 lr=0.0003
+best epoch 0, best val res=0.0000
+epoch 0, val, loss=0.2953 classification result=0.8831
+Epoch: 0, Time cost: 0.9979479312896729
+epoch 1, train 1/29, loss=0.2836 lr=0.0003
+epoch 1, train 29/29, loss=0.2562 lr=0.0003
+best epoch 0, best val res=0.8831
+epoch 1, val, loss=0.2558 classification result=0.8954
+Epoch: 1, Time cost: 1.0213594436645508
+epoch 2, train 1/29, loss=0.2534 lr=0.0003
+epoch 2, train 29/29, loss=0.2394 lr=0.0003
+best epoch 1, best val res=0.8954
+epoch 2, val, loss=0.2479 classification result=0.8985
+Epoch: 2, Time cost: 1.0389432907104492
+epoch 3, train 1/29, loss=0.2550 lr=0.0003
+epoch 3, train 29/29, loss=0.2688 lr=0.0003
+best epoch 2, best val res=0.8985
+epoch 3, val, loss=0.2424 classification result=0.8994
+Epoch: 3, Time cost: 0.9518606662750244
+epoch 4, train 1/29, loss=0.2350 lr=0.0003
+epoch 4, train 29/29, loss=0.2646 lr=0.0003
+best epoch 3, best val res=0.8994
+epoch 4, val, loss=0.2383 classification result=0.9001
+Epoch: 4, Time cost: 1.0533854961395264
+best epoch 4, best val res=0.9001
+Test: loss=0.2381
+[Accuracy]=0.8949
+[Avg_Recall]=0.6339
+[Avg_Precision]=0.7589
+[F1]=0.3949
+[LogLoss]=0.2381
+[AUC]=0.8949
+mlp: 1 Trials
+Accuracy Results: 0.89494637
+Accuracy MEAN = 0.89494637 ± 0.00000000
+Avg_Recall Results: 0.63385412
+Avg_Recall MEAN = 0.63385412 ± 0.00000000
+Avg_Precision Results: 0.75889426
+Avg_Precision MEAN = 0.75889426 ± 0.00000000
+F1 Results: 0.39490446
+F1 MEAN = 0.39490446 ± 0.00000000
+LogLoss Results: 0.23812555
+LogLoss MEAN = 0.23812555 ± 0.00000000
+AUC Results: 0.89488739
+AUC MEAN = 0.89488739 ± 0.00000000
+Time Results: 5.06349683
+Time MEAN = 5.06349683 ± 0.00000000
+Mean Loss: 2.38125546e-01
+-------------------- GPU info --------------------
+CUDA is unavailable.
+--------------------------------------------------
