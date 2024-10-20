@@ -94,7 +94,7 @@ class HuggingFaceLLaMA(nn.Module):
             outputs = layer(
                 hidden_states=hidden_states,
                 attention_mask=None,       # Adjust if you have an attention mask
-                position_ids=position_ids if self.use_positional_embeddings else None,
+                position_ids=position_ids,
                 past_key_value=None,
                 use_cache=False,
                 output_attentions=False,

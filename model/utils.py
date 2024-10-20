@@ -268,7 +268,7 @@ def get_deep_args():
                                  'snn', 'ptarl', 'danets', 'dcn2', 'tabtransformer',
                                  'dnnr', 'switchtab', 'grownet', 'tabr', 'modernNCA',
                                  'hyperfast', 'bishop', 'realmlp', 'protogate', 'mlp_plr',
-                                 'excelformer', 'grande','amformer','tabptm','trompt'
+                                 'excelformer', 'grande','amformer','tabptm','trompt', 'tabllm',
                                  ])
     
     # optimization parameters
@@ -710,5 +710,8 @@ def get_method(model):
     elif model == 'svm':
         from model.classical_methods.svm import SvmMethod
         return SvmMethod
+    elif model == 'tabllm':
+        from model.methods.tabllm import TabLLMMethod
+        return TabLLMMethod
     else:
         raise NotImplementedError("Model \"" + model + "\" not yet implemented")

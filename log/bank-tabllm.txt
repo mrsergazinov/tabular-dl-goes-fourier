@@ -1,0 +1,281 @@
+using gpu: 0
+{'batch_size': 16,
+ 'cat_min_frequency': 0.0,
+ 'cat_nan_policy': 'new',
+ 'cat_policy': 'indices',
+ 'config': {'general': {},
+            'model': {'base_model': {'activation': 'reglu',
+                                     'attention_dropout': 0.2,
+                                     'd_ffn_factor': 1.3333333333333333,
+                                     'd_token': 192,
+                                     'ffn_dropout': 0.1,
+                                     'initialization': 'kaiming',
+                                     'kv_compression': None,
+                                     'kv_compression_sharing': None,
+                                     'n_heads': 8,
+                                     'n_layers': 3,
+                                     'prenormalization': False,
+                                     'residual_dropout': 0.0,
+                                     'token_bias': True},
+                      'llm_model': {'base_output_dim': 192,
+                                    'end_layer': 10,
+                                    'llm_model_name': 'meta-llama/Llama-3.2-3B',
+                                    'start_layer': 0}},
+            'training': {'batch_size': 16,
+                         'lr': 0.0001,
+                         'weight_decay': 1e-05}},
+ 'dataset': 'bank',
+ 'dataset_path': '/home/mrsergazinov/TabLLM/example_datasets',
+ 'evaluate_option': 'best-val',
+ 'gpu': '0',
+ 'max_epoch': 5,
+ 'model_path': 'results_model',
+ 'model_type': 'tabllm',
+ 'n_bins': 2,
+ 'n_trials': 100,
+ 'normalization': 'standard',
+ 'num_nan_policy': 'mean',
+ 'num_policy': 'none',
+ 'retune': False,
+ 'save_path': 'results_model/bank-tabllm/Epoch5BZ16-Norm-standard-Nan-mean-new-Cat-indices',
+ 'seed': 0,
+ 'seed_num': 1,
+ 'tune': False,
+ 'workers': 0}
+{'model': {'base_model': {'token_bias': True, 'n_layers': 3, 'd_token': 192, 'n_heads': 8, 'd_ffn_factor': 1.3333333333333333, 'attention_dropout': 0.2, 'ffn_dropout': 0.1, 'residual_dropout': 0.0, 'activation': 'reglu', 'prenormalization': False, 'initialization': 'kaiming', 'kv_compression': None, 'kv_compression_sharing': None}, 'llm_model': {'llm_model_name': 'meta-llama/Llama-3.2-3B', 'base_output_dim': 192, 'start_layer': 0, 'end_layer': 10}}, 'training': {'lr': 0.0001, 'weight_decay': 1e-05, 'batch_size': 16, 'n_bins': 2}, 'general': {}}
+epoch 0, train 1/1809, loss=0.4164 lr=0.0001
+epoch 0, train 51/1809, loss=0.2485 lr=0.0001
+epoch 0, train 101/1809, loss=0.2190 lr=0.0001
+epoch 0, train 151/1809, loss=0.5334 lr=0.0001
+epoch 0, train 201/1809, loss=0.1447 lr=0.0001
+epoch 0, train 251/1809, loss=0.6182 lr=0.0001
+epoch 0, train 301/1809, loss=0.4877 lr=0.0001
+epoch 0, train 351/1809, loss=0.3798 lr=0.0001
+epoch 0, train 401/1809, loss=0.0406 lr=0.0001
+epoch 0, train 451/1809, loss=0.2110 lr=0.0001
+epoch 0, train 501/1809, loss=0.0682 lr=0.0001
+epoch 0, train 551/1809, loss=0.2050 lr=0.0001
+epoch 0, train 601/1809, loss=0.4987 lr=0.0001
+epoch 0, train 651/1809, loss=0.2257 lr=0.0001
+epoch 0, train 701/1809, loss=0.7301 lr=0.0001
+epoch 0, train 751/1809, loss=0.1771 lr=0.0001
+epoch 0, train 801/1809, loss=0.5486 lr=0.0001
+epoch 0, train 851/1809, loss=0.2572 lr=0.0001
+epoch 0, train 901/1809, loss=0.2698 lr=0.0001
+epoch 0, train 951/1809, loss=0.1711 lr=0.0001
+epoch 0, train 1001/1809, loss=0.4116 lr=0.0001
+epoch 0, train 1051/1809, loss=0.2258 lr=0.0001
+epoch 0, train 1101/1809, loss=0.3261 lr=0.0001
+epoch 0, train 1151/1809, loss=0.2661 lr=0.0001
+epoch 0, train 1201/1809, loss=0.0660 lr=0.0001
+epoch 0, train 1251/1809, loss=0.2850 lr=0.0001
+epoch 0, train 1301/1809, loss=0.1806 lr=0.0001
+epoch 0, train 1351/1809, loss=0.3830 lr=0.0001
+epoch 0, train 1401/1809, loss=0.2520 lr=0.0001
+epoch 0, train 1451/1809, loss=0.1925 lr=0.0001
+epoch 0, train 1501/1809, loss=0.0621 lr=0.0001
+epoch 0, train 1551/1809, loss=0.2092 lr=0.0001
+epoch 0, train 1601/1809, loss=0.3701 lr=0.0001
+epoch 0, train 1651/1809, loss=0.1591 lr=0.0001
+epoch 0, train 1701/1809, loss=0.3365 lr=0.0001
+epoch 0, train 1751/1809, loss=0.5317 lr=0.0001
+epoch 0, train 1801/1809, loss=0.1303 lr=0.0001
+epoch 0, train 1809/1809, loss=1.0615 lr=0.0001
+best epoch 0, best val res=0.0000
+epoch 0, val, loss=0.2277 classification result=0.8981
+Epoch: 0, Time cost: 66.22223663330078
+epoch 1, train 1/1809, loss=0.1654 lr=0.0001
+epoch 1, train 51/1809, loss=0.2645 lr=0.0001
+epoch 1, train 101/1809, loss=0.3729 lr=0.0001
+epoch 1, train 151/1809, loss=0.2340 lr=0.0001
+epoch 1, train 201/1809, loss=0.0507 lr=0.0001
+epoch 1, train 251/1809, loss=0.3216 lr=0.0001
+epoch 1, train 301/1809, loss=0.3447 lr=0.0001
+epoch 1, train 351/1809, loss=0.2159 lr=0.0001
+epoch 1, train 401/1809, loss=0.1626 lr=0.0001
+epoch 1, train 451/1809, loss=0.1427 lr=0.0001
+epoch 1, train 501/1809, loss=0.1714 lr=0.0001
+epoch 1, train 551/1809, loss=0.1275 lr=0.0001
+epoch 1, train 601/1809, loss=0.5494 lr=0.0001
+epoch 1, train 651/1809, loss=0.1131 lr=0.0001
+epoch 1, train 701/1809, loss=0.0546 lr=0.0001
+epoch 1, train 751/1809, loss=0.3761 lr=0.0001
+epoch 1, train 801/1809, loss=0.3450 lr=0.0001
+epoch 1, train 851/1809, loss=0.2738 lr=0.0001
+epoch 1, train 901/1809, loss=0.4070 lr=0.0001
+epoch 1, train 951/1809, loss=0.0947 lr=0.0001
+epoch 1, train 1001/1809, loss=0.1559 lr=0.0001
+epoch 1, train 1051/1809, loss=0.4332 lr=0.0001
+epoch 1, train 1101/1809, loss=0.1438 lr=0.0001
+epoch 1, train 1151/1809, loss=0.3938 lr=0.0001
+epoch 1, train 1201/1809, loss=0.2493 lr=0.0001
+epoch 1, train 1251/1809, loss=0.2310 lr=0.0001
+epoch 1, train 1301/1809, loss=0.3042 lr=0.0001
+epoch 1, train 1351/1809, loss=0.1243 lr=0.0001
+epoch 1, train 1401/1809, loss=0.1883 lr=0.0001
+epoch 1, train 1451/1809, loss=0.2307 lr=0.0001
+epoch 1, train 1501/1809, loss=0.1946 lr=0.0001
+epoch 1, train 1551/1809, loss=0.3205 lr=0.0001
+epoch 1, train 1601/1809, loss=0.2577 lr=0.0001
+epoch 1, train 1651/1809, loss=0.1819 lr=0.0001
+epoch 1, train 1701/1809, loss=0.2504 lr=0.0001
+epoch 1, train 1751/1809, loss=0.0947 lr=0.0001
+epoch 1, train 1801/1809, loss=0.3387 lr=0.0001
+epoch 1, train 1809/1809, loss=0.2446 lr=0.0001
+best epoch 0, best val res=0.8981
+epoch 1, val, loss=0.2207 classification result=0.8995
+Epoch: 1, Time cost: 65.6372766494751
+epoch 2, train 1/1809, loss=0.1153 lr=0.0001
+epoch 2, train 51/1809, loss=0.6163 lr=0.0001
+epoch 2, train 101/1809, loss=0.2570 lr=0.0001
+epoch 2, train 151/1809, loss=0.2696 lr=0.0001
+epoch 2, train 201/1809, loss=0.1793 lr=0.0001
+epoch 2, train 251/1809, loss=0.2262 lr=0.0001
+epoch 2, train 301/1809, loss=0.5937 lr=0.0001
+epoch 2, train 351/1809, loss=0.1375 lr=0.0001
+epoch 2, train 401/1809, loss=0.1233 lr=0.0001
+epoch 2, train 451/1809, loss=0.2626 lr=0.0001
+epoch 2, train 501/1809, loss=0.3192 lr=0.0001
+epoch 2, train 551/1809, loss=0.2669 lr=0.0001
+epoch 2, train 601/1809, loss=0.1599 lr=0.0001
+epoch 2, train 651/1809, loss=0.1239 lr=0.0001
+epoch 2, train 701/1809, loss=0.8373 lr=0.0001
+epoch 2, train 751/1809, loss=0.1187 lr=0.0001
+epoch 2, train 801/1809, loss=0.1547 lr=0.0001
+epoch 2, train 851/1809, loss=0.1467 lr=0.0001
+epoch 2, train 901/1809, loss=0.1854 lr=0.0001
+epoch 2, train 951/1809, loss=0.1010 lr=0.0001
+epoch 2, train 1001/1809, loss=0.1944 lr=0.0001
+epoch 2, train 1051/1809, loss=0.2809 lr=0.0001
+epoch 2, train 1101/1809, loss=0.2253 lr=0.0001
+epoch 2, train 1151/1809, loss=0.1661 lr=0.0001
+epoch 2, train 1201/1809, loss=0.1279 lr=0.0001
+epoch 2, train 1251/1809, loss=0.1285 lr=0.0001
+epoch 2, train 1301/1809, loss=0.1241 lr=0.0001
+epoch 2, train 1351/1809, loss=0.1235 lr=0.0001
+epoch 2, train 1401/1809, loss=0.4223 lr=0.0001
+epoch 2, train 1451/1809, loss=0.1501 lr=0.0001
+epoch 2, train 1501/1809, loss=0.0986 lr=0.0001
+epoch 2, train 1551/1809, loss=0.2018 lr=0.0001
+epoch 2, train 1601/1809, loss=0.2515 lr=0.0001
+epoch 2, train 1651/1809, loss=0.3730 lr=0.0001
+epoch 2, train 1701/1809, loss=0.2591 lr=0.0001
+epoch 2, train 1751/1809, loss=0.0684 lr=0.0001
+epoch 2, train 1801/1809, loss=0.1897 lr=0.0001
+epoch 2, train 1809/1809, loss=0.5350 lr=0.0001
+best epoch 1, best val res=0.8995
+epoch 2, val, loss=0.2040 classification result=0.9101
+Epoch: 2, Time cost: 66.06108522415161
+epoch 3, train 1/1809, loss=0.1575 lr=0.0001
+epoch 3, train 51/1809, loss=0.0999 lr=0.0001
+epoch 3, train 101/1809, loss=0.4131 lr=0.0001
+epoch 3, train 151/1809, loss=0.2147 lr=0.0001
+epoch 3, train 201/1809, loss=0.1124 lr=0.0001
+epoch 3, train 251/1809, loss=0.2275 lr=0.0001
+epoch 3, train 301/1809, loss=0.2578 lr=0.0001
+epoch 3, train 351/1809, loss=0.1271 lr=0.0001
+epoch 3, train 401/1809, loss=0.1283 lr=0.0001
+epoch 3, train 451/1809, loss=0.0805 lr=0.0001
+epoch 3, train 501/1809, loss=0.0561 lr=0.0001
+epoch 3, train 551/1809, loss=0.1818 lr=0.0001
+epoch 3, train 601/1809, loss=0.0277 lr=0.0001
+epoch 3, train 651/1809, loss=0.2003 lr=0.0001
+epoch 3, train 701/1809, loss=0.2351 lr=0.0001
+epoch 3, train 751/1809, loss=0.3076 lr=0.0001
+epoch 3, train 801/1809, loss=0.0567 lr=0.0001
+epoch 3, train 851/1809, loss=0.6134 lr=0.0001
+epoch 3, train 901/1809, loss=0.1318 lr=0.0001
+epoch 3, train 951/1809, loss=0.2401 lr=0.0001
+epoch 3, train 1001/1809, loss=0.1918 lr=0.0001
+epoch 3, train 1051/1809, loss=0.1315 lr=0.0001
+epoch 3, train 1101/1809, loss=0.3249 lr=0.0001
+epoch 3, train 1151/1809, loss=0.3052 lr=0.0001
+epoch 3, train 1201/1809, loss=0.3282 lr=0.0001
+epoch 3, train 1251/1809, loss=0.1307 lr=0.0001
+epoch 3, train 1301/1809, loss=0.4509 lr=0.0001
+epoch 3, train 1351/1809, loss=0.0730 lr=0.0001
+epoch 3, train 1401/1809, loss=0.0992 lr=0.0001
+epoch 3, train 1451/1809, loss=0.1988 lr=0.0001
+epoch 3, train 1501/1809, loss=0.3347 lr=0.0001
+epoch 3, train 1551/1809, loss=0.1325 lr=0.0001
+epoch 3, train 1601/1809, loss=0.1606 lr=0.0001
+epoch 3, train 1651/1809, loss=0.1856 lr=0.0001
+epoch 3, train 1701/1809, loss=0.2019 lr=0.0001
+epoch 3, train 1751/1809, loss=0.0407 lr=0.0001
+epoch 3, train 1801/1809, loss=0.2101 lr=0.0001
+epoch 3, train 1809/1809, loss=0.3758 lr=0.0001
+best epoch 2, best val res=0.9101
+epoch 3, val, loss=0.2050 classification result=0.9108
+Epoch: 3, Time cost: 65.5125675201416
+epoch 4, train 1/1809, loss=0.1478 lr=0.0001
+epoch 4, train 51/1809, loss=0.1543 lr=0.0001
+epoch 4, train 101/1809, loss=0.2886 lr=0.0001
+epoch 4, train 151/1809, loss=0.2138 lr=0.0001
+epoch 4, train 201/1809, loss=0.2819 lr=0.0001
+epoch 4, train 251/1809, loss=0.3546 lr=0.0001
+epoch 4, train 301/1809, loss=0.3849 lr=0.0001
+epoch 4, train 351/1809, loss=0.2254 lr=0.0001
+epoch 4, train 401/1809, loss=0.3413 lr=0.0001
+epoch 4, train 451/1809, loss=0.1711 lr=0.0001
+epoch 4, train 501/1809, loss=0.0883 lr=0.0001
+epoch 4, train 551/1809, loss=0.1399 lr=0.0001
+epoch 4, train 601/1809, loss=0.1371 lr=0.0001
+epoch 4, train 651/1809, loss=0.1713 lr=0.0001
+epoch 4, train 701/1809, loss=0.2876 lr=0.0001
+epoch 4, train 751/1809, loss=0.0595 lr=0.0001
+epoch 4, train 801/1809, loss=0.1631 lr=0.0001
+epoch 4, train 851/1809, loss=0.4030 lr=0.0001
+epoch 4, train 901/1809, loss=0.2191 lr=0.0001
+epoch 4, train 951/1809, loss=0.2306 lr=0.0001
+epoch 4, train 1001/1809, loss=0.1457 lr=0.0001
+epoch 4, train 1051/1809, loss=0.1113 lr=0.0001
+epoch 4, train 1101/1809, loss=0.1060 lr=0.0001
+epoch 4, train 1151/1809, loss=0.3710 lr=0.0001
+epoch 4, train 1201/1809, loss=0.2735 lr=0.0001
+epoch 4, train 1251/1809, loss=0.1453 lr=0.0001
+epoch 4, train 1301/1809, loss=0.2552 lr=0.0001
+epoch 4, train 1351/1809, loss=0.1186 lr=0.0001
+epoch 4, train 1401/1809, loss=0.3111 lr=0.0001
+epoch 4, train 1451/1809, loss=0.2562 lr=0.0001
+epoch 4, train 1501/1809, loss=0.2817 lr=0.0001
+epoch 4, train 1551/1809, loss=0.1229 lr=0.0001
+epoch 4, train 1601/1809, loss=0.1670 lr=0.0001
+epoch 4, train 1651/1809, loss=0.5168 lr=0.0001
+epoch 4, train 1701/1809, loss=0.1564 lr=0.0001
+epoch 4, train 1751/1809, loss=0.0508 lr=0.0001
+epoch 4, train 1801/1809, loss=0.1413 lr=0.0001
+epoch 4, train 1809/1809, loss=0.0774 lr=0.0001
+best epoch 3, best val res=0.9108
+epoch 4, val, loss=0.1960 classification result=0.9099
+Epoch: 4, Time cost: 55.49838614463806
+best epoch 3, best val res=0.9108
+Test: loss=0.2064
+[Accuracy]=0.9092
+[Avg_Recall]=0.7801
+[Avg_Precision]=0.7803
+[F1]=0.6118
+[LogLoss]=0.2064
+[AUC]=0.9331
+tabllm: 1 Trials
+Accuracy Results: 0.90921154
+Accuracy MEAN = 0.90921154 ± 0.00000000
+Avg_Recall Results: 0.78009246
+Avg_Recall MEAN = 0.78009246 ± 0.00000000
+Avg_Precision Results: 0.78032234
+Avg_Precision MEAN = 0.78032234 ± 0.00000000
+F1 Results: 0.61182033
+F1 MEAN = 0.61182033 ± 0.00000000
+LogLoss Results: 0.20642912
+LogLoss MEAN = 0.20642912 ± 0.00000000
+AUC Results: 0.93312709
+AUC MEAN = 0.93312709 ± 0.00000000
+Time Results: 318.93155217
+Time MEAN = 318.93155217 ± 0.00000000
+Mean Loss: 2.06429154e-01
+-------------------- GPU info --------------------
+1 GPU Available.
+GPU 0: NVIDIA A30
+  Total Memory:          24169.25 MB
+  Multi Processor Count: 56
+  Compute Capability:    8.0
+--------------------------------------------------

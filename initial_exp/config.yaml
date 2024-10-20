@@ -15,10 +15,9 @@ tabtransformer:
 
 llama:
   use_llama: true
-  model_name: "meta-llama/Llama-2-7b-hf" 
-  # model_name: "meta-llama/Meta-Llama-3-8B"
+  model_name: "meta-llama/Llama-3.1-8B" 
   start_layer: 0   # Start index of LLaMA layers to use
-  end_layer: 34     # End index (exclusive) of LLaMA layers to use
+  end_layer: 8     # End index (exclusive) of LLaMA layers to use
 
 training:
   criterion: 'cross_entropy'
