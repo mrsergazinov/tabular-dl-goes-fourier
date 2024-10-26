@@ -134,6 +134,11 @@ class TabularLLaMA(nn.Module):
                 nn.Linear(llama_hidden_dim, base_output_dim),
             )
 
+            self.gate = nn.Sequential(
+                nn.Linear(base_output_dim, base_output_dim),
+                nn.Sigmoid()
+            )
+
         self.classifier = nn.Linear(base_output_dim, output_classes)
 
     def forward(self, x):
@@ -163,8 +168,13 @@ class TabularLLaMA(nn.Module):
 
             # Map back to base model dimension
             base_out = self.mapper2(llama_out)
+
+            gate = self.gate(base_out)
+            base_out = gate * residualout_before + (1 - gate) * base_out
+
+
             
-        base_out = residualout_before + base_out
+        # base_out = residualout_before + base_out 
         # Final residual connection can also be added here if needed
         output = self.classifier(base_out)
         return output
