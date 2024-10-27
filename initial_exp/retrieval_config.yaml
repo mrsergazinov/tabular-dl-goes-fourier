@@ -1,0 +1,21 @@
+dataset:
+  name: "adult"
+  version: 2
+  test_size: 0.2
+  random_state: 42
+  batch_size: 32
+
+model:
+  dim: 128
+  dropout: 0.1
+  n_frequencies: 77
+  frequency_scale: 0.04431360576139521
+  d_embedding: 34
+  lite: true
+  temperature: 1.0
+  sample_rate: 0.5
+
+training:
+  learning_rate: 0.001
+  weight_decay: 0.0002
+  epochs: 10
