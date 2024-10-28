@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn import Parameter
 from typing import Optional
+from models import HuggingFaceLLaMA
 
 class PLREmbeddings(nn.Module):
     """The PLR embeddings from the paper 'On Embeddings for Numerical Features in Tabular Deep Learning'.
@@ -66,7 +67,11 @@ class ModernNCA(nn.Module):
         d_embedding: int,
         lite: bool,
         temperature: float = 1.0,
-        sample_rate: float = 0.8
+        sample_rate: float = 0.8,
+        use_llama: bool = False,
+        llama_model_name: str = "bert-base-uncased",
+        start_layer: int = 0,
+        end_layer: int = 1,
     ) -> None:
         super().__init__()
         self.d_in = d_in
@@ -88,6 +93,32 @@ class ModernNCA(nn.Module):
         # Define the encoder layer
         self.encoder = nn.Linear(d_in * d_embedding, dim)
 
+        # LLAMA model
+        self.use_llama = use_llama
+        if use_llama:
+            self.llama = HuggingFaceLLaMA(
+                llama_model_name,
+                start_layer=start_layer,
+                end_layer=end_layer,
+            )
+
+            # Dimensional mapping between base model and LLaMA
+            llama_hidden_dim = self.llama.model.config.hidden_size
+            self.mapper1 = nn.Sequential(
+                nn.Linear(d_in * d_embedding, llama_hidden_dim),
+            )
+            self.mapper2 = nn.Sequential(
+                nn.Linear(llama_hidden_dim, dim),
+            )
+
+    def llama_encoder(self, x: torch.Tensor) -> torch.Tensor:
+        x = self.mapper1(x)  # Map to llama_hidden_dim
+        x = x.unsqueeze(1) # Add sequence dimension, and convert to torch.float16
+        x = self.llama(x)
+        x = x.squeeze(1)
+        x = self.mapper2(x)
+        return x
+
     def forward(
         self,
         x: torch.Tensor,
@@ -107,20 +138,17 @@ class ModernNCA(nn.Module):
         x = self.num_embeddings(x).flatten(1)          # Shape: [batch_size, d_in * d_embedding]
         candidate_x = self.num_embeddings(candidate_x).flatten(1)  # Shape: [num_candidates, d_in * d_embedding]
 
-        x = self.encoder(x)        # Shape: [batch_size, dim]
-        candidate_x = self.encoder(candidate_x) # Shape: [num_candidates, dim]
-
-        # if is_train:
-        #     assert y is not None, "Labels `y` must be provided during training."
-        #     candidate_x = torch.cat([x, candidate_x])
-        #     candidate_y = torch.cat([y, candidate_y])
-        # else:
-        #     assert y is None, "Labels `y` should be None during evaluation."
+        if self.use_llama:
+            x = self.llama_encoder(x)
+            candidate_x = self.llama_encoder(candidate_x)
+        else:
+            x = self.encoder(x) # Shape: [batch_size, dim]
+            candidate_x = self.encoder(candidate_x) # Shape: [num_candidates, dim]
 
         if self.d_out > 1:
-            candidate_y = F.one_hot(candidate_y, self.d_out).double()
+            candidate_y = F.one_hot(candidate_y, self.d_out).float()
         elif candidate_y.dim() == 1:
-            candidate_y = candidate_y.unsqueeze(-1).double()
+            candidate_y = candidate_y.unsqueeze(-1).float()
 
         logits, logsumexp = 0, 0
         for idx in range(0, candidate_y.shape[0], 5000):

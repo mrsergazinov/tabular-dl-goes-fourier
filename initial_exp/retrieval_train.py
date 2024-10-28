@@ -1,23 +1,15 @@
 import os
 import random
 import time
-from datetime import timedelta
-
 import numpy as np
 import pandas as pd
 import torch
-import torch.distributed as dist
 import torch.nn as nn
 import yaml
-from sklearn.compose import ColumnTransformer
 from sklearn.datasets import fetch_openml
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler
-from torch.distributed.fsdp import (
-    FullyShardedDataParallel as FSDP,
-    ShardingStrategy,
-)
-from torch.utils.data import DataLoader, TensorDataset, Dataset
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from torch.utils.data import DataLoader, Dataset
 from retrieval_models import ModernNCA
 
 # Define a custom dataset to keep track of indices
@@ -67,7 +59,7 @@ def load_dataset(config):
     numerical_transformer = StandardScaler()
     X[numerical_columns] = numerical_transformer.fit_transform(X[numerical_columns])
 
-    # Scale the entire dataset (both numerical and encoded categorical columns)
+    # Combine the numerical and categorical columns
     X = pd.DataFrame(X, columns=numerical_columns + categorical_columns)
 
     # Encode the target variable
@@ -80,169 +72,120 @@ def load_dataset(config):
     return X, y, input_dim, le_target
 
 
-def setup(rank, world_size, backend='nccl'):
-    os.environ['MASTER_ADDR'] = 'localhost'
-    os.environ['MASTER_PORT'] = '12355'  # Use a free port
-    dist.init_process_group(
-        backend=backend,
-        init_method='env://',
-        rank=rank,
-        world_size=world_size,
-        timeout=timedelta(minutes=10)
+def train(config):
+    set_seed(config['dataset']['random_state'])
+
+    X, y, input_dim, le_target = load_dataset(config)
+    output_classes = len(le_target.classes_)
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=config['dataset']['test_size'], random_state=config['dataset']['random_state']
     )
-    torch.cuda.set_device(rank)
-    print(f"Process {rank} initialized.")
+
+    X_train = X_train.apply(pd.to_numeric, errors='coerce').fillna(0)
+    X_test = X_test.apply(pd.to_numeric, errors='coerce').fillna(0)
+
+    X_train_tensor = torch.tensor(X_train.values, dtype=torch.float32)
+    X_test_tensor = torch.tensor(X_test.values, dtype=torch.float32)
+    y_train_tensor = torch.tensor(y_train, dtype=torch.long)
+    y_test_tensor = torch.tensor(y_test, dtype=torch.long)
+
+    # Use IndexedTensorDataset to keep track of indices
+    train_dataset = IndexedTensorDataset((X_train_tensor, y_train_tensor))
+    test_dataset = IndexedTensorDataset((X_test_tensor, y_test_tensor))
+
+    # Use standard DataLoader
+    train_loader = DataLoader(
+        train_dataset, batch_size=config['dataset']['batch_size'], shuffle=True,
+        pin_memory=True, num_workers=4
+    )
+    test_loader = DataLoader(
+        test_dataset, batch_size=config['dataset']['batch_size'], shuffle=False,
+        pin_memory=True, num_workers=4
+    )
+
+    # Initialize the ModernNCA model
+    model = ModernNCA(
+        d_in=input_dim,
+        d_out=output_classes,
+        dim=config['model']['dim'],
+        dropout=config['model']['dropout'],
+        n_frequencies=config['model']['n_frequencies'],
+        frequency_scale=config['model']['frequency_scale'],
+        d_embedding=config['model']['d_embedding'],
+        lite=config['model']['lite'],
+        temperature=config['model']['temperature'],
+        sample_rate=config['model']['sample_rate'],
+        use_llama=config['model']['use_llama'],
+        llama_model_name=config['model']['llama_model_name'],
+        start_layer=config['model']['start_layer'],
+        end_layer=config['model']['end_layer']
+    )
+
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    model.float()
+    model.to(device)
+
+    # Define loss and optimizer
+    criterion = nn.CrossEntropyLoss()
+    optimizer = torch.optim.Adam(
+        filter(lambda p: p.requires_grad, model.parameters()),
+        lr=config['training']['learning_rate'],
+        weight_decay=config['training']['weight_decay']
+    )
+
+    # Training loop
+    for epoch in range(config['training']['epochs']):
+        model.train()
+        start_time = time.time()
+        epoch_loss = 0.0
+        correct = 0
+        total = 0
+
+        for itr, (X_batch, y_batch, idx_batch) in enumerate(train_loader):
+            X_batch = X_batch.float().to(device)
+            y_batch = y_batch.to(device)
+
+            # candidate_x and candidate_y (exclude current batch)
+            mask = torch.isin(torch.arange(X_train_tensor.shape[0]), idx_batch)
+            candidate_x = X_train_tensor[~mask].float().to(device)
+            candidate_y = y_train_tensor[~mask].to(device)
+
+            optimizer.zero_grad()
+
+            # Forward pass with candidate embeddings
+            logits = model(
+                x=X_batch,
+                y=y_batch,
+                candidate_x=candidate_x,
+                candidate_y=candidate_y,
+                is_train=True
+            )
+            loss = criterion(logits, y_batch)
+
+            loss.backward()
+            optimizer.step()
+
+            epoch_loss += loss.item() * y_batch.size(0)
+            _, predicted = torch.max(logits, 1)
+            total += y_batch.size(0)
+            correct += (predicted == y_batch).sum().item()
+
+            # print every 100 batches
+            if itr % 50 == 0:
+                print(f'Epoch [{epoch+1}/{config["training"]["epochs"]}]: Batch [{itr+1}/{len(train_loader)}] | Accuracy: {correct/total:.2f}')
+
+        epoch_loss = epoch_loss / total
+        epoch_acc = 100 * correct / total
+        epoch_time = time.time() - start_time
+
+        print(f'Epoch [{epoch+1}/{config["training"]["epochs"]}] | Loss: {epoch_loss:.4f} | '
+              f'Accuracy: {epoch_acc:.2f}% | Time: {epoch_time:.2f}s')
+
+    evaluate(model, test_loader, criterion, device, X_train_tensor, y_train_tensor)
 
 
-def cleanup():
-    dist.destroy_process_group()
-
-
-def train(rank, world_size, config):
-    setup(rank, world_size)
-    try:
-        set_seed(config['dataset']['random_state'] + rank)
-
-        X, y, input_dim, le_target = load_dataset(config)
-        output_classes = len(le_target.classes_)
-
-        X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=config['dataset']['test_size'], random_state=config['dataset']['random_state']
-        )
-
-        X_train = X_train.apply(pd.to_numeric, errors='coerce')
-        X_test = X_test.apply(pd.to_numeric, errors='coerce')
-        X_train = X_train.fillna(0)
-        X_test = X_test.fillna(0)
-
-        X_train_tensor = torch.tensor(X_train.values, dtype=torch.float32)
-        X_test_tensor = torch.tensor(X_test.values, dtype=torch.float32)
-        y_train_tensor = torch.tensor(y_train, dtype=torch.long)
-        y_test_tensor = torch.tensor(y_test, dtype=torch.long)
-
-        # Use IndexedTensorDataset to keep track of indices
-        train_dataset = IndexedTensorDataset((X_train_tensor, y_train_tensor))
-        test_dataset = IndexedTensorDataset((X_test_tensor, y_test_tensor))
-
-        train_sampler = torch.utils.data.distributed.DistributedSampler(
-            train_dataset, num_replicas=world_size, rank=rank, shuffle=True
-        )
-        test_sampler = torch.utils.data.distributed.DistributedSampler(
-            test_dataset, num_replicas=world_size, rank=rank, shuffle=False
-        )
-
-        train_loader = DataLoader(
-            train_dataset, batch_size=config['dataset']['batch_size'], sampler=train_sampler,
-            pin_memory=True, num_workers=4
-        )
-        test_loader = DataLoader(
-            test_dataset, batch_size=config['dataset']['batch_size'], sampler=test_sampler,
-            pin_memory=True, num_workers=4
-        )
-
-        # Initialize the ModernNCA model
-        model = ModernNCA(
-            d_in=input_dim,
-            d_out=output_classes,
-            dim=config['model']['dim'],
-            dropout=config['model']['dropout'],
-            n_frequencies=config['model']['n_frequencies'],
-            frequency_scale=config['model']['frequency_scale'],
-            d_embedding=config['model']['d_embedding'],
-            lite=config['model']['lite'],
-            temperature=config['model']['temperature'],
-            sample_rate=config['model']['sample_rate']
-        )
-
-        device = torch.device(f'cuda:{rank}')
-        torch.cuda.set_device(device)
-        model = model.double()
-        model.to(device)
-
-        # Define FSDP parameters
-        fsdp_params = dict(
-            sharding_strategy=ShardingStrategy.FULL_SHARD,
-            device_id=torch.cuda.current_device(),
-        )
-
-        # Wrap the model with FSDP
-        model = FSDP(model, **fsdp_params)
-
-        # Define loss and optimizer
-        criterion = nn.CrossEntropyLoss()
-        optimizer = torch.optim.Adam(
-            filter(lambda p: p.requires_grad, model.parameters()),
-            lr=config['training']['learning_rate'],
-            weight_decay=config['training']['weight_decay']
-        )
-
-        # Training loop
-        for epoch in range(config['training']['epochs']):
-            model.train()
-            train_sampler.set_epoch(epoch)
-            start_time = time.time()
-            epoch_loss = 0.0
-            correct = 0
-            total = 0
-
-            for X_batch, y_batch, idx_batch in train_loader:
-                X_batch = X_batch.double().to(device)
-                y_batch = y_batch.to(torch.int64).to(device)
-
-                # candidate_x and candidate_y
-                mask = torch.isin(torch.arange(X_train_tensor.shape[0]), idx_batch)
-                candidate_x = X_train_tensor[~mask].double().to(device)
-                candidate_y = y_train_tensor[~mask].to(torch.int64).to(device)
-
-                optimizer.zero_grad()
-
-                # Forward pass with precomputed candidate embeddings
-                logits = model(
-                    x=X_batch,
-                    y=y_batch,
-                    candidate_x=candidate_x,
-                    candidate_y=candidate_y,
-                    is_train=True
-                )
-                loss = criterion(logits, y_batch)
-
-                loss.backward()
-                optimizer.step()
-
-                epoch_loss += loss.item() * y_batch.size(0)
-                _, predicted = torch.max(logits, 1)
-                total += y_batch.size(0)
-                correct += (predicted == y_batch).sum().item()
-
-
-            # Synchronize metrics across all processes
-            total_tensor = torch.tensor(total, device=device)
-            correct_tensor = torch.tensor(correct, device=device)
-            epoch_loss_tensor = torch.tensor(epoch_loss, device=device)
-
-            dist.all_reduce(total_tensor, op=dist.ReduceOp.SUM)
-            dist.all_reduce(correct_tensor, op=dist.ReduceOp.SUM)
-            dist.all_reduce(epoch_loss_tensor, op=dist.ReduceOp.SUM)
-
-            epoch_loss = epoch_loss_tensor.item() / total_tensor.item()
-            epoch_acc = 100 * correct_tensor.item() / total_tensor.item()
-            epoch_time = time.time() - start_time
-
-            if rank == 0:
-                print(f'Epoch [{epoch+1}/{config["training"]["epochs"]}] | Loss: {epoch_loss:.4f} | '
-                      f'Accuracy: {epoch_acc:.2f}% | Time: {epoch_time:.2f}s')
-
-        evaluate(rank, model, test_loader, criterion, device, X_train_tensor, y_train_tensor)
-
-    except Exception as e:
-        print(f"Exception on rank {rank}: {e}")
-        raise
-    finally:
-        cleanup()
-        print(f"Process {rank} cleaned up successfully.")
-
-
-def evaluate(rank, model, test_loader, criterion, device, X_train_tensor, y_train_tensor):
+def evaluate(model, test_loader, criterion, device, X_train_tensor, y_train_tensor):
     model.eval()
     correct = 0
     total = 0
@@ -253,7 +196,7 @@ def evaluate(rank, model, test_loader, criterion, device, X_train_tensor, y_trai
             X_batch = X_batch.to(device)
             y_batch = y_batch.to(device)
 
-            # candidate_x and candidate_y
+            # Use entire training data as candidates during evaluation
             candidate_x = X_train_tensor.to(device)
             candidate_y = y_train_tensor.to(device)
 
@@ -275,33 +218,18 @@ def evaluate(rank, model, test_loader, criterion, device, X_train_tensor, y_trai
             loss = criterion(logits, y_batch)
             test_loss += loss.item() * y_batch.size(0)
 
-    # Synchronize metrics across all processes
-    total_tensor = torch.tensor(total, device=device)
-    correct_tensor = torch.tensor(correct, device=device)
-    test_loss_tensor = torch.tensor(test_loss, device=device)
+    accuracy = 100 * correct / total
+    test_loss = test_loss / total
 
-    dist.all_reduce(total_tensor, op=dist.ReduceOp.SUM)
-    dist.all_reduce(correct_tensor, op=dist.ReduceOp.SUM)
-    dist.all_reduce(test_loss_tensor, op=dist.ReduceOp.SUM)
-
-    accuracy = 100 * correct_tensor.item() / total_tensor.item()
-    test_loss = test_loss_tensor.item() / total_tensor.item()
-
-    if rank == 0:
-        print(f'Test Loss: {test_loss:.4f} | Test Accuracy: {accuracy:.2f}%')
+    print(f'Test Loss: {test_loss:.4f} | Test Accuracy: {accuracy:.2f}%')
 
 
 def main():
     config = load_config('retrieval_config.yaml')
 
-    # rank = int(os.environ['RANK'])
-    # world_size = int(os.environ['WORLD_SIZE'])
-    rank = 0
-    world_size = 1
+    print("Running training on a single device.")
 
-    print(f"Running FSDP on {world_size} processes. Global rank: {rank}")
-
-    train(rank, world_size, config)
+    train(config)
 
 
 if __name__ == "__main__":
