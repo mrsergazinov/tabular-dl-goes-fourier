@@ -110,29 +110,26 @@ class ModernNCA(nn.Module):
         x = self.encoder(x)        # Shape: [batch_size, dim]
         candidate_x = self.encoder(candidate_x) # Shape: [num_candidates, dim]
 
-        if is_train:
-            assert y is not None, "Labels `y` must be provided during training."
-            candidate_x = torch.cat([x, candidate_x])
-            candidate_y = torch.cat([y, candidate_y])
-        else:
-            assert y is None, "Labels `y` should be None during evaluation."
+        # if is_train:
+        #     assert y is not None, "Labels `y` must be provided during training."
+        #     candidate_x = torch.cat([x, candidate_x])
+        #     candidate_y = torch.cat([y, candidate_y])
+        # else:
+        #     assert y is None, "Labels `y` should be None during evaluation."
 
         if self.d_out > 1:
             candidate_y = F.one_hot(candidate_y, self.d_out).double()
         elif candidate_y.dim() == 1:
             candidate_y = candidate_y.unsqueeze(-1).double()
 
-        # Calculate distances and apply temperature scaling
-        distances = torch.cdist(x, candidate_x, p=2) / self.temperature
-
-        # During training, mask self-distance by setting it to infinity
-        if is_train:
-            distances = distances.clone().fill_diagonal_(torch.inf)
-
-        # Apply softmax to the negative distances
-        attention = F.softmax(-distances, dim=-1)
-
-        # Compute logits as weighted sum of candidate labels
-        logits = torch.mm(attention, candidate_y)
-
+        logits, logsumexp = 0, 0
+        for idx in range(0, candidate_y.shape[0], 5000):
+            batch_candidate_y = candidate_y[idx:idx+5000]
+            batch_candidate_x = candidate_x[idx:idx+5000]
+            distances = torch.cdist(x, batch_candidate_x, p=2) / self.temperature
+            exp_distances = torch.exp(-distances)
+            logsumexp += torch.logsumexp(exp_distances, dim=1)
+            logits += torch.mm(exp_distances, batch_candidate_y)
+        logits = torch.log(logits) - logsumexp.unsqueeze(1)
+        
         return logits
