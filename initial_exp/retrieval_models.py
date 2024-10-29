@@ -107,16 +107,16 @@ class ModernNCA(nn.Module):
             self.mapper1 = nn.Sequential(
                 nn.Linear(d_in * d_embedding, llama_hidden_dim),
             )
-            self.mapper2 = nn.Sequential(
-                nn.Linear(llama_hidden_dim, dim),
-            )
+            # self.mapper2 = nn.Sequential(
+            #     nn.Linear(llama_hidden_dim, dim),
+            # )
 
     def llama_encoder(self, x: torch.Tensor) -> torch.Tensor:
-        x = self.mapper1(x)  # Map to llama_hidden_dim
-        x = x.unsqueeze(1) # Add sequence dimension, and convert to torch.float16
+        x = self.mapper1(x) 
+        x = x.unsqueeze(1).half() 
         x = self.llama(x)
-        x = x.squeeze(1)
-        x = self.mapper2(x)
+        x = x.squeeze(1).float()
+        # x = self.mapper2(x)
         return x
 
     def forward(

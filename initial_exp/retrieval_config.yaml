@@ -14,10 +14,10 @@ model:
   lite: true
   temperature: 1.0
   sample_rate: 0.1
-  use_llama: False
-  llama_model_name: "meta-llama/Llama-3.2-1B"
+  use_llama: True
+  llama_model_name: "meta-llama/Meta-Llama-3-8B" # "meta-llama/Llama-3.2-1B"
   start_layer: 0
-  end_layer: 1
+  end_layer: 8
 
 training:
   learning_rate: 0.001
@@ -25,4 +25,12 @@ training:
   epochs: 10
 
 # without: 86.96
-# with: 86.52
+# llama 3.2 1B
+#   layers 0-1: 86.52
+#   removed top projection: 
+#     layers 0-1: 86.61
+#     layers 0-8: 86.74
+# mixed precision:
+#    llama 3 8B
+#       removed top projection:
+#          layers 0-8: 86.85
