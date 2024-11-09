@@ -14,3 +14,10 @@ torch==2.0.1
 xgboost==2.0.3
 lightgbm==4.3.0
 catboost==1.2.3
+torch==2.5.1
+torchaudio==2.5.1
+torchvision==0.20.1
+accelerate>=0.26.0
+transformers==4.46.2
+huggingface-hub==0.26.2
+

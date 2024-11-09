@@ -58,7 +58,8 @@ class ModernNCA(nn.Module):
     def __init__(
         self,
         *,
-        d_in: int,
+        d_in_num: int,
+        d_in_cat: int,
         d_out: int,
         dim: int,
         dropout: float,
@@ -74,7 +75,8 @@ class ModernNCA(nn.Module):
         end_layer: int = 1,
     ) -> None:
         super().__init__()
-        self.d_in = d_in
+        self.d_in_num = d_in_num
+        self.d_in_cat = d_in_cat
         self.d_out = d_out
         self.dim = dim
         self.dropout = dropout
@@ -83,7 +85,7 @@ class ModernNCA(nn.Module):
 
         # Initialize PLREmbeddings directly
         self.num_embeddings = PLREmbeddings(
-            n_features=d_in,
+            n_features=d_in_num,
             n_frequencies=n_frequencies,
             frequency_scale=frequency_scale,
             d_embedding=d_embedding,
@@ -91,7 +93,8 @@ class ModernNCA(nn.Module):
         )
 
         # Define the encoder layer
-        self.encoder = nn.Linear(d_in * d_embedding, dim)
+        d_in_total = d_in_num * d_embedding + d_in_cat
+        self.encoder = nn.Linear(d_in_total, dim)
 
         # LLAMA model
         self.use_llama = use_llama
@@ -105,11 +108,8 @@ class ModernNCA(nn.Module):
             # Dimensional mapping between base model and LLaMA
             llama_hidden_dim = self.llama.model.config.hidden_size
             self.mapper1 = nn.Sequential(
-                nn.Linear(d_in * d_embedding, llama_hidden_dim),
+                nn.Linear(d_in_total, llama_hidden_dim),
             )
-            # self.mapper2 = nn.Sequential(
-            #     nn.Linear(llama_hidden_dim, dim),
-            # )
 
     def llama_encoder(self, x: torch.Tensor) -> torch.Tensor:
         x = self.mapper1(x) 
@@ -121,23 +121,31 @@ class ModernNCA(nn.Module):
 
     def forward(
         self,
-        x: torch.Tensor,
+        x_num: torch.Tensor,
+        x_cat: Optional[torch.Tensor],
         y: Optional[torch.Tensor],
-        candidate_x: torch.Tensor,
+        candidate_x_num: torch.Tensor,
+        candidate_x_cat: Optional[torch.Tensor],
         candidate_y: torch.Tensor,
         is_train: bool
     ) -> torch.Tensor:
         if is_train:
-            data_size = candidate_x.shape[0]
+            data_size = candidate_x_num.shape[0]
             retrieval_size = int(data_size * self.sample_rate)
             sample_idx = torch.randperm(data_size)[:retrieval_size]
-            candidate_x = candidate_x[sample_idx]
-            candidate_y = candidate_y[sample_idx]
+        
 
         # Apply PLR embeddings to numerical features
-        x = self.num_embeddings(x).flatten(1)          # Shape: [batch_size, d_in * d_embedding]
-        candidate_x = self.num_embeddings(candidate_x).flatten(1)  # Shape: [num_candidates, d_in * d_embedding]
+        x = self.num_embeddings(x_num).flatten(1)          # Shape: [batch_size, d_in * d_embedding]
+        candidate_x = self.num_embeddings(candidate_x_num).flatten(1)  # Shape: [num_candidates, d_in * d_embedding]
 
+        # Concatenate numerical and categorical features
+        if x_cat is not None:
+            x = torch.cat([x, x_cat], dim=1)
+        if candidate_x_cat is not None:
+            candidate_x = torch.cat([candidate_x, candidate_x_cat], dim=1)
+
+        # LLM encoder
         if self.use_llama:
             x = self.llama_encoder(x)
             candidate_x = self.llama_encoder(candidate_x)
@@ -150,6 +158,7 @@ class ModernNCA(nn.Module):
         elif candidate_y.dim() == 1:
             candidate_y = candidate_y.unsqueeze(-1).float()
 
+        # Batch softmax
         logits, logsumexp = 0, 0
         for idx in range(0, candidate_y.shape[0], 5000):
             batch_candidate_y = candidate_y[idx:idx+5000]

@@ -1,9 +1,12 @@
 dataset:
   name: "adult"
   version: 2
+  n_samples: 10000
   test_size: 0.2
   random_state: 42
   batch_size: 32
+  cat_encode: llm
+  all_num: True
 
 model:
   dim: 128
@@ -14,8 +17,8 @@ model:
   lite: true
   temperature: 1.0
   sample_rate: 0.1
-  use_llama: True
-  llama_model_name: "meta-llama/Meta-Llama-3-8B" # "meta-llama/Llama-3.2-1B"
+  use_llama: False
+  llama_model_name: "meta-llama/Llama-3.2-1B" # "meta-llama/Llama-3.2-1B"
   start_layer: 0
   end_layer: 8
 
@@ -23,6 +26,7 @@ training:
   learning_rate: 0.001
   weight_decay: 0.0002
   epochs: 10
+  model_path: "model.pt"
 
 # without: 86.96
 # llama 3.2 1B
@@ -34,3 +38,12 @@ training:
 #    llama 3 8B
 #       removed top projection:
 #          layers 0-8: 86.85
+
+# subsample 10000
+#   encoding categorical with LLM: 85.46
+#   encoding categorical as label: 84.80
+#   encoding categorical as onehot: 85.05
+#   no PLR encoding for categorical
+#      encoding categorical as label: 84.65
+#      encoding categorical as onehot: 85.35
+#      encoding categorical with LLM: 81.95
