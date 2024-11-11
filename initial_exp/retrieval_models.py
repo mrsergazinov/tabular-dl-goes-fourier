@@ -126,15 +126,8 @@ class ModernNCA(nn.Module):
         y: Optional[torch.Tensor],
         candidate_x_num: torch.Tensor,
         candidate_x_cat: Optional[torch.Tensor],
-        candidate_y: torch.Tensor,
-        is_train: bool
+        candidate_y: torch.Tensor
     ) -> torch.Tensor:
-        if is_train:
-            data_size = candidate_x_num.shape[0]
-            retrieval_size = int(data_size * self.sample_rate)
-            sample_idx = torch.randperm(data_size)[:retrieval_size]
-        
-
         # Apply PLR embeddings to numerical features
         x = self.num_embeddings(x_num).flatten(1)          # Shape: [batch_size, d_in * d_embedding]
         candidate_x = self.num_embeddings(candidate_x_num).flatten(1)  # Shape: [num_candidates, d_in * d_embedding]

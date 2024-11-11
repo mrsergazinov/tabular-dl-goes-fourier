@@ -1,12 +1,11 @@
 dataset:
   name: "adult"
   version: 2
-  n_samples: 10000
   test_size: 0.2
   random_state: 42
   batch_size: 32
-  cat_encode: llm
-  all_num: True
+  cat_encode: onehot
+  all_num: False
 
 model:
   dim: 128
@@ -47,3 +46,8 @@ training:
 #      encoding categorical as label: 84.65
 #      encoding categorical as onehot: 85.35
 #      encoding categorical with LLM: 81.95
+# full 
+#  encoding categorical with LLM: 87.43 
+#    file_name: model_llm_encode_1.pt
+#  no PLR encoding for categorical + onehot: 87.33
+#    file_name: model_onehot_1.pt
