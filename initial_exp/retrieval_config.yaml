@@ -51,3 +51,16 @@ training:
 #    file_name: model_llm_encode_1.pt
 #  no PLR encoding for categorical + onehot: 87.33
 #    file_name: model_onehot_1.pt
+#  kernel:
+#     onehot + kernel (gaussian) model version 1: 83.71
+#        file_name: model_kernel_v1.pt
+#     onehot + kernel (neural) model version 2: 86.37
+#        file_name: model_kernel_v2.pt
+#     llm + kernel (neural) model version 2: 86.37
+#        file_name: model_kernel_llm_v2.pt
+#     llm + kernel (neural, separate for num and cat) model version 3: 85.88
+#        file_name: model_kernel_llm_v3.pt
+#     llm + kernel (as V2, residual + encoding) model version 4: 87.01
+#        file_name: model_kernel_llm_v4.pt
+#     llm + kernel (residual) model version 5: 87.09
+#        file_name: model_kernel_llm_v5.pt
