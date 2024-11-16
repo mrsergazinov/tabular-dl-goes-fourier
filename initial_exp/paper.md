@@ -41,12 +41,12 @@ From [2], we know that the inner product of two random Fourier features approxim
 $$
 \begin{aligned}
 z_p &= [\cos(\mathbf{w}_p^T \mathbf{x}), \sin(\mathbf{w}_p^T \mathbf{x})], \\
-\mathbf{z} &= \frac{1}{\sqrt{P}}[z_1, z_2, \ldots, z_P], \\
-\langle z_p, z_q \rangle &\approx k(x, y),
+\mathbf{z}(\mathbf{x}) &= \frac{1}{\sqrt{P}}[z_1, z_2, \ldots, z_P], \\
+\langle \mathbf{z}(\mathbf{x}), \mathbf{z}(\mathbf{y}) \rangle &\approx k(\mathbf{x}, \mathbf{y}),
 \end{aligned}
 $$
 
-where the kernel $k(x, y)$ depends on the choice of the distribution $\mathbf{w}_p \sim p_{\mathbf{w}}$.
+where the kernel $k(\mathbf{x}, \mathbf{y})$ depends on the choice of the distribution $\mathbf{w}_p \sim p_{\mathbf{w}}$.
 
 
 A **few notable differences between implementation of [1] from [2]**:
