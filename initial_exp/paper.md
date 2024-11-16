@@ -38,11 +38,11 @@ class PLREmbeddings(nn.Module):
 
 From [2], we know that the inner product of two random Fourier features approximates the kernel function:
 $$
-\begin{align*}
+\begin{aligned}
 z_p &= [\cos(\mathbf{w}_p^T \mathbf{x}), \sin(\mathbf{w}_p^T \mathbf{x})] \\
 \mathbf{z} &= \frac{1}{\sqrt{P}}[z_1, z_2, \ldots, z_P] \\
 \langle z_p, z_q \rangle \approx k(x, y), \\
-\end{align*}
+\end{aligned}
 $$
 where the kernel $k(,)$ depends on the choice of the distribuition $\mathbf{w}_p \sim p_{\mathbf{w}}$.
 
@@ -158,9 +158,9 @@ I think we can just use the bin indices directly, without one-hot encoding (mayb
 
 ---
 References:
-[1] https://arxiv.org/pdf/2203.05556  
-Summary: here they propose learnable Fourier features for tabular data.
-[2] https://people.eecs.berkeley.edu/~brecht/papers/07.rah.rec.nips.pdf  
-Summary: here is the first paper that introduced Fourier features.
-[3] https://gregorygundersen.com/blog/2019/12/23/random-fourier-features/  
-Summary: here is a blog post that explains random Fourier features.
+1. [Efficient and learnable feature encoding for tabular deep learning](https://arxiv.org/pdf/2203.05556)  
+  - Summary: here they propose learnable Fourier features for tabular data.
+2. [Random Features for Large-Scale Kernel Machines](https://people.eecs.berkeley.edu/~brecht/papers/07.rah.rec.nips.pdf)    
+  - Summary: here is the first paper that introduced Fourier features.
+3. [Introduction to Random Fourier Features](https://gregorygundersen.com/blog/2019/12/23/random-fourier-features/)  
+  - Summary: here is a blog post that explains random Fourier features.
