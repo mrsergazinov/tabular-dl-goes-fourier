@@ -934,7 +934,7 @@ class KernelNCA(nn.Module):
         d_in_num: int,
         d_in_cat: int,
         d_out: int,
-        n_bins: int = 100,
+        n_bins: int = 50,
         beta: float = 10.0,
         delta_scale: float = 60.0,
         temperature: float = 1.0,
@@ -958,6 +958,10 @@ class KernelNCA(nn.Module):
             torch.Tensor([np.sqrt(1.0 / n_bins)])
         )
 
+    def clamp_delta(self, min_val=30, max_val=100.0):
+        with torch.no_grad():
+            self.delta.clamp_(min=min_val, max=max_val)
+
     def feature_map(self, x: torch.Tensor) -> torch.Tensor:
         """
         Compute the randomized feature map z(x) for input x.
@@ -965,11 +969,10 @@ class KernelNCA(nn.Module):
         # Scale u
         scaled_u = self.u * self.delta
 
-        # Compute bin indices: floor((x - u) / delta)
-        bin_indices = torch.floor((x.unsqueeze(-1) - scaled_u[None]) / self.delta[None])
-        bin_indices = self.factor * bin_indices.flatten(1)  # Shape: (batch_size, n_features * n_bins)
+        # Compute bin indices
+        bin_indices = torch.ceil((x.unsqueeze(-1) - scaled_u[None]) / self.delta[None])
 
-        return bin_indices
+        return bin_indices.flatten(1)
 
     def forward(
         self,
@@ -1014,3 +1017,4 @@ class KernelNCA(nn.Module):
 
         logits = torch.log(logits + 1e-8) - logsumexp.unsqueeze(1)
         return logits
+

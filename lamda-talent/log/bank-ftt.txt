@@ -1,0 +1,95 @@
+using gpu: 0
+{'batch_size': 1024,
+ 'cat_min_frequency': 0.0,
+ 'cat_nan_policy': 'new',
+ 'cat_policy': 'indices',
+ 'config': {'general': {},
+            'model': {'activation': 'reglu',
+                      'attention_dropout': 0.2,
+                      'd_ffn_factor': 1.3333333333333333,
+                      'd_token': 192,
+                      'ffn_dropout': 0.1,
+                      'initialization': 'kaiming',
+                      'kv_compression': None,
+                      'kv_compression_sharing': None,
+                      'n_heads': 8,
+                      'n_layers': 3,
+                      'prenormalization': False,
+                      'residual_dropout': 0.0,
+                      'token_bias': True},
+            'training': {'lr': 0.0001, 'weight_decay': 1e-05}},
+ 'dataset': 'bank',
+ 'dataset_path': '/home/mrsergazinov/TabLLM/example_datasets',
+ 'evaluate_option': 'best-val',
+ 'gpu': '0',
+ 'max_epoch': 5,
+ 'model_path': 'results_model',
+ 'model_type': 'ftt',
+ 'n_bins': 2,
+ 'n_trials': 100,
+ 'normalization': 'standard',
+ 'num_nan_policy': 'mean',
+ 'num_policy': 'none',
+ 'retune': False,
+ 'save_path': 'results_model/bank-ftt/Epoch5BZ1024-Norm-standard-Nan-mean-new-Cat-indices',
+ 'seed': 0,
+ 'seed_num': 1,
+ 'tune': False,
+ 'workers': 0}
+{'model': {'token_bias': True, 'n_layers': 3, 'd_token': 192, 'n_heads': 8, 'd_ffn_factor': 1.3333333333333333, 'attention_dropout': 0.2, 'ffn_dropout': 0.1, 'residual_dropout': 0.0, 'activation': 'reglu', 'prenormalization': False, 'initialization': 'kaiming', 'kv_compression': None, 'kv_compression_sharing': None}, 'training': {'lr': 0.0001, 'weight_decay': 1e-05, 'n_bins': 2}, 'general': {}}
+epoch 0, train 1/29, loss=0.5738 lr=0.0001
+epoch 0, train 29/29, loss=0.3102 lr=0.0001
+best epoch 0, best val res=0.0000
+epoch 0, val, loss=0.3242 classification result=0.8831
+Epoch: 0, Time cost: 1.4708068370819092
+epoch 1, train 1/29, loss=0.3461 lr=0.0001
+epoch 1, train 29/29, loss=0.2821 lr=0.0001
+best epoch 0, best val res=0.8831
+epoch 1, val, loss=0.2552 classification result=0.8934
+Epoch: 1, Time cost: 1.071948528289795
+epoch 2, train 1/29, loss=0.2325 lr=0.0001
+epoch 2, train 29/29, loss=0.2348 lr=0.0001
+best epoch 1, best val res=0.8934
+epoch 2, val, loss=0.2245 classification result=0.9056
+Epoch: 2, Time cost: 1.0228219032287598
+epoch 3, train 1/29, loss=0.2587 lr=0.0001
+epoch 3, train 29/29, loss=0.2190 lr=0.0001
+best epoch 2, best val res=0.9056
+epoch 3, val, loss=0.2153 classification result=0.9061
+Epoch: 3, Time cost: 1.0244343280792236
+epoch 4, train 1/29, loss=0.2374 lr=0.0001
+epoch 4, train 29/29, loss=0.2094 lr=0.0001
+best epoch 3, best val res=0.9061
+epoch 4, val, loss=0.2134 classification result=0.9085
+Epoch: 4, Time cost: 1.075418472290039
+best epoch 4, best val res=0.9085
+Test: loss=0.2142
+[Accuracy]=0.9047
+[Avg_Recall]=0.7050
+[Avg_Precision]=0.7804
+[F1]=0.5216
+[LogLoss]=0.2142
+[AUC]=0.9196
+ftt: 1 Trials
+Accuracy Results: 0.90467765
+Accuracy MEAN = 0.90467765 ± 0.00000000
+Avg_Recall Results: 0.70496003
+Avg_Recall MEAN = 0.70496003 ± 0.00000000
+Avg_Precision Results: 0.78043426
+Avg_Precision MEAN = 0.78043426 ± 0.00000000
+F1 Results: 0.52164262
+F1 MEAN = 0.52164262 ± 0.00000000
+LogLoss Results: 0.21417704
+LogLoss MEAN = 0.21417704 ± 0.00000000
+AUC Results: 0.91961771
+AUC MEAN = 0.91961771 ± 0.00000000
+Time Results: 5.66543007
+Time MEAN = 5.66543007 ± 0.00000000
+Mean Loss: 2.14177043e-01
+-------------------- GPU info --------------------
+1 GPU Available.
+GPU 0: NVIDIA A30
+  Total Memory:          24169.25 MB
+  Multi Processor Count: 56
+  Compute Capability:    8.0
+--------------------------------------------------

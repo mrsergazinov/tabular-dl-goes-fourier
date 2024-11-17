@@ -1,0 +1,101 @@
+using gpu: 0
+{'batch_size': 1024,
+ 'cat_min_frequency': 0.0,
+ 'cat_nan_policy': 'new',
+ 'cat_policy': 'indices',
+ 'config': {'general': {},
+            'model': {'base_model': {'activation': 'reglu',
+                                     'attention_dropout': 0.2,
+                                     'd_ffn_factor': 1.3333333333333333,
+                                     'd_token': 192,
+                                     'ffn_dropout': 0.1,
+                                     'initialization': 'kaiming',
+                                     'kv_compression': None,
+                                     'kv_compression_sharing': None,
+                                     'n_heads': 8,
+                                     'n_layers': 3,
+                                     'prenormalization': False,
+                                     'residual_dropout': 0.0,
+                                     'token_bias': True},
+                      'llm_model': {'base_output_dim': 192,
+                                    'end_layer': 16,
+                                    'llm_model_name': 'meta-llama/Llama-3.1-8B',
+                                    'start_layer': 0}},
+            'training': {'batch_size': 16,
+                         'lr': 0.0001,
+                         'weight_decay': 1e-05}},
+ 'dataset': 'bank',
+ 'dataset_path': '/home/mrsergazinov/TabLLM/example_datasets',
+ 'evaluate_option': 'best-val',
+ 'gpu': '0',
+ 'max_epoch': 5,
+ 'model_path': 'results_model',
+ 'model_type': 'tabllm',
+ 'n_bins': 2,
+ 'n_trials': 100,
+ 'normalization': 'standard',
+ 'num_nan_policy': 'mean',
+ 'num_policy': 'none',
+ 'retune': False,
+ 'save_path': 'results_model/bank-tabllm/Epoch5BZ1024-Norm-standard-Nan-mean-new-Cat-indices',
+ 'seed': 0,
+ 'seed_num': 1,
+ 'tune': False,
+ 'workers': 0}
+{'model': {'base_model': {'token_bias': True, 'n_layers': 3, 'd_token': 192, 'n_heads': 8, 'd_ffn_factor': 1.3333333333333333, 'attention_dropout': 0.2, 'ffn_dropout': 0.1, 'residual_dropout': 0.0, 'activation': 'reglu', 'prenormalization': False, 'initialization': 'kaiming', 'kv_compression': None, 'kv_compression_sharing': None}, 'llm_model': {'llm_model_name': 'meta-llama/Llama-3.1-8B', 'base_output_dim': 192, 'start_layer': 0, 'end_layer': 16}}, 'training': {'lr': 0.0001, 'weight_decay': 1e-05, 'batch_size': 16, 'n_bins': 2}, 'general': {}}
+epoch 0, train 1/29, loss=0.7066 lr=0.0001
+epoch 0, train 29/29, loss=0.3357 lr=0.0001
+best epoch 0, best val res=0.0000
+epoch 0, val, loss=0.3268 classification result=0.8831
+Epoch: 0, Time cost: 28.319382190704346
+epoch 1, train 1/29, loss=0.3289 lr=0.0001
+epoch 1, train 29/29, loss=0.2700 lr=0.0001
+best epoch 0, best val res=0.8831
+epoch 1, val, loss=0.2523 classification result=0.8985
+Epoch: 1, Time cost: 32.65913796424866
+epoch 2, train 1/29, loss=0.2874 lr=0.0001
+epoch 2, train 29/29, loss=0.1922 lr=0.0001
+best epoch 1, best val res=0.8985
+epoch 2, val, loss=0.2315 classification result=0.9017
+Epoch: 2, Time cost: 33.22034239768982
+epoch 3, train 1/29, loss=0.2312 lr=0.0001
+epoch 3, train 29/29, loss=0.2003 lr=0.0001
+best epoch 2, best val res=0.9017
+epoch 3, val, loss=0.2226 classification result=0.9085
+Epoch: 3, Time cost: 32.7542724609375
+epoch 4, train 1/29, loss=0.2597 lr=0.0001
+epoch 4, train 29/29, loss=0.2387 lr=0.0001
+best epoch 3, best val res=0.9085
+epoch 4, val, loss=0.2148 classification result=0.9101
+Epoch: 4, Time cost: 33.108826875686646
+best epoch 4, best val res=0.9101
+Test: loss=0.2189
+[Accuracy]=0.9056
+[Avg_Recall]=0.7325
+[Avg_Precision]=0.7768
+[F1]=0.5566
+[LogLoss]=0.2189
+[AUC]=0.9162
+tabllm: 1 Trials
+Accuracy Results: 0.90556231
+Accuracy MEAN = 0.90556231 ± 0.00000000
+Avg_Recall Results: 0.73251915
+Avg_Recall MEAN = 0.73251915 ± 0.00000000
+Avg_Precision Results: 0.77682915
+Avg_Precision MEAN = 0.77682915 ± 0.00000000
+F1 Results: 0.55659398
+F1 MEAN = 0.55659398 ± 0.00000000
+LogLoss Results: 0.21890045
+LogLoss MEAN = 0.21890045 ± 0.00000000
+AUC Results: 0.91620702
+AUC MEAN = 0.91620702 ± 0.00000000
+Time Results: 160.06196189
+Time MEAN = 160.06196189 ± 0.00000000
+Mean Loss: 2.18900472e-01
+-------------------- GPU info --------------------
+1 GPU Available.
+GPU 0: NVIDIA A30
+  Total Memory:          24169.25 MB
+  Multi Processor Count: 56
+  Compute Capability:    8.0
+--------------------------------------------------
