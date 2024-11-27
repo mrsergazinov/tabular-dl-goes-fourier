@@ -44,7 +44,6 @@ class MLP(nn.Module):
         # Transform numerical features
         if self.num_encoder is not None:
             x_num = self.num_encoder(x_num)
-            x_num = x_num.flatten(1)
         #----------------------------------------------
         x = x_num
         if x_cat is not None:
@@ -104,9 +103,11 @@ class MLP(nn.Module):
                 # Forward pass with separate categorical and numerical features
                 logits = self(X_num_batch, X_cat_batch)
                 loss = criterion(logits, y_batch)
-
+                loss += self.num_encoder.regularization_loss() if self.num_encoder is not None else 0
                 loss.backward()
                 optimizer.step()
+                if self.num_encoder is not None:
+                    self.num_encoder.clamp_weights()
 
                 epoch_loss += loss.item() * y_batch.size(0)
                 total += y_batch.size(0)

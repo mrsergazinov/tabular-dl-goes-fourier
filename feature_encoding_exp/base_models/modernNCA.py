@@ -66,9 +66,7 @@ class ModernNCA(nn.Module):
         # Transform numerical features
         if self.num_encoder is not None:
             x_num = self.num_encoder(x_num)
-            x_num = x_num.flatten(1)
             candidate_x_num = self.num_encoder(candidate_x_num)
-            candidate_x_num = candidate_x_num.flatten(1)
         #----------------------------------------------
 
         # Concatenate numerical and categorical features
@@ -171,8 +169,11 @@ class ModernNCA(nn.Module):
 
                 # Compute loss
                 loss = criterion(logits, y_batch)
+                loss += self.num_encoder.regularization_loss() if self.num_encoder is not None else 0
                 loss.backward()
                 optimizer.step()
+                if self.num_encoder is not None:
+                    self.num_encoder.clamp_weights()
 
                 epoch_loss += loss.item() * y_batch.size(0)
                 total += y_batch.size(0)

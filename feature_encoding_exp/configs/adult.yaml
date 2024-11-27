@@ -19,8 +19,14 @@ ModernNCA:
   temperature: 1
 
 FourierFeatures:
-    n_frequencies: 32
-    frequency_scale: 10
+  n_frequencies: 32
+  frequency_scale: 10
+
+BinningFeatures:
+  n_bins: 5
+  delta_scale: 0.1
+  delta_min: 0.05
+  delta_max: 100
 
 training:
   batch_size: 64

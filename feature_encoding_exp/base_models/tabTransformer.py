@@ -229,7 +229,6 @@ class TabTransformer(nn.Module):
         # Transform numerical features
         if self.num_encoder is not None:
             x_cont = self.num_encoder(x_cont)
-            x_cont = x_cont.flatten(1)
         #----------------------------------------------
 
         xs = []
@@ -308,9 +307,11 @@ class TabTransformer(nn.Module):
                 # Forward pass with separate categorical and numerical features
                 logits = self(X_num_batch, X_cat_batch)
                 loss = criterion(logits, y_batch)
-
+                loss += self.num_encoder.regularization_loss() if self.num_encoder is not None else 0
                 loss.backward()
                 optimizer.step()
+                if self.num_encoder is not None:
+                    self.num_encoder.clamp_weights()
 
                 epoch_loss += loss.item() * y_batch.size(0)
                 total += y_batch.size(0)
