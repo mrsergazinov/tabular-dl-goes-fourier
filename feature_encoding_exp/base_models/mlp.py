@@ -68,6 +68,7 @@ class MLP(nn.Module):
             epochs: int,
             learning_rate: float,
             weight_decay: float,
+            verbose: bool = True,
         ) -> None:
         super().train()
 
@@ -111,13 +112,13 @@ class MLP(nn.Module):
 
                 epoch_loss += loss.item() * y_batch.size(0)
                 total += y_batch.size(0)
-                if itr % 50 == 0:
+                if verbose and itr % 50 == 0:
                     print(f'Iteration [{itr}/{len(train_loader)}] | Loss: {loss.item():.4f}')
 
             epoch_loss = epoch_loss / total
             epoch_time = time.time() - start_time
-
-            print(f'Epoch [{epoch+1}/{epochs}] | Loss: {epoch_loss:.4f} | Time: {epoch_time:.2f}s')
+            if verbose: 
+                print(f'Epoch [{epoch+1}/{epochs}] | Loss: {epoch_loss:.4f} | Time: {epoch_time:.2f}s')
 
 
     def evaluate(
@@ -127,7 +128,8 @@ class MLP(nn.Module):
         y_test: torch.Tensor,
         criterion: Callable[[torch.Tensor, torch.Tensor], float],
         batch_size: int,
-    ) -> None:
+        verbose: bool = True,
+    ) -> float:
         self.eval()
 
         # Determine the device
@@ -157,4 +159,6 @@ class MLP(nn.Module):
                 total_samples += y_batch.size(0)
 
         average_metric = total_metric / total_samples
-        print(f'Evaluation Metric: {average_metric:.4f}')
+        if verbose:
+            print(f'Evaluation Metric: {average_metric:.4f}')
+        return average_metric

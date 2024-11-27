@@ -23,9 +23,9 @@ FourierFeatures:
   frequency_scale: 10
 
 BinningFeatures:
-  n_bins: 5
-  delta_scale: 0.1
-  delta_min: 0.05
+  n_bins: 50
+  delta_scale: 30
+  delta_min: 0.1
   delta_max: 100
 
 training:

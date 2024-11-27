@@ -111,6 +111,7 @@ class ModernNCA(nn.Module):
         learning_rate: float,
         weight_decay: float,
         sample_rate: float = 0.1,
+        verbose: bool = True,
     ) -> None:
         self.train()
         device = next(self.parameters()).device
@@ -186,14 +187,15 @@ class ModernNCA(nn.Module):
                     preds = (logits > 0).float()
                     correct += (preds == y_batch).sum().item()
 
-                if itr % 50 == 0:
+                if verbose and itr % 50 == 0:
                     print(f'Iteration [{itr}/{len(train_loader)}] | Loss: {loss.item():.4f}')
 
             epoch_loss = epoch_loss / total
             epoch_time = time.time() - start_time
             accuracy = correct / total
 
-            print(f'Epoch [{epoch+1}/{epochs}] | Loss: {epoch_loss:.4f} | Accuracy: {accuracy:.4f} | Time: {epoch_time:.2f}s')
+            if verbose:
+                print(f'Epoch [{epoch+1}/{epochs}] | Loss: {epoch_loss:.4f} | Accuracy: {accuracy:.4f} | Time: {epoch_time:.2f}s')
 
     def evaluate(
         self,
@@ -202,7 +204,8 @@ class ModernNCA(nn.Module):
         y_test: torch.Tensor,
         criterion: Callable[[torch.Tensor, torch.Tensor], float],
         batch_size: int,
-    ) -> None:
+        verbose: bool = True,
+    ) -> float:
         self.eval()
         device = next(self.parameters()).device
 
@@ -214,7 +217,6 @@ class ModernNCA(nn.Module):
 
         total_metric = 0.0
         total_samples = 0
-        correct = 0
 
         # Prepare candidate data (using test data as candidates)
         candidate_x_num = X_num_test.to(device)
@@ -248,15 +250,9 @@ class ModernNCA(nn.Module):
                 total_metric += metric * y_batch.size(0)
                 total_samples += y_batch.size(0)
 
-                # Compute accuracy
-                if self.d_out > 1:
-                    preds = logits.argmax(dim=1)
-                    correct += (preds == y_batch).sum().item()
-                else:
-                    preds = (logits > 0).float()
-                    correct += (preds == y_batch).sum().item()
-
         average_metric = total_metric / total_samples
-        accuracy = correct / total_samples
+        if verbose:
+             print(f'Evaluation Metric: {average_metric:.4f}')
+        return average_metric
 
-        print(f'Evaluation Metric: {average_metric:.4f} | Accuracy: {accuracy:.4f}')
+       
