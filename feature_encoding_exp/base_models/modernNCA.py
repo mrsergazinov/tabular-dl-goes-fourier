@@ -1,9 +1,24 @@
+import time
 
+from typing import List, Optional, Callable 
 
-from typing import Optional
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from torch.utils.data import DataLoader, Dataset
+
+class IndexedTensorDataset(Dataset):
+    def __init__(self, tensors_num, tensors_cat, targets):
+        self.tensors_num = tensors_num
+        self.tensors_cat = tensors_cat
+        self.targets = targets
+        self.indices = torch.arange(len(tensors_num), dtype=torch.long)
+
+    def __getitem__(self, index):
+        return (self.tensors_num[index], self.tensors_cat[index], self.targets[index], self.indices[index])
+
+    def __len__(self):
+        return len(self.tensors_num)
 
 class ModernNCA(nn.Module):
     def __init__(
@@ -14,8 +29,16 @@ class ModernNCA(nn.Module):
         dim: int,
         dropout: float,
         temperature: float = 1.0,
+        num_encoder: Optional[nn.Module] = None,
     ) -> None:
         super().__init__()
+
+        #----------------------------------------------
+        # Define the numerical encoder
+        self.num_encoder = num_encoder
+        d_in_num = d_in_num if num_encoder is None else num_encoder.d_out 
+        #----------------------------------------------
+
         self.d_in_num = d_in_num
         self.d_in_cat = d_in_cat
         self.d_out = d_out
@@ -39,6 +62,15 @@ class ModernNCA(nn.Module):
         candidate_x_cat: Optional[torch.Tensor],
         candidate_y: torch.Tensor
     ) -> torch.Tensor:
+        #----------------------------------------------
+        # Transform numerical features
+        if self.num_encoder is not None:
+            x_num = self.num_encoder(x_num)
+            x_num = x_num.flatten(1)
+            candidate_x_num = self.num_encoder(candidate_x_num)
+            candidate_x_num = candidate_x_num.flatten(1)
+        #----------------------------------------------
+
         # Concatenate numerical and categorical features
         x = x_num
         candidate_x = candidate_x_num
@@ -69,3 +101,161 @@ class ModernNCA(nn.Module):
             logits = torch.log(logits) - logsumexp.unsqueeze(1)
         
         return logits
+
+    def fit(
+        self,
+        X_num_train: torch.Tensor,
+        X_cat_train: Optional[torch.Tensor],
+        y_train: torch.Tensor,
+        criterion: nn.Module,
+        batch_size: int,
+        epochs: int,
+        learning_rate: float,
+        weight_decay: float,
+        sample_rate: float = 0.1,
+    ) -> None:
+        self.train()
+        device = next(self.parameters()).device
+
+        # Define the dataset and dataloader
+        train_dataset = IndexedTensorDataset(X_num_train, X_cat_train, y_train)
+        train_loader = DataLoader(
+            train_dataset, batch_size=batch_size, shuffle=True,
+        )
+
+        # Define optimizer
+        optimizer = torch.optim.Adam(
+            filter(lambda p: p.requires_grad, self.parameters()),
+            lr=learning_rate,
+            weight_decay=weight_decay,
+        )
+
+        # Training loop
+        for epoch in range(epochs):
+            start_time = time.time()
+            epoch_loss = 0.0
+            correct = 0
+            total = 0
+
+            for itr, (X_num_batch, X_cat_batch, y_batch, idx_batch) in enumerate(train_loader):
+                X_num_batch = X_num_batch.to(device)
+                X_cat_batch = X_cat_batch.to(device) if X_cat_batch is not None else None
+                y_batch = y_batch.to(device)
+
+                # Exclude current batch indices from candidates
+                mask = torch.ones(X_num_train.shape[0], dtype=torch.bool)
+                mask[idx_batch] = False
+
+                candidate_x_num = X_num_train[mask].to(device)
+                candidate_x_cat = X_cat_train[mask].to(device) if X_cat_train is not None else None
+                candidate_y = y_train[mask].to(device)
+
+                # Sample candidates according to sample_rate
+                num_candidates = int(len(candidate_y) * sample_rate)
+                if num_candidates < len(candidate_y):
+                    indices = torch.randperm(len(candidate_y))[:num_candidates]
+                    candidate_x_num = candidate_x_num[indices]
+                    if candidate_x_cat is not None:
+                        candidate_x_cat = candidate_x_cat[indices]
+                    candidate_y = candidate_y[indices]
+
+                optimizer.zero_grad()
+                # Forward pass
+                logits = self(
+                    x_num=X_num_batch,
+                    x_cat=X_cat_batch,
+                    candidate_x_num=candidate_x_num,
+                    candidate_x_cat=candidate_x_cat,
+                    candidate_y=candidate_y
+                )
+
+                # Compute loss
+                loss = criterion(logits, y_batch)
+                loss.backward()
+                optimizer.step()
+
+                epoch_loss += loss.item() * y_batch.size(0)
+                total += y_batch.size(0)
+
+                # Compute accuracy
+                if self.d_out > 1:
+                    preds = logits.argmax(dim=1)
+                    correct += (preds == y_batch).sum().item()
+                else:
+                    preds = (logits > 0).float()
+                    correct += (preds == y_batch).sum().item()
+
+                if itr % 50 == 0:
+                    print(f'Iteration [{itr}/{len(train_loader)}] | Loss: {loss.item():.4f}')
+
+            epoch_loss = epoch_loss / total
+            epoch_time = time.time() - start_time
+            accuracy = correct / total
+
+            print(f'Epoch [{epoch+1}/{epochs}] | Loss: {epoch_loss:.4f} | Accuracy: {accuracy:.4f} | Time: {epoch_time:.2f}s')
+
+    def evaluate(
+        self,
+        X_num_test: torch.Tensor,
+        X_cat_test: Optional[torch.Tensor],
+        y_test: torch.Tensor,
+        criterion: Callable[[torch.Tensor, torch.Tensor], float],
+        batch_size: int,
+    ) -> None:
+        self.eval()
+        device = next(self.parameters()).device
+
+        # Define the dataset and dataloader
+        test_dataset = IndexedTensorDataset(X_num_test, X_cat_test, y_test)
+        test_loader = DataLoader(
+            test_dataset, batch_size=batch_size, shuffle=False,
+        )
+
+        total_metric = 0.0
+        total_samples = 0
+        correct = 0
+
+        # Prepare candidate data (using test data as candidates)
+        candidate_x_num = X_num_test.to(device)
+        candidate_x_cat = X_cat_test.to(device) if X_cat_test is not None else None
+        candidate_y = y_test.to(device)
+
+        with torch.no_grad():
+            for X_num_batch, X_cat_batch, y_batch, idx_batch in test_loader:
+                X_num_batch = X_num_batch.to(device)
+                X_cat_batch = X_cat_batch.to(device) if X_cat_batch is not None else None
+                y_batch = y_batch.to(device)
+
+                # Exclude current batch indices from candidates
+                mask = torch.ones(len(candidate_y), dtype=torch.bool)
+                mask[idx_batch] = False
+                candidate_x_num_batch = candidate_x_num[mask]
+                candidate_x_cat_batch = candidate_x_cat[mask] if candidate_x_cat is not None else None
+                candidate_y_batch = candidate_y[mask]
+
+                # Forward pass
+                logits = self(
+                    x_num=X_num_batch,
+                    x_cat=X_cat_batch,
+                    candidate_x_num=candidate_x_num_batch,
+                    candidate_x_cat=candidate_x_cat_batch,
+                    candidate_y=candidate_y_batch
+                )
+
+                # Compute metric
+                metric = criterion(logits, y_batch)
+                total_metric += metric * y_batch.size(0)
+                total_samples += y_batch.size(0)
+
+                # Compute accuracy
+                if self.d_out > 1:
+                    preds = logits.argmax(dim=1)
+                    correct += (preds == y_batch).sum().item()
+                else:
+                    preds = (logits > 0).float()
+                    correct += (preds == y_batch).sum().item()
+
+        average_metric = total_metric / total_samples
+        accuracy = correct / total_samples
+
+        print(f'Evaluation Metric: {average_metric:.4f} | Accuracy: {accuracy:.4f}')
