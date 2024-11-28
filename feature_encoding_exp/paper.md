@@ -158,6 +158,94 @@ However, I am facing two main issues right now:
 
 I think we can just use the bin indices directly, without one-hot encoding (maybe?).
 
+### Why do kernels work for DNN?
+
+Denote the DNN as $ f_\theta: \mathbb{R}^d \rightarrow \mathbb{R} $. In [4], the authors introduce the following approximation for a DNN trained with SGD via a sum of kernel models:
+
+$
+f_\theta(\mathbf{x}) \approx f_{\theta_0}(\mathbf{x}) - \sum_{t=1}^T \sum_{i\in [n]} k_t(\mathbf{x}, \mathbf{x}_i) g_{it}^l,
+$
+where
+$
+k_t(\mathbf{x}, \mathbf{x}_i) = \frac{\mathbf{1}(i \in B_t)}{|B_t|} \nabla_\theta^\top f_{\theta_{t-1}}(\mathbf{x}_i) \nabla_\theta f_{\theta_{t-1}}(\mathbf{x}).
+$
+
+Now, let's study what happens when we introduce an additional feature transformation $ z_\phi: \mathbb{R}^d \rightarrow \mathbb{R}^{dp} $. Explicitly, we define
+$
+z_\phi(\mathbf{x}) := \left[ \phi_1 \odot z_1(x_1),\; \phi_2 \odot z_2(x_2),\; \dots,\; \phi_d \odot z_d(x_d) \right],
+$
+where:
+- Each $ z_j: \mathbb{R} \rightarrow \mathbb{R}^p $ is a vector-valued function.
+- $ \phi_j \in \mathbb{R}^p $ is a vector of parameters.
+- $ \odot $ denotes element-wise (Hadamard) multiplication.
+
+**Gradient Computation:**
+
+The gradient of $ f_\theta(z_\phi(\mathbf{x})) $ with respect to the parameters $ \xi = [\theta, \phi] $ is:
+$
+\begin{aligned}
+\nabla_\xi^\top f_\theta(z_\phi(\mathbf{x})) &= \left[ \nabla_\theta^\top f_\theta(z_\phi(\mathbf{x})),\; \nabla_\phi^\top f_\theta(z_\phi(\mathbf{x})) \right] & (1) \\
+&= \left[ \nabla_\theta^\top f_\theta(z_\phi(\mathbf{x})),\; \nabla_{z_\phi(\mathbf{x})}^\top f_\theta(z_\phi(\mathbf{x})) \nabla_\phi z_\phi(\mathbf{x}) \right] & (2)
+\end{aligned}
+$
+where we used the chain rule to go from (1) to (2).
+
+**Computing $ \nabla_\phi z_\phi(\mathbf{x}) $:**
+
+Since $ z_\phi(\mathbf{x}) $ depends on $ \phi $ through element-wise multiplication, the derivative of $ z_\phi(\mathbf{x}) $ with respect to $ \phi $ is straightforward. For each $ j \in \{1, \dots, d\} $ and $ k \in \{1, \dots, p\} $:
+$
+\frac{\partial [z_\phi(\mathbf{x})]_{(j-1)p + k}}{\partial [\phi_j]_k} = z_{j,k}(x_j),
+$
+and all other partial derivatives are zero.
+
+**Computing $ \nabla_{\phi_j} f_\theta(z_\phi(\mathbf{x})) $:**
+
+Using the chain rule:
+$
+\begin{aligned}
+\frac{\partial f_\theta}{\partial [\phi_j]_k} &= \sum_{l=1}^{dp} \frac{\partial f_\theta}{\partial [z_\phi(\mathbf{x})]_l} \frac{\partial [z_\phi(\mathbf{x})]_l}{\partial [\phi_j]_k} \\
+&= \frac{\partial f_\theta}{\partial [z_\phi(\mathbf{x})]_{(j-1)p + k}} \cdot z_{j,k}(x_j).
+\end{aligned}
+$
+Therefore, the gradient with respect to $ \phi_j $ is:
+$
+\nabla_{\phi_j} f_\theta(z_\phi(\mathbf{x})) = \left[ \frac{\partial f_\theta}{\partial [z_\phi(\mathbf{x})]_{(j-1)p + 1}} z_{j,1}(x_j),\; \dots,\; \frac{\partial f_\theta}{\partial [z_\phi(\mathbf{x})]_{(j-1)p + p}} z_{j,p}(x_j) \right]^\top.
+$
+
+**Kernel Expression:**
+
+The kernel $ k_t(\mathbf{x}, \mathbf{x}_i) $ now becomes:
+$
+\begin{aligned}
+k_t(\mathbf{x}, \mathbf{x}_i) &= \frac{\mathbf{1}(i \in B_t)}{|B_t|} \left( \nabla_\theta^\top f_{\theta_{t-1}}(z_{\phi_{t-1}}(\mathbf{x}_i)) \nabla_\theta f_{\theta_{t-1}}(z_{\phi_{t-1}}(\mathbf{x})) \right. \\
+&\quad\quad\quad\quad + \left. \sum_{j=1}^d \nabla_{\phi_j}^\top f_{\theta_{t-1}}(z_{\phi_{t-1}}(\mathbf{x}_i)) \nabla_{\phi_j} f_{\theta_{t-1}}(z_{\phi_{t-1}}(\mathbf{x})) \right).
+\end{aligned}
+$
+
+**Expanding the $ \phi_j $ Terms:**
+
+Using our expression for $ \nabla_{\phi_j} f_\theta(z_\phi(\mathbf{x})) $, we have:
+$
+\begin{aligned}
+\nabla_{\phi_j}^\top f_{\theta_{t-1}}(z_{\phi_{t-1}}(\mathbf{x}_i)) \nabla_{\phi_j} f_{\theta_{t-1}}(z_{\phi_{t-1}}(\mathbf{x})) &= \sum_{k=1}^p \left( \frac{\partial f_{\theta_{t-1}}}{\partial [z_\phi(\mathbf{x}_i)]_{(j-1)p + k}} z_{j,k}(x_{i,j}) \cdot \frac{\partial f_{\theta_{t-1}}}{\partial [z_\phi(\mathbf{x})]_{(j-1)p + k}} z_{j,k}(x_j) \right).
+\end{aligned}
+$
+Here:
+- $ x_{i,j} $ is the $ j $-th component of $ \mathbf{x}_i $.
+- $ z_{j,k}(x_{i,j}) $ is the $ k $-th component of $ z_j(x_{i,j}) $.
+- $ \frac{\partial f_{\theta_{t-1}}}{\partial [z_\phi(\mathbf{x}_i)]_{(j-1)p + k}} $ is the partial derivative of $ f_{\theta_{t-1}} $ with respect to the $ k $-th component of the $ j $-th block of $ z_\phi(\mathbf{x}_i) $.
+
+**Final Kernel Expression:**
+
+Combining everything, we obtain:
+$
+\begin{aligned}
+k_t(\mathbf{x}, \mathbf{x}_i) &= \frac{\mathbf{1}(i \in B_t)}{|B_t|} \left( \nabla_\theta^\top f_{\theta_{t-1}}(z_{\phi_{t-1}}(\mathbf{x}_i)) \nabla_\theta f_{\theta_{t-1}}(z_{\phi_{t-1}}(\mathbf{x})) \right. \\
+&\quad\quad\quad\quad + \left. \sum_{j=1}^d \underbrace{\sum_{k=1}^p \left( \frac{\partial f_{\theta_{t-1}}}{\partial [z_\phi(\mathbf{x}_i)]_{(j-1)p + k}} z_{j,k}(x_{i,j}) \cdot \frac{\partial f_{\theta_{t-1}}}{\partial [z_\phi(\mathbf{x})]_{(j-1)p + k}} z_{j,k}(x_j) \right)}_{A} \right).
+\end{aligned}
+$
+**Crucially**, if we take $z_j$ to be the random Fourier or the binning features as discussed above, then the appropriately-scaled version of expression $A$ approximates some kernel function $k_j$.
+
 
 ---
 References:
@@ -167,3 +255,5 @@ References:
   - Summary: here is the first paper that introduced Fourier features.
 3. [Introduction to Random Fourier Features](https://gregorygundersen.com/blog/2019/12/23/random-fourier-features/)  
   - Summary: here is a blog post that explains random Fourier features.
+4. [Deep Learning Through A Telescoping Lens: A Simple Model Provides Empirical Insights On Grokking, Gradient Boosting & Beyond](https://arxiv.org/pdf/2411.00247)
+  - Summary: approximation to trained DNN via sum of kernel models.
