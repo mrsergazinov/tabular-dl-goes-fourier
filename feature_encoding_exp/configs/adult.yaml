@@ -28,6 +28,15 @@ BinningFeatures:
   delta_min: 0.1
   delta_max: 100
 
+ComboFeatures:
+  n_frequencies: 32
+  frequency_scale: 10
+  n_bins: 50
+  delta_scale: 30
+  delta_min: 0.1
+  delta_max: 100
+
+
 training:
   batch_size: 64
   epochs: 10

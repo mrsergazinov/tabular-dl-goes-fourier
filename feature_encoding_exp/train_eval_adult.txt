@@ -1,0 +1,3 @@
+python train_eval_adult.py --model_name MLP --num_encoder ComboFeatures --no_num_encoder_trainable --scaler SquareScalingFeatures --output_file results.txt
+python train_eval_adult.py --model_name TabTransformer --num_encoder ComboFeatures --no_num_encoder_trainable --scaler SquareScalingFeatures --output_file results.txt
+python train_eval_adult.py --model_name ModernNCA --num_encoder ComboFeatures --no_num_encoder_trainable --scaler SquareScalingFeatures --output_file results.txt

@@ -1,33 +1,19 @@
 #!/bin/bash
 
-#SBATCH --partition=gpu                           # Request GPU partition
-#SBATCH --nodes=1                                 # Use 1 node
-#SBATCH --gres=gpu:a30:4                          # Request 4 A30 GPUs
-#SBATCH --time=06:00:00                           # Request 4 hours of wall time
-#SBATCH --ntasks=1                                # Only open 1 instance of the server
-#SBATCH --cpus-per-task=4                         # Use 4 CPU cores
-#SBATCH --mem=128G                                # Use 128GB of RAM
-#SBATCH --output=server.output.%j                 # Send output stream to file named 'server.output.{jobid}'
+#SBATCH --partition=gpu
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:a30:1              # Request 1 A30 GPU per task
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4             # Adjust CPU cores per task if needed
+#SBATCH --mem=16G                     # Adjust memory per task if needed
+#SBATCH --time=06:00:00
+#SBATCH --array=0-2                   # Create an array job with indices from 0 to 5
+#SBATCH --output=output_%A_%a.out     # Output file for each array task
 
 # Activate the Conda environment
 source ~/.bashrc
-conda activate tabllm                             # Activate the Conda environment named "tabllm"
+conda activate tabllm
 
-# Start JupyterLab on the allocated GPU node and dynamic port
-python train_eval_adult.py --model_name MLP --num_encoder None --output_file results.txt
-python train_eval_adult.py --model_name MLP --num_encoder BinningFeatures --num_encoder_trainable --output_file results.txt
-python train_eval_adult.py --model_name MLP --num_encoder FourierFeatures --num_encoder_trainable --output_file results.txt
-python train_eval_adult.py --model_name MLP --num_encoder BinningFeatures --no_num_encoder_trainable --output_file results.txt
-python train_eval_adult.py --model_name MLP --num_encoder FourierFeatures --no_num_encoder_trainable --output_file results.txt
-
-python train_eval_adult.py --model_name TabTransformer --num_encoder None --output_file results.txt
-python train_eval_adult.py --model_name TabTransformer --num_encoder BinningFeatures --num_encoder_trainable --output_file results.txt
-python train_eval_adult.py --model_name TabTransformer --num_encoder FourierFeatures --num_encoder_trainable --output_file results.txt
-python train_eval_adult.py --model_name TabTransformer --num_encoder BinningFeatures --no_num_encoder_trainable --output_file results.txt
-python train_eval_adult.py --model_name TabTransformer --num_encoder FourierFeatures --no_num_encoder_trainable --output_file results.txt
-
-python train_eval_adult.py --model_name ModernNCA --num_encoder None --output_file results.txt
-python train_eval_adult.py --model_name ModernNCA --num_encoder BinningFeatures --num_encoder_trainable --output_file results.txt
-python train_eval_adult.py --model_name ModernNCA --num_encoder FourierFeatures --num_encoder_trainable --output_file results.txt
-python train_eval_adult.py --model_name ModernNCA --num_encoder BinningFeatures --no_num_encoder_trainable --output_file results.txt
-python train_eval_adult.py --model_name ModernNCA --num_encoder FourierFeatures --no_num_encoder_trainable --output_file results.txt
+# Execute the command corresponding to the array task ID
+CMD=$(sed -n "$((SLURM_ARRAY_TASK_ID + 1))p" train_eval_adult.txt)
+eval $CMD

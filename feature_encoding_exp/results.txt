@@ -628,3 +628,414 @@ Accuracy: 86.24%
 -------------------------
 Overall Average Accuracy over 10 runs: 86.70% ± 0.34%
 =========================
+Run 1/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 42}
+Accuracy: 87.36%
+-------------------------
+Run 1/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 42}
+Accuracy: 87.01%
+-------------------------
+Run 2/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 7}
+Accuracy: 86.49%
+-------------------------
+Run 2/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 7}
+Accuracy: 85.48%
+-------------------------
+Run 3/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 123}
+Accuracy: 86.72%
+-------------------------
+Run 3/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 123}
+Accuracy: 85.80%
+-------------------------
+Run 4/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2020}
+Accuracy: 87.15%
+-------------------------
+Run 4/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2020}
+Accuracy: 86.10%
+-------------------------
+Run 5/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 999}
+Accuracy: 87.16%
+-------------------------
+Run 5/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 999}
+Accuracy: 86.26%
+-------------------------
+Run 6/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 77}
+Accuracy: 87.37%
+-------------------------
+Run 6/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 77}
+Accuracy: 85.99%
+-------------------------
+Run 7/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 88}
+Accuracy: 87.51%
+-------------------------
+Run 8/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 1010}
+Accuracy: 86.41%
+-------------------------
+Run 7/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 88}
+Accuracy: 86.10%
+-------------------------
+Run 1/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 42}
+Accuracy: 86.78%
+-------------------------
+Run 9/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2021}
+Accuracy: 86.84%
+-------------------------
+Run 8/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 1010}
+Accuracy: 85.72%
+-------------------------
+Run 10/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Accuracy: 86.34%
+-------------------------
+Parameters: {'model_name': 'MLP', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Overall Average Accuracy over 10 runs: 86.94% ± 0.41%
+=========================
+Run 9/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2021}
+Accuracy: 85.72%
+-------------------------
+Run 10/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Accuracy: 85.56%
+-------------------------
+Parameters: {'model_name': 'MLP', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Overall Average Accuracy over 10 runs: 85.97% ± 0.42%
+=========================
+Run 1/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 42}
+Accuracy: 87.53%
+-------------------------
+Run 1/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 42}
+Accuracy: 86.98%
+-------------------------
+Run 2/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 7}
+Accuracy: 86.11%
+-------------------------
+Run 3/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 123}
+Accuracy: 86.08%
+-------------------------
+Run 2/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 7}
+Accuracy: 86.76%
+-------------------------
+Run 2/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 7}
+Accuracy: 85.39%
+-------------------------
+Run 4/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2020}
+Accuracy: 84.91%
+-------------------------
+Run 5/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 999}
+Accuracy: 86.13%
+-------------------------
+Run 3/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 123}
+Accuracy: 86.66%
+-------------------------
+Run 3/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 123}
+Accuracy: 86.10%
+-------------------------
+Run 6/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 77}
+Accuracy: 86.32%
+-------------------------
+Run 1/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 42}
+Accuracy: 86.97%
+-------------------------
+Run 7/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 88}
+Accuracy: 86.72%
+-------------------------
+Run 4/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2020}
+Accuracy: 87.45%
+-------------------------
+Run 4/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2020}
+Accuracy: 86.47%
+-------------------------
+Run 8/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 1010}
+Accuracy: 85.49%
+-------------------------
+Run 5/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 999}
+Accuracy: 87.30%
+-------------------------
+Run 9/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2021}
+Accuracy: 86.34%
+-------------------------
+Run 5/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 999}
+Accuracy: 86.41%
+-------------------------
+Run 10/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Accuracy: 85.92%
+-------------------------
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Overall Average Accuracy over 10 runs: 86.08% ± 0.53%
+=========================
+Run 6/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 77}
+Accuracy: 87.18%
+-------------------------
+Run 6/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 77}
+Accuracy: 86.05%
+-------------------------
+Run 7/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 88}
+Accuracy: 87.53%
+-------------------------
+Run 7/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 88}
+Accuracy: 86.31%
+-------------------------
+Run 2/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 7}
+Accuracy: 85.42%
+-------------------------
+Run 8/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 1010}
+Accuracy: 86.53%
+-------------------------
+Run 8/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 1010}
+Accuracy: 86.26%
+-------------------------
+Run 9/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2021}
+Accuracy: 86.77%
+-------------------------
+Run 9/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2021}
+Accuracy: 86.24%
+-------------------------
+Run 10/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Accuracy: 86.68%
+-------------------------
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Overall Average Accuracy over 10 runs: 87.04% ± 0.38%
+=========================
+Run 10/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Accuracy: 85.41%
+-------------------------
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Overall Average Accuracy over 10 runs: 86.16% ± 0.45%
+=========================
+Run 3/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 123}
+Accuracy: 86.09%
+-------------------------
+Run 4/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2020}
+Accuracy: 86.48%
+-------------------------
+Run 5/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 999}
+Accuracy: 86.23%
+-------------------------
+Run 1/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 42}
+Accuracy: 87.33%
+-------------------------
+Run 2/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 7}
+Accuracy: 86.44%
+-------------------------
+Run 3/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 123}
+Accuracy: 86.10%
+-------------------------
+Run 4/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2020}
+Accuracy: 87.42%
+-------------------------
+Run 5/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 999}
+Accuracy: 87.05%
+-------------------------
+Run 6/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 77}
+Accuracy: 86.93%
+-------------------------
+Run 7/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 88}
+Accuracy: 87.06%
+-------------------------
+Run 8/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 1010}
+Accuracy: 86.16%
+-------------------------
+Run 9/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2021}
+Accuracy: 86.69%
+-------------------------
+Run 10/10
+Parameters: {'model_name': 'MLP', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Accuracy: 86.16%
+-------------------------
+Parameters: {'model_name': 'MLP', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Overall Average Accuracy over 10 runs: 86.73% ± 0.47%
+=========================
+Run 1/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 42}
+Accuracy: 87.77%
+-------------------------
+Run 6/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 77}
+Accuracy: 85.97%
+-------------------------
+Run 2/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 7}
+Accuracy: 86.37%
+-------------------------
+Run 3/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 123}
+Accuracy: 87.03%
+-------------------------
+Run 1/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 42}
+Accuracy: 87.71%
+-------------------------
+Run 4/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2020}
+Accuracy: 86.54%
+-------------------------
+Run 5/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 999}
+Accuracy: 87.11%
+-------------------------
+Run 7/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 88}
+Accuracy: 86.30%
+-------------------------
+Run 6/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 77}
+Accuracy: 86.49%
+-------------------------
+Run 7/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 88}
+Accuracy: 87.63%
+-------------------------
+Run 2/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 7}
+Accuracy: 86.81%
+-------------------------
+Run 8/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 1010}
+Accuracy: 86.89%
+-------------------------
+Run 8/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 1010}
+Accuracy: 86.23%
+-------------------------
+Run 9/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2021}
+Accuracy: 86.87%
+-------------------------
+Run 10/10
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Accuracy: 85.11%
+-------------------------
+Parameters: {'model_name': 'TabTransformer', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Overall Average Accuracy over 10 runs: 86.78% ± 0.71%
+=========================
+Run 3/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 123}
+Accuracy: 87.09%
+-------------------------
+Run 9/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2021}
+Accuracy: 86.12%
+-------------------------
+Run 4/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2020}
+Accuracy: 87.62%
+-------------------------
+Run 10/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Accuracy: 85.55%
+-------------------------
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'BinningFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Overall Average Accuracy over 10 runs: 86.14% ± 0.42%
+=========================
+Run 5/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 999}
+Accuracy: 87.56%
+-------------------------
+Run 6/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 77}
+Accuracy: 87.39%
+-------------------------
+Run 1/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 42}
+Accuracy: 87.71%
+-------------------------
+Run 2/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 7}
+Accuracy: 86.81%
+-------------------------
+Run 3/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 123}
+Accuracy: 87.09%
+-------------------------
+Run 4/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2020}
+Accuracy: 87.62%
+-------------------------
+Run 5/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 999}
+Accuracy: 87.56%
+-------------------------
+Run 6/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 77}
+Accuracy: 87.39%
+-------------------------
+Run 7/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 88}
+Accuracy: 87.55%
+-------------------------
+Run 8/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 1010}
+Accuracy: 86.86%
+-------------------------
+Run 9/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 2021}
+Accuracy: 86.98%
+-------------------------
+Run 10/10
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Accuracy: 86.82%
+-------------------------
+Parameters: {'model_name': 'ModernNCA', 'num_encoder': 'ComboFeatures', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'n_run': 10, 'config_file': 'configs/adult.yaml', 'output_file': 'results.txt', 'seed': 3030}
+Overall Average Accuracy over 10 runs: 87.24% ± 0.35%
+=========================

@@ -20,7 +20,12 @@ os.chdir('/home/mrsergazinov/TabLLM/feature_encoding_exp/')
 from base_models.mlp import MLP
 from base_models.tabTransformer import TabTransformer
 from base_models.modernNCA import ModernNCA
-from encoders.numEncoders import FourierFeatures, BinningFeatures
+from encoders.numEncoders import (
+    FourierFeatures, 
+    BinningFeatures, 
+    ComboFeatures,
+    SquareScalingFeatures,
+)
 
 MODELS = {
     'MLP': MLP,
@@ -31,6 +36,11 @@ MODELS = {
 ENCODERS = {
     'FourierFeatures': FourierFeatures,
     'BinningFeatures': BinningFeatures,
+    'ComboFeatures': ComboFeatures,
+}
+
+SCALERS = {
+    'SquareScalingFeatures': SquareScalingFeatures,
 }
 
 # Predefined seeds
@@ -41,10 +51,14 @@ def parse_arguments():
     parser.add_argument('--model_name', type=str, default='TabTransformer',
                         choices=['MLP', 'TabTransformer', 'ModernNCA'], help='Name of the model to use.')
     parser.add_argument('--num_encoder', type=str, default='None',
-                        choices=['None', 'FourierFeatures', 'BinningFeatures'], help='Numerical encoder to use.')
+                        choices=['None', 'FourierFeatures', 'BinningFeatures', 'ComboFeatures'], help='Numerical encoder to use.')
     parser.add_argument('--num_encoder_trainable', action='store_true', help='Set numerical encoder as trainable.')
     parser.add_argument('--no_num_encoder_trainable', dest='num_encoder_trainable', action='store_false', help='Set numerical encoder as not trainable.')
     parser.set_defaults(num_encoder_trainable=True)
+    parser.add_argument('--scaler', type=str, default=None,
+                        choices=['SquareScalingFeatures'], help='Name of the scaler to use.')
+    parser.add_argument('--config_file', type=str, default='configs/adult.yaml',
+                        help='Path to the configuration file.')
     parser.add_argument('--output_file', type=str, default='results.txt',
                         help='Path to the output text file.')
     parser.add_argument('--n_run', type=int, default=10, help='Number of runs for replication.')
@@ -64,28 +78,18 @@ def accuracy_criterion(outputs: torch.Tensor, targets: torch.Tensor) -> float:
         accuracy = correct / targets.size(0)
     return accuracy * 100
 
-if __name__ == '__main__':
-    args = parse_arguments()
-    n_run = args.n_run
-
-    if n_run > len(SEEDS):
-        raise ValueError(f'n_run ({n_run}) is greater than the number of available seeds ({len(SEEDS)}).')
-
+def run(
+        params: ty.Dict[str, ty.Any],
+        verbose_training: bool = True,
+        log_run: bool = True,
+    ) -> ty.List[float]:
     # Load config
-    with open('configs/adult.yaml', 'r') as file:
+    with open(params['config_file'], 'r') as file:
         config = yaml.safe_load(file)
-
-    # Set parameters
-    params = {
-        'model_name': args.model_name,
-        'num_encoder': None if args.num_encoder == 'None' else args.num_encoder,
-        'num_encoder_trainable': args.num_encoder_trainable
-    }
 
     # Initialize list to store accuracies
     accuracies = []
-
-    for run in range(n_run):
+    for run in range(params['n_run']):
         seed = SEEDS[run]
         set_seed(seed)
         params['seed'] = seed  # Record the seed used
@@ -144,13 +148,19 @@ if __name__ == '__main__':
             num_encoder = ENCODERS[params['num_encoder']](
                 n_features=X_train_num.shape[1],
                 **config[params['num_encoder']],
+                trainable=params['num_encoder_trainable'],
             )
             with torch.no_grad():
-                X_train_num = num_encoder(torch.from_numpy(X_train_num).float(), trainable=False)
-                X_test_num = num_encoder(torch.from_numpy(X_test_num).float(), trainable=False)
+                X_train_num = num_encoder(torch.from_numpy(X_train_num).float())
+                X_test_num = num_encoder(torch.from_numpy(X_test_num).float())
                 X_train_num = X_train_num.numpy()
                 X_test_num = X_test_num.numpy()
-            num_encoder = None
+            if params['scaler'] is not None:
+                num_encoder = SCALERS[params['scaler']](
+                    n_features=X_train_num.shape[1],
+                )
+            else:
+                num_encoder = None
         elif params['num_encoder'] is not None:
             num_encoder = ENCODERS[params['num_encoder']](
                 n_features=X_train_num.shape[1],
@@ -198,7 +208,7 @@ if __name__ == '__main__':
             X_cat_train=X_train_cat,
             y_train=y_train,
             criterion=loss_criterion,
-            verbose=True,
+            verbose=verbose_training,
             **config['training'],
         )
 
@@ -209,20 +219,46 @@ if __name__ == '__main__':
             y_test=y_test,
             criterion=accuracy_criterion,
             batch_size=32,
-            verbose=True,
+            verbose=verbose_training,
         )
         accuracies.append(avg_accuracy)
 
         # Write the parameters and evaluation result to the output file
-        with open(args.output_file, 'a') as f:
-            f.write(f'Run {run+1}/{n_run}\n')
-            f.write('Parameters: {}\n'.format(params))
-            f.write('Accuracy: {:.2f}%\n'.format(avg_accuracy))
-            f.write('-------------------------\n')
+        if log_run:
+            with open(params['output_file'], 'a') as f:
+                f.write(f"Run {run+1}/{params['n_run']}\n")
+                f.write('Parameters: {}\n'.format(params))
+                f.write('Accuracy: {:.2f}%\n'.format(avg_accuracy))
+                f.write('-------------------------\n')
 
-    # After all runs, write the overall average accuracy
+    return accuracies
+
+
+if __name__ == '__main__':
+    args = parse_arguments()
+    n_run = args.n_run
+
+    if n_run > len(SEEDS):
+        raise ValueError(f'n_run ({n_run}) is greater than the number of available seeds ({len(SEEDS)}).')
+
+    # Set parameters
+    params = {
+        'model_name': args.model_name,
+        'num_encoder': None if args.num_encoder == 'None' else args.num_encoder,
+        'num_encoder_trainable': args.num_encoder_trainable,
+        'scaler': args.scaler,
+        'n_run': n_run,
+        'config_file': args.config_file,
+        'output_file': args.output_file,
+    }
+
+    # Run the experiment
+    accuracies = run(params)
+
+    # Print the average accuracy
     mean_accuracy = sum(accuracies) / n_run
     std_accuracy = np.std(accuracies)
     with open(args.output_file, 'a') as f:
+        f.write('Parameters: {}\n'.format(params))
         f.write('Overall Average Accuracy over {} runs: {:.2f}% ± {:.2f}%\n'.format(n_run, mean_accuracy, std_accuracy))
         f.write('=========================\n')
