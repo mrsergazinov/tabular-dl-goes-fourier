@@ -48,6 +48,8 @@ SEEDS = [42, 7, 123, 2020, 999, 77, 88, 1010, 2021, 3030]
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Train and evaluate models with different parameters.')
+    parser.add_argument('--dataset_name', type=str, default='adult',
+                        choices=['adult'], help='Name of the dataset to use.')
     parser.add_argument('--model_name', type=str, default='TabTransformer',
                         choices=['MLP', 'TabTransformer', 'ModernNCA'], help='Name of the model to use.')
     parser.add_argument('--num_encoder', type=str, default='None',
@@ -78,171 +80,225 @@ def accuracy_criterion(outputs: torch.Tensor, targets: torch.Tensor) -> float:
         accuracy = correct / targets.size(0)
     return accuracy * 100
 
-def run(
+def load_data(
+        params: ty.Dict[str, ty.Any],
+    ) -> ty.Tuple[pd.DataFrame, pd.Series, str]:
+    dataset_name = params['dataset_name']
+    if dataset_name == 'adult':
+        # Load the adult dataset
+        data = pd.read_csv('adult.csv')
+        X = data.drop('target', axis=1)
+        y = data['target']
+        task_type = 'binary_classification'
+    else:
+        # Load other datasets
+        # Set task_type accordingly
+        pass
+    return X, y, task_type
+
+def preprocess_data(
+        X: pd.DataFrame, 
+        y: pd.Series, 
+        task_type: str, 
+        params: ty.Dict[str, ty.Any],
+    ) -> ty.Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+    # Remove rows with missing values in features or target
+    missing_rows = X.isnull().any(axis=1) | y.isnull()
+    X = X[~missing_rows].reset_index(drop=True)
+    y = y[~missing_rows].reset_index(drop=True)
+
+    # Split data
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=params['test_size'], random_state=params['random_state']
+    )
+
+    # Identify numerical and categorical columns
+    numerical_columns = X.select_dtypes(include=['int64', 'float64']).columns.tolist()
+    categorical_columns = X.select_dtypes(include=['object', 'category']).columns.tolist()
+
+    # Scale numerical features
+    if numerical_columns:
+        numerical_transformer = StandardScaler()
+        X_train_num = numerical_transformer.fit_transform(X_train[numerical_columns])
+        X_test_num = numerical_transformer.transform(X_test[numerical_columns])
+        X_train_num = torch.tensor(X_train_num, dtype=torch.float32)
+        X_test_num = torch.tensor(X_test_num, dtype=torch.float32)
+    else:
+        X_train_num = None
+        X_test_num = None
+
+    # Encode categorical features
+    if categorical_columns:
+        # Handle unseen categories in the test set
+        for col in categorical_columns:
+            train_categories = set(X_train[col])
+            most_frequent_cat = X_train[col].value_counts().idxmax()
+            X_test[col] = X_test[col].apply(
+                lambda x: x if x in train_categories else most_frequent_cat
+            )
+
+        if params['model_name'] == 'TabTransformer':
+            # Label encode categorical features
+            label_encoders = {}
+            X_train_cat = X_train[categorical_columns].copy()
+            X_test_cat = X_test[categorical_columns].copy()
+            for col in categorical_columns:
+                le = LabelEncoder()
+                X_train_cat[col] = le.fit_transform(X_train_cat[col])
+                X_test_cat[col] = le.transform(X_test_cat[col])
+                label_encoders[col] = le
+            X_train_cat = X_train_cat.values
+            X_test_cat = X_test_cat.values
+        else:
+            # One-hot encode categorical features
+            X_train_cat = pd.get_dummies(X_train[categorical_columns], drop_first=True)
+            X_test_cat = pd.get_dummies(X_test[categorical_columns], drop_first=True)
+            X_test_cat = X_test_cat.reindex(columns=X_train_cat.columns, fill_value=False)
+            X_train_cat = X_train_cat.values
+            X_test_cat = X_test_cat.values
+
+        # Convert categorical features to tensors
+        if params['model_name'] == 'TabTransformer':
+            X_train_cat = torch.tensor(X_train_cat, dtype=torch.long)
+            X_test_cat = torch.tensor(X_test_cat, dtype=torch.long)
+        else:
+            X_train_cat = torch.tensor(X_train_cat, dtype=torch.float32)
+            X_test_cat = torch.tensor(X_test_cat, dtype=torch.float32)
+    else:
+        X_train_cat = None
+        X_test_cat = None
+
+    # Encode target variable
+    if task_type == 'binary_classification':
+        le_target = LabelEncoder()
+        y_train = le_target.fit_transform(y_train)
+        y_test = le_target.transform(y_test)
+        y_train = torch.tensor(y_train, dtype=torch.long)
+        y_test = torch.tensor(y_test, dtype=torch.long)
+    elif task_type == 'multiclass_classification':
+        # Handle unseen classes in y_test
+        le_target = LabelEncoder()
+        y_train = le_target.fit_transform(y_train)
+        y_test = y_test[y_test.isin(le_target.classes_)]
+        X_test_num = X_test_num[y_test.index] if numerical_columns else None
+        X_test_cat = X_test_cat[y_test.index] if categorical_columns else None
+        y_test = le_target.transform(y_test)
+        # One-hot encode labels
+        num_classes = len(le_target.classes_)
+        y_train = torch.nn.functional.one_hot(torch.tensor(y_train), num_classes=num_classes)
+        y_test = torch.nn.functional.one_hot(torch.tensor(y_test), num_classes=num_classes)
+        y_train = y_train.to(torch.long)
+        y_test = y_test.to(torch.long)
+    else:
+        # Scale target variable
+        scaler = StandardScaler()
+        y_train = scaler.fit_transform(y_train.values.reshape(-1, 1)).flatten()
+        y_test = scaler.transform(y_test.values.reshape(-1, 1)).flatten()
+        y_train = torch.tensor(y_train, dtype=torch.float32)
+        y_test = torch.tensor(y_test, dtype=torch.float32)
+
+    return y_train, y_test, X_train_num, X_train_cat, X_test_num, X_test_cat
+
+def train_and_evaluate_model(
+        X_train_num: torch.Tensor,
+        X_test_num: torch.Tensor,
+        X_train_cat: torch.Tensor,
+        X_test_cat: torch.Tensor,
+        y_train: torch.Tensor,
+        y_test: torch.Tensor,
+        task_type: str,
         params: ty.Dict[str, ty.Any],
         verbose_training: bool = True,
-        log_run: bool = True,
-    ) -> ty.List[float]:
+        verbose_evaluation: bool = True,
+) -> float:
     # Load config
     with open(params['config_file'], 'r') as file:
         config = yaml.safe_load(file)
 
-    # Initialize list to store accuracies
-    accuracies = []
-    for run in range(params['n_run']):
-        seed = SEEDS[run]
-        set_seed(seed)
-        params['seed'] = seed  # Record the seed used
-
-        # Load dataset
-        data = fetch_openml("adult", version=2, as_frame=True)
-        X = data['data']
-        y = data['target']
-
-        # Identify categorical and numerical columns
-        categorical_columns = X.select_dtypes(include=['category', 'object']).columns.tolist()
-        numerical_columns = X.select_dtypes(include=['int64', 'float64']).columns.tolist()
-
-        # Split the data into training and test sets before processing
-        X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=0.2, random_state=seed
+    # Numerical feature encoder
+    if (not params['num_encoder_trainable']) and (params['num_encoder'] is not None):
+        # Encode numerical features via random features
+        num_encoder = ENCODERS[params['num_encoder']](
+            n_features=X_train_num.shape[1],
+            **config[params['num_encoder']],
+            trainable=params['num_encoder_trainable'],
         )
-
-        # Encode the target variable
-        le_target = LabelEncoder()
-        y_train = le_target.fit_transform(y_train)
-        y_test = le_target.transform(y_test)
-
-        # Process categorical columns
-        d_in_cat = None
-        # Preprocessing step to handle unseen categories in the test set
-        for col in categorical_columns:
-            # Get the unique categories in the training data
-            train_categories = set(X_train[col])
-            # Replace unseen categories with the most frequent category
-            most_frequent_cat = X_train[col].value_counts().idxmax()
-            X_test[col] = X_test[col].apply(lambda x: x if x in train_categories else most_frequent_cat)
-
-        if params['model_name'] == 'TabTransformer':
-            # encode with label encoding
-            d_in_cat = []
-            for col in categorical_columns:
-                le = LabelEncoder()
-                X_train[col] = le.fit_transform(X_train[col])
-                X_test[col] = le.transform(X_test[col])
-                d_in_cat.append(len(le.classes_))
-            X_train_cat = X_train[categorical_columns].copy()
-            X_test_cat = X_test[categorical_columns].copy()
-        else:
-            X_train_cat = pd.get_dummies(X_train[categorical_columns], drop_first=True)
-            X_test_cat = pd.get_dummies(X_test[categorical_columns], drop_first=True)
-            # Align the test set columns with the training set columns
-            X_test_cat = X_test_cat.reindex(columns=X_train_cat.columns, fill_value=False)
-
-        # Process numerical columns
-        numerical_transformer = StandardScaler()
-        X_train_num = numerical_transformer.fit_transform(X_train[numerical_columns])
-        X_test_num = numerical_transformer.transform(X_test[numerical_columns])
-
-        if (not params['num_encoder_trainable']) and (params['num_encoder'] is not None):
-            num_encoder = ENCODERS[params['num_encoder']](
+        with torch.no_grad():
+            X_train_num = num_encoder(X_train_num)
+            X_test_num = num_encoder(X_test_num)
+        # Optionally, learnable scaling of random features
+        if params['scaler'] is not None:
+            num_encoder = SCALERS[params['scaler']](
                 n_features=X_train_num.shape[1],
-                **config[params['num_encoder']],
-                trainable=params['num_encoder_trainable'],
-            )
-            with torch.no_grad():
-                X_train_num = num_encoder(torch.from_numpy(X_train_num).float())
-                X_test_num = num_encoder(torch.from_numpy(X_test_num).float())
-                X_train_num = X_train_num.numpy()
-                X_test_num = X_test_num.numpy()
-            if params['scaler'] is not None:
-                num_encoder = SCALERS[params['scaler']](
-                    n_features=X_train_num.shape[1],
-                )
-            else:
-                num_encoder = None
-        elif params['num_encoder'] is not None:
-            num_encoder = ENCODERS[params['num_encoder']](
-                n_features=X_train_num.shape[1],
-                **config[params['num_encoder']],
             )
         else:
             num_encoder = None
-
-        # Convert to tensors
-        y_train = torch.tensor(y_train, dtype=torch.long)
-        y_test = torch.tensor(y_test, dtype=torch.long)
-        X_train_num = torch.tensor(X_train_num, dtype=torch.float32)
-        X_test_num = torch.tensor(X_test_num, dtype=torch.float32)
-        X_train_cat = torch.tensor(X_train_cat.values, dtype=torch.float32)
-        X_test_cat = torch.tensor(X_test_cat.values, dtype=torch.float32)
-
-        if params['model_name'] == 'TabTransformer':
-            X_train_cat = X_train_cat.to(torch.long)
-            X_test_cat = X_test_cat.to(torch.long)
-
-        # Determine input dimensions
-        d_in_num = X_train_num.shape[1]
-        d_in_cat = X_train_cat.shape[1] if d_in_cat is None else d_in_cat
-        d_out = len(np.unique(y_train))
-
-        # Define the model
-        model = MODELS[params['model_name']](
-            d_in_num=d_in_num,
-            d_in_cat=d_in_cat,
-            d_out=d_out,
-            num_encoder=num_encoder,
-            **config[params['model_name']],
+    elif params['num_encoder'] is not None:
+        num_encoder = ENCODERS[params['num_encoder']](
+            n_features=X_train_num.shape[1],
+            **config[params['num_encoder']],
         )
+    else:
+        num_encoder = None
 
-        # Move model to device
-        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        model.to(device)
+    # Determine input dimensions
+    d_in_num = X_train_num.shape[1]
+    d_in_cat = X_train_cat.shape[1] if d_in_cat is None else d_in_cat
+    d_out = len(np.unique(y_train))
 
-        # Define the loss criterion
-        loss_criterion = nn.CrossEntropyLoss()
+    # Define the model
+    model = MODELS[params['model_name']](
+        d_in_num=d_in_num,
+        d_in_cat=d_in_cat,
+        d_out=d_out,
+        num_encoder=num_encoder,
+        **config[params['model_name']],
+    )
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    model.to(device)
 
-        # Start training
-        model.fit(
-            X_num_train=X_train_num,
-            X_cat_train=X_train_cat,
-            y_train=y_train,
-            criterion=loss_criterion,
-            verbose=verbose_training,
-            **config['training'],
-        )
+    # Define loss and metric based on task_type
+    if task_type == 'regression':
+        criterion = torch.nn.MSELoss()
+        metric = mean_squared_error  # Replace with appropriate function
+    elif task_type == 'binary_classification':
+        criterion = torch.nn.BCEWithLogitsLoss()
+        metric = accuracy_score  # Replace with appropriate function
+    else:  # multi-class classification
+        criterion = torch.nn.CrossEntropyLoss()
+        metric = accuracy_score  # Replace with appropriate function
 
-        # Evaluate the model
-        avg_accuracy = model.evaluate(
-            X_num_test=X_test_num,
-            X_cat_test=X_test_cat,
-            y_test=y_test,
-            criterion=accuracy_criterion,
-            batch_size=32,
-            verbose=verbose_training,
-        )
-        accuracies.append(avg_accuracy)
+    # Start training
+    model.fit(
+        X_num_train=X_train_num,
+        X_cat_train=X_train_cat,
+        y_train=y_train,
+        criterion=criterion,
+        verbose=verbose_training,
+        **config['training'],
+    )
 
-        # Write the parameters and evaluation result to the output file
-        if log_run:
-            with open(params['output_file'], 'a') as f:
-                f.write(f"Run {run+1}/{params['n_run']}\n")
-                f.write('Parameters: {}\n'.format(params))
-                f.write('Accuracy: {:.2f}%\n'.format(avg_accuracy))
-                f.write('-------------------------\n')
+    # Evaluate the model
+    metric = model.evaluate(
+        X_num_test=X_test_num,
+        X_cat_test=X_test_cat,
+        y_test=y_test,
+        criterion=metric,
+        batch_size=32,
+        verbose=verbose_training,
+    )
 
-    return accuracies
-
+    return metric
 
 if __name__ == '__main__':
     args = parse_arguments()
     n_run = args.n_run
-
     if n_run > len(SEEDS):
         raise ValueError(f'n_run ({n_run}) is greater than the number of available seeds ({len(SEEDS)}).')
 
     # Set parameters
     params = {
+        'dataset_name': args.dataset_name,
         'model_name': args.model_name,
         'num_encoder': None if args.num_encoder == 'None' else args.num_encoder,
         'num_encoder_trainable': args.num_encoder_trainable,
@@ -253,12 +309,33 @@ if __name__ == '__main__':
     }
 
     # Run the experiment
-    accuracies = run(params)
+    X, y, task_type = load_data(params)
+    metrics = []
+    for idx, seed in enumerate(SEEDS[:n_run]):
+        set_seed(seed)
+        y_train, y_test, X_train_num, X_train_cat, X_test_num, X_test_cat = preprocess_data(X, y, task_type, params)
+        metric = train_and_evaluate_model(
+            X_train_num=X_train_num,
+            X_test_num=X_test_num,
+            X_train_cat=X_train_cat,
+            X_test_cat=X_test_cat,
+            y_train=y_train,
+            y_test=y_test,
+            task_type=task_type,
+            params=params,
+            verbose_training=False,
+            verbose_evaluation=False,
+        )
+        with open(args.output_file, 'a') as f:
+            f.write(f'Parameters: {params}\n')
+            f.write(f'Run {idx+1}/{n_run} | Seed: {seed} | Accuracy: {metric:.2f}%\n')
+            f.write('-------------------------\n')
+        metrics.append(metric)
 
     # Print the average accuracy
-    mean_accuracy = sum(accuracies) / n_run
-    std_accuracy = np.std(accuracies)
+    mean_accuracy = sum(metrics) / n_run
+    std_accuracy = np.std(metrics)
     with open(args.output_file, 'a') as f:
         f.write('Parameters: {}\n'.format(params))
-        f.write('Overall Average Accuracy over {} runs: {:.2f}% ± {:.2f}%\n'.format(n_run, mean_accuracy, std_accuracy))
+        f.write('Overall Average Metric over {} runs: {:.2f}% ± {:.2f}%\n'.format(n_run, mean_accuracy, std_accuracy))
         f.write('=========================\n')
