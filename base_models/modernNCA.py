@@ -8,13 +8,20 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader, Dataset
 
 class IndexedTensorDataset(Dataset):
-    def __init__(self, tensors_num, tensors_cat, targets):
+    def __init__(
+            self, 
+            tensors_num: torch.Tensor,
+            tensors_cat: Optional[torch.Tensor],
+            targets: torch.Tensor,
+        ) -> None:
         self.tensors_num = tensors_num
-        self.tensors_cat = tensors_cat
+        self.tensors_cat = tensors_cat if tensors_cat is not None else None
         self.targets = targets
         self.indices = torch.arange(len(tensors_num), dtype=torch.long)
 
     def __getitem__(self, index):
+        if self.tensors_cat is None:
+            return (self.tensors_num[index], None, self.targets[index], self.indices[index])
         return (self.tensors_num[index], self.tensors_cat[index], self.targets[index], self.indices[index])
 
     def __len__(self):
@@ -145,18 +152,20 @@ class ModernNCA(nn.Module):
                 mask = torch.ones(X_num_train.shape[0], dtype=torch.bool)
                 mask[idx_batch] = False
 
-                candidate_x_num = X_num_train[mask].to(device)
-                candidate_x_cat = X_cat_train[mask].to(device) if X_cat_train is not None else None
-                candidate_y = y_train[mask].to(device)
+                candidate_x_num = X_num_train[mask]
+                candidate_x_cat = X_cat_train[mask] if X_cat_train is not None else None
+                candidate_y = y_train[mask]
 
                 # Sample candidates according to sample_rate
                 num_candidates = int(len(candidate_y) * sample_rate)
                 if num_candidates < len(candidate_y):
                     indices = torch.randperm(len(candidate_y))[:num_candidates]
                     candidate_x_num = candidate_x_num[indices]
-                    if candidate_x_cat is not None:
-                        candidate_x_cat = candidate_x_cat[indices]
+                    candidate_x_cat = candidate_x_cat[indices] if candidate_x_cat is not None else None
                     candidate_y = candidate_y[indices]
+                candidate_x_num = candidate_x_num.to(device)
+                candidate_x_cat = candidate_x_cat.to(device) if candidate_x_cat is not None else None
+                candidate_y = candidate_y.to(device)
 
                 optimizer.zero_grad()
                 # Forward pass

@@ -266,7 +266,7 @@ class TabTransformer(nn.Module):
     def fit(
             self, 
             X_num_train: torch.Tensor,
-            X_cat_train: torch.Tensor,
+            X_cat_train: Optional[torch.Tensor],
             y_train: torch.Tensor,
             criterion: nn.Module,
             batch_size: int,
@@ -281,7 +281,10 @@ class TabTransformer(nn.Module):
         device = next(self.parameters()).device
 
         # Define the dataset and dataloader
-        train_dataset = TensorDataset(X_num_train, X_cat_train, y_train)
+        if X_cat_train is not None:
+            train_dataset = TensorDataset(X_num_train, X_cat_train, y_train)
+        else:
+            train_dataset = TensorDataset(X_num_train, y_train)
         train_loader = DataLoader(
             train_dataset, batch_size=batch_size, shuffle=True,
         )
@@ -299,9 +302,13 @@ class TabTransformer(nn.Module):
             epoch_loss = 0.0
             total = 0
 
-            for itr, (X_num_batch, X_cat_batch, y_batch) in enumerate(train_loader):
+            for itr, batch in enumerate(train_loader):
+                if X_cat_train is not None:
+                    X_num_batch, X_cat_batch, y_batch = batch
+                    X_cat_batch = X_cat_batch.to(device)
+                else:
+                    X_num_batch, y_batch = batch
                 X_num_batch = X_num_batch.to(device)
-                X_cat_batch = X_cat_batch.to(device)
                 y_batch = y_batch.to(device)
 
                 optimizer.zero_grad()
@@ -328,7 +335,7 @@ class TabTransformer(nn.Module):
     def evaluate(
         self,
         X_num_test: torch.Tensor,
-        X_cat_test: torch.Tensor,
+        X_cat_test: Optional[torch.Tensor],
         y_test: torch.Tensor,
         criterion: Callable[[torch.Tensor, torch.Tensor], float],
         batch_size: int,
@@ -340,7 +347,10 @@ class TabTransformer(nn.Module):
         device = next(self.parameters()).device
 
         # Define the dataset and dataloader
-        test_dataset = TensorDataset(X_num_test, X_cat_test, y_test)
+        if X_cat_test is not None:
+            test_dataset = TensorDataset(X_num_test, X_cat_test, y_test)
+        else:
+            test_dataset = TensorDataset(X_num_test, y_test)
         test_loader = DataLoader(
             test_dataset, batch_size=batch_size, shuffle=False,
         )
@@ -349,9 +359,13 @@ class TabTransformer(nn.Module):
         total_metric = 0.0
         total_samples = 0
         with torch.no_grad():
-            for X_num_batch, X_cat_batch, y_batch in test_loader:
+            for batch in test_loader:
+                if X_cat_test is not None:
+                    X_num_batch, X_cat_batch, y_batch = batch
+                    X_cat_batch = X_cat_batch.to(device)
+                else:
+                    X_num_batch, y_batch = batch
                 X_num_batch = X_num_batch.to(device)
-                X_cat_batch = X_cat_batch.to(device)
                 y_batch = y_batch.to(device)
 
                 # Forward pass
