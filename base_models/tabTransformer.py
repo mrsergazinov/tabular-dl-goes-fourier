@@ -308,6 +308,7 @@ class TabTransformer(nn.Module):
                     X_cat_batch = X_cat_batch.to(device)
                 else:
                     X_num_batch, y_batch = batch
+                    X_cat_batch = None
                 X_num_batch = X_num_batch.to(device)
                 y_batch = y_batch.to(device)
 
@@ -365,6 +366,7 @@ class TabTransformer(nn.Module):
                     X_cat_batch = X_cat_batch.to(device)
                 else:
                     X_num_batch, y_batch = batch
+                    X_cat_batch = None
                 X_num_batch = X_num_batch.to(device)
                 y_batch = y_batch.to(device)
 

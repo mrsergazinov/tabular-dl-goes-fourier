@@ -24,9 +24,10 @@ class MLP(nn.Module):
         #----------------------------------------------
         # Define the numerical encoder
         self.num_encoder = num_encoder
-        d_in = d_in_num + d_in_cat if num_encoder is None else num_encoder.d_out + d_in_cat
+        d_in_num = d_in_num if num_encoder is None else num_encoder.d_out
         #----------------------------------------------
 
+        d_in = d_in_num + d_in_cat if d_in_cat is not None else d_in_num
         self.dropout = dropout
         self.d_out = d_out
         
@@ -102,6 +103,7 @@ class MLP(nn.Module):
                     X_cat_batch = X_cat_batch.to(device)
                 else:   
                     X_num_batch, y_batch = batch
+                    X_cat_batch = None
                 X_num_batch = X_num_batch.to(device)
                 y_batch = y_batch.to(device)
 
@@ -159,6 +161,7 @@ class MLP(nn.Module):
                     X_cat_batch = X_cat_batch.to(device)
                 else:
                     X_num_batch, y_batch = batch
+                    X_cat_batch = None
                 X_num_batch = X_num_batch.to(device)
                 y_batch = y_batch.to(device)
 

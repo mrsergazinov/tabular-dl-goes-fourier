@@ -16,7 +16,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 # Import models and encoders
-os.chdir('/home/mrsergazinov/TabLLM/feature_encoding_exp/')
+os.chdir('/home/mrsergazinov/TabLLM/')
 from base_models.mlp import MLP
 from base_models.tabTransformer import TabTransformer
 from base_models.modernNCA import ModernNCA
@@ -50,6 +50,8 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description='Train and evaluate models with different parameters.')
     parser.add_argument('--dataset_name', type=str, default='adult',
                         choices=['adult'], help='Name of the dataset to use.')
+    parser.add_argument('--test_size', type=float, default=0.2,
+                        help='Fraction of the dataset to include in the test split.')
     parser.add_argument('--model_name', type=str, default='TabTransformer',
                         choices=['MLP', 'TabTransformer', 'ModernNCA'], help='Name of the model to use.')
     parser.add_argument('--num_encoder', type=str, default='None',
@@ -73,7 +75,7 @@ def set_seed(seed):
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
 
-def accuracy_criterion(outputs: torch.Tensor, targets: torch.Tensor) -> float:
+def accuracy_score(outputs: torch.Tensor, targets: torch.Tensor) -> float:
     with torch.no_grad():
         _, predicted = torch.max(outputs, dim=1)
         correct = (predicted == targets).sum().item()
@@ -243,7 +245,7 @@ def train_and_evaluate_model(
 
     # Determine input dimensions
     d_in_num = X_train_num.shape[1]
-    d_in_cat = X_train_cat.shape[1] if d_in_cat is None else d_in_cat
+    d_in_cat = X_train_cat.shape[1] if X_train_cat is not None else None
     d_out = len(np.unique(y_train))
 
     # Define the model
@@ -262,7 +264,7 @@ def train_and_evaluate_model(
         criterion = torch.nn.MSELoss()
         metric = mean_squared_error  # Replace with appropriate function
     elif task_type == 'binary_classification':
-        criterion = torch.nn.BCEWithLogitsLoss()
+        criterion = torch.nn.CrossEntropyLoss()
         metric = accuracy_score  # Replace with appropriate function
     else:  # multi-class classification
         criterion = torch.nn.CrossEntropyLoss()
@@ -299,6 +301,7 @@ if __name__ == '__main__':
     # Set parameters
     params = {
         'dataset_name': args.dataset_name,
+        'test_size': args.test_size,
         'model_name': args.model_name,
         'num_encoder': None if args.num_encoder == 'None' else args.num_encoder,
         'num_encoder_trainable': args.num_encoder_trainable,
@@ -313,6 +316,7 @@ if __name__ == '__main__':
     metrics = []
     for idx, seed in enumerate(SEEDS[:n_run]):
         set_seed(seed)
+        params['random_state'] = seed
         y_train, y_test, X_train_num, X_train_cat, X_test_num, X_test_cat = preprocess_data(X, y, task_type, params)
         metric = train_and_evaluate_model(
             X_train_num=X_train_num,

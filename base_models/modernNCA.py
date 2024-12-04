@@ -47,7 +47,7 @@ class ModernNCA(nn.Module):
         #----------------------------------------------
 
         self.d_in_num = d_in_num
-        self.d_in_cat = d_in_cat
+        self.d_in_cat = d_in_cat if d_in_cat is not None else 0
         self.d_out = d_out
         self.dim = dim
         self.dropout = dropout
