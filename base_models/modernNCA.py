@@ -101,9 +101,10 @@ class ModernNCA(nn.Module):
             exp_distances = torch.exp(-distances)
             logsumexp += torch.logsumexp(exp_distances, dim=1)
             logits += torch.mm(exp_distances, batch_candidate_y)
-        
-        if self.d_out > 1:
-            logits = torch.log(logits) - logsumexp.unsqueeze(1)
+        logits = torch.log(logits) - logsumexp.unsqueeze(1)
+
+        if self.d_out == 1:
+            logits = logits.squeeze()
         
         return logits
 

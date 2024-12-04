@@ -54,7 +54,9 @@ class MLP(nn.Module):
             x = F.relu(x)
             if self.dropout:
                 x = F.dropout(x, self.dropout, self.training)
-        logit = self.head(x)        
+        logit = self.head(x)    
+        if self.d_out == 1:
+            logit = logit.squeeze()    
         return  logit
     
     def fit(

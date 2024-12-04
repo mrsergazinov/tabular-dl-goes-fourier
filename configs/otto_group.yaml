@@ -2,7 +2,8 @@ seed: 42
 
 MLP:
   d_layers: 
-    - 64
+    - 256
+    - 256
     - 32
   dropout: 0.5
 
@@ -20,18 +21,18 @@ ModernNCA:
 
 FourierFeatures:
   n_frequencies: 32
-  frequency_scale: 0.5
+  frequency_scale: 20
 
 BinningFeatures:
   n_bins: 50
-  delta_scale: 2
+  delta_scale: 0.1
   delta_min: 0.1
   delta_max: 100
 
 ComboFeatures:
   n_frequencies: 32
-  frequency_scale: 10
-  n_bins: 200
+  frequency_scale: 20
+  n_bins: 50
   delta_scale: 0.1
   delta_min: 0.1
   delta_max: 100

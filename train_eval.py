@@ -82,20 +82,29 @@ def accuracy_score(outputs: torch.Tensor, targets: torch.Tensor) -> float:
         accuracy = correct / targets.size(0)
     return accuracy * 100
 
+def root_mean_squared_error(outputs: torch.Tensor, targets: torch.Tensor) -> float:
+    with torch.no_grad():
+        loss = torch.sqrt(torch.nn.functional.mse_loss(outputs, targets))
+    return loss.item()
+
 def load_data(
         params: ty.Dict[str, ty.Any],
     ) -> ty.Tuple[pd.DataFrame, pd.Series, str]:
     dataset_name = params['dataset_name']
     if dataset_name == 'adult':
-        # Load the adult dataset
-        data = pd.read_csv('adult.csv')
-        X = data.drop('target', axis=1)
-        y = data['target']
+        X, y = fetch_openml('adult', version=2, as_frame=True, return_X_y=True)
+        task_type = 'binary_classification'
+    elif dataset_name == 'california_housing':
+        X, y = fetch_openml('california_housing', version=7, as_frame=True, return_X_y=True)
+        task_type = 'regression'
+    elif dataset_name == 'otto_group':
+        X, y = fetch_openml('Otto-Group-Product-Classification-Challenge', version=1, as_frame=True, return_X_y=True)
+        task_type = 'multiclass_classification'
+    elif dataset_name == 'higgs':
+        X, y = fetch_openml('higgs', version=2, as_frame=True, return_X_y=True)
         task_type = 'binary_classification'
     else:
-        # Load other datasets
-        # Set task_type accordingly
-        pass
+        raise ValueError(f'Invalid dataset_name: {dataset_name}')
     return X, y, task_type
 
 def preprocess_data(
@@ -182,15 +191,13 @@ def preprocess_data(
         le_target = LabelEncoder()
         y_train = le_target.fit_transform(y_train)
         y_test = y_test[y_test.isin(le_target.classes_)]
+        y_test = y_test.reset_index(drop=True)
         X_test_num = X_test_num[y_test.index] if numerical_columns else None
         X_test_cat = X_test_cat[y_test.index] if categorical_columns else None
         y_test = le_target.transform(y_test)
-        # One-hot encode labels
-        num_classes = len(le_target.classes_)
-        y_train = torch.nn.functional.one_hot(torch.tensor(y_train), num_classes=num_classes)
-        y_test = torch.nn.functional.one_hot(torch.tensor(y_test), num_classes=num_classes)
-        y_train = y_train.to(torch.long)
-        y_test = y_test.to(torch.long)
+        # Label encode target variable and convert to tensor
+        y_train = torch.tensor(y_train, dtype=torch.long)
+        y_test = torch.tensor(y_test, dtype=torch.long)
     else:
         # Scale target variable
         scaler = StandardScaler()
@@ -214,8 +221,12 @@ def train_and_evaluate_model(
         verbose_evaluation: bool = True,
 ) -> float:
     # Load config
-    with open(params['config_file'], 'r') as file:
-        config = yaml.safe_load(file)
+    # if config file string
+    if isinstance(params['config_file'], str):
+        with open(params['config_file'], 'r') as file:
+            config = yaml.safe_load(file)
+    else:
+        config = params['config_file']
 
     # Numerical feature encoder
     if (not params['num_encoder_trainable']) and (params['num_encoder'] is not None):
@@ -246,7 +257,12 @@ def train_and_evaluate_model(
     # Determine input dimensions
     d_in_num = X_train_num.shape[1]
     d_in_cat = X_train_cat.shape[1] if X_train_cat is not None else None
-    d_out = len(np.unique(y_train))
+    if task_type in ['binary_classification', 'multiclass_classification']:
+        d_out = len(np.unique(y_train))
+    elif task_type == 'regression':
+        d_out = 1
+    else:
+        raise ValueError(f'Invalid task_type: {task_type}')
 
     # Define the model
     model = MODELS[params['model_name']](
@@ -262,7 +278,7 @@ def train_and_evaluate_model(
     # Define loss and metric based on task_type
     if task_type == 'regression':
         criterion = torch.nn.MSELoss()
-        metric = mean_squared_error  # Replace with appropriate function
+        metric = root_mean_squared_error  # Replace with appropriate function
     elif task_type == 'binary_classification':
         criterion = torch.nn.CrossEntropyLoss()
         metric = accuracy_score  # Replace with appropriate function

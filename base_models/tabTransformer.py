@@ -163,6 +163,7 @@ class TabTransformer(nn.Module):
         # Define the numerical encoder
         self.num_encoder = num_encoder
         d_in_num = d_in_num if num_encoder is None else num_encoder.d_out
+        self.d_out = d_out
         #----------------------------------------------
 
         self.num_categories = 0
@@ -261,6 +262,9 @@ class TabTransformer(nn.Module):
 
         x = torch.cat(xs, dim = -1)
         logits = self.mlp(x)
+
+        if self.d_out == 1:
+            logits = logits.squeeze()
         return logits
 
     def fit(
