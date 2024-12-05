@@ -112,15 +112,18 @@ def preprocess_data(
         y: pd.Series, 
         task_type: str, 
         params: ty.Dict[str, ty.Any],
-    ) -> ty.Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+    ) -> ty.Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
     # Remove rows with missing values in features or target
     missing_rows = X.isnull().any(axis=1) | y.isnull()
     X = X[~missing_rows].reset_index(drop=True)
     y = y[~missing_rows].reset_index(drop=True)
 
-    # Split data
-    X_train, X_test, y_train, y_test = train_test_split(
+    # Split data into training, validation, and test sets
+    X_train_full, X_test, y_train_full, y_test = train_test_split(
         X, y, test_size=params['test_size'], random_state=params['random_state']
+    )
+    X_train, X_val, y_train, y_val = train_test_split(
+        X_train_full, y_train_full, test_size=params['val_size'], random_state=params['random_state']
     )
 
     # Identify numerical and categorical columns
@@ -131,19 +134,23 @@ def preprocess_data(
     if numerical_columns:
         numerical_transformer = StandardScaler()
         X_train_num = numerical_transformer.fit_transform(X_train[numerical_columns])
+        X_val_num = numerical_transformer.transform(X_val[numerical_columns])
         X_test_num = numerical_transformer.transform(X_test[numerical_columns])
         X_train_num = torch.tensor(X_train_num, dtype=torch.float32)
+        X_val_num = torch.tensor(X_val_num, dtype=torch.float32)
         X_test_num = torch.tensor(X_test_num, dtype=torch.float32)
     else:
-        X_train_num = None
-        X_test_num = None
+        X_train_num = X_val_num = X_test_num = None
 
     # Encode categorical features
     if categorical_columns:
-        # Handle unseen categories in the test set
+        # Handle unseen categories in the validation and test sets
         for col in categorical_columns:
             train_categories = set(X_train[col])
             most_frequent_cat = X_train[col].value_counts().idxmax()
+            X_val[col] = X_val[col].apply(
+                lambda x: x if x in train_categories else most_frequent_cat
+            )
             X_test[col] = X_test[col].apply(
                 lambda x: x if x in train_categories else most_frequent_cat
             )
@@ -152,61 +159,59 @@ def preprocess_data(
             # Label encode categorical features
             label_encoders = {}
             X_train_cat = X_train[categorical_columns].copy()
+            X_val_cat = X_val[categorical_columns].copy()
             X_test_cat = X_test[categorical_columns].copy()
             for col in categorical_columns:
                 le = LabelEncoder()
                 X_train_cat[col] = le.fit_transform(X_train_cat[col])
+                X_val_cat[col] = le.transform(X_val_cat[col])
                 X_test_cat[col] = le.transform(X_test_cat[col])
                 label_encoders[col] = le
-            X_train_cat = X_train_cat.values
-            X_test_cat = X_test_cat.values
+            X_train_cat = torch.tensor(X_train_cat.values, dtype=torch.long)
+            X_val_cat = torch.tensor(X_val_cat.values, dtype=torch.long)
+            X_test_cat = torch.tensor(X_test_cat.values, dtype=torch.long)
         else:
             # One-hot encode categorical features
             X_train_cat = pd.get_dummies(X_train[categorical_columns], drop_first=True)
+            X_val_cat = pd.get_dummies(X_val[categorical_columns], drop_first=True)
             X_test_cat = pd.get_dummies(X_test[categorical_columns], drop_first=True)
+            X_val_cat = X_val_cat.reindex(columns=X_train_cat.columns, fill_value=False)
             X_test_cat = X_test_cat.reindex(columns=X_train_cat.columns, fill_value=False)
-            X_train_cat = X_train_cat.values
-            X_test_cat = X_test_cat.values
-
-        # Convert categorical features to tensors
-        if params['model_name'] == 'TabTransformer':
-            X_train_cat = torch.tensor(X_train_cat, dtype=torch.long)
-            X_test_cat = torch.tensor(X_test_cat, dtype=torch.long)
-        else:
-            X_train_cat = torch.tensor(X_train_cat, dtype=torch.float32)
-            X_test_cat = torch.tensor(X_test_cat, dtype=torch.float32)
+            X_train_cat = torch.tensor(X_train_cat.values, dtype=torch.float32)
+            X_val_cat = torch.tensor(X_val_cat.values, dtype=torch.float32)
+            X_test_cat = torch.tensor(X_test_cat.values, dtype=torch.float32)
     else:
-        X_train_cat = None
-        X_test_cat = None
+        X_train_cat = X_val_cat = X_test_cat = None
 
     # Encode target variable
     if task_type == 'binary_classification':
         le_target = LabelEncoder()
         y_train = le_target.fit_transform(y_train)
+        y_val = le_target.transform(y_val)
         y_test = le_target.transform(y_test)
         y_train = torch.tensor(y_train, dtype=torch.long)
+        y_val = torch.tensor(y_val, dtype=torch.long)
         y_test = torch.tensor(y_test, dtype=torch.long)
     elif task_type == 'multiclass_classification':
-        # Handle unseen classes in y_test
+        # Label encode target variable and convert to tensor
         le_target = LabelEncoder()
         y_train = le_target.fit_transform(y_train)
-        y_test = y_test[y_test.isin(le_target.classes_)]
-        y_test = y_test.reset_index(drop=True)
-        X_test_num = X_test_num[y_test.index] if numerical_columns else None
-        X_test_cat = X_test_cat[y_test.index] if categorical_columns else None
+        y_val = le_target.transform(y_val)
         y_test = le_target.transform(y_test)
-        # Label encode target variable and convert to tensor
         y_train = torch.tensor(y_train, dtype=torch.long)
+        y_val = torch.tensor(y_val, dtype=torch.long)
         y_test = torch.tensor(y_test, dtype=torch.long)
     else:
         # Scale target variable
         scaler = StandardScaler()
         y_train = scaler.fit_transform(y_train.values.reshape(-1, 1)).flatten()
+        y_val = scaler.transform(y_val.values.reshape(-1, 1)).flatten()
         y_test = scaler.transform(y_test.values.reshape(-1, 1)).flatten()
         y_train = torch.tensor(y_train, dtype=torch.float32)
+        y_val = torch.tensor(y_val, dtype=torch.float32)
         y_test = torch.tensor(y_test, dtype=torch.float32)
 
-    return y_train, y_test, X_train_num, X_train_cat, X_test_num, X_test_cat
+    return y_train, y_val, y_test, X_train_num, X_val_num, X_test_num, X_train_cat, X_val_cat, X_test_cat
 
 def train_and_evaluate_model(
         X_train_num: torch.Tensor,
