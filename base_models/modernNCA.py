@@ -21,7 +21,7 @@ class IndexedTensorDataset(Dataset):
 
     def __getitem__(self, index):
         if self.tensors_cat is None:
-            return (self.tensors_num[index], None, self.targets[index], self.indices[index])
+            return (self.tensors_num[index],self.targets[index], self.indices[index])
         return (self.tensors_num[index], self.tensors_cat[index], self.targets[index], self.indices[index])
 
     def __len__(self):
@@ -54,12 +54,17 @@ class ModernNCA(nn.Module):
         self.temperature = temperature
 
         # Define the encoder layer
-        d_in_total = d_in_num + d_in_cat
+        d_in_total = self.d_in_num + self.d_in_cat
         self.encoder = nn.Sequential(
             nn.Linear(d_in_total, dim),
             nn.ReLU(),
             nn.Linear(dim, dim),
         )
+
+        # Save training data
+        self.X_num_train = None
+        self.X_cat_train = None
+        self.y_train = None
 
     def forward(
         self,
@@ -99,12 +104,13 @@ class ModernNCA(nn.Module):
             batch_candidate_x = candidate_x[idx:idx+5000]
             distances = torch.cdist(x, batch_candidate_x, p=2) / self.temperature
             exp_distances = torch.exp(-distances)
-            logsumexp += torch.logsumexp(exp_distances, dim=1)
+            logsumexp += torch.logsumexp(-distances, dim=1)
             logits += torch.mm(exp_distances, batch_candidate_y)
-        logits = torch.log(logits) - logsumexp.unsqueeze(1)
-
-        if self.d_out == 1:
-            logits = logits.squeeze()
+        
+        if self.d_out > 1:
+            logits = torch.log(logits) - logsumexp.unsqueeze(1)
+        else:
+            logits = logits.squeeze() / torch.exp(logsumexp)
         
         return logits
 
@@ -123,6 +129,11 @@ class ModernNCA(nn.Module):
     ) -> None:
         self.train()
         device = next(self.parameters()).device
+
+        # Save training data
+        self.X_num_train = X_num_train
+        self.X_cat_train = X_cat_train
+        self.y_train = y_train
 
         # Define the dataset and dataloader
         train_dataset = IndexedTensorDataset(X_num_train, X_cat_train, y_train)
@@ -144,9 +155,14 @@ class ModernNCA(nn.Module):
             correct = 0
             total = 0
 
-            for itr, (X_num_batch, X_cat_batch, y_batch, idx_batch) in enumerate(train_loader):
+            for itr, batch in enumerate(train_loader):
+                if X_cat_train is not None:
+                    X_num_batch, X_cat_batch, y_batch, idx_batch = batch
+                    X_cat_batch = X_cat_batch.to(device)
+                else:
+                    X_num_batch, y_batch, idx_batch = batch
+                    X_cat_batch = None
                 X_num_batch = X_num_batch.to(device)
-                X_cat_batch = X_cat_batch.to(device) if X_cat_batch is not None else None
                 y_batch = y_batch.to(device)
 
                 # Exclude current batch indices from candidates
@@ -189,13 +205,8 @@ class ModernNCA(nn.Module):
                 epoch_loss += loss.item() * y_batch.size(0)
                 total += y_batch.size(0)
 
-                # Compute accuracy
-                if self.d_out > 1:
-                    preds = logits.argmax(dim=1)
-                    correct += (preds == y_batch).sum().item()
-                else:
-                    preds = (logits > 0).float()
-                    correct += (preds == y_batch).sum().item()
+                # # print(logits)
+                # print(logits.detach().cpu().numpy())
 
                 if verbose and itr % 50 == 0:
                     print(f'Iteration [{itr}/{len(train_loader)}] | Loss: {loss.item():.4f}')
@@ -205,7 +216,7 @@ class ModernNCA(nn.Module):
             accuracy = correct / total
 
             if verbose:
-                print(f'Epoch [{epoch+1}/{epochs}] | Loss: {epoch_loss:.4f} | Accuracy: {accuracy:.4f} | Time: {epoch_time:.2f}s')
+                print(f'Epoch [{epoch+1}/{epochs}] | Loss: {epoch_loss:.4f} | Time: {epoch_time:.2f}s')
 
     def evaluate(
         self,
@@ -214,6 +225,7 @@ class ModernNCA(nn.Module):
         y_test: torch.Tensor,
         criterion: Callable[[torch.Tensor, torch.Tensor], float],
         batch_size: int,
+        sample_rate: float = 0.2,
         verbose: bool = True,
     ) -> float:
         self.eval()
@@ -229,22 +241,31 @@ class ModernNCA(nn.Module):
         total_samples = 0
 
         # Prepare candidate data (using test data as candidates)
-        candidate_x_num = X_num_test.to(device)
-        candidate_x_cat = X_cat_test.to(device) if X_cat_test is not None else None
-        candidate_y = y_test.to(device)
-
+        candidate_x_num = self.X_num_train
+        candidate_x_cat = self.X_cat_train if self.X_cat_train is not None else None
+        candidate_y = self.y_train
+        
         with torch.no_grad():
-            for X_num_batch, X_cat_batch, y_batch, idx_batch in test_loader:
+            for batch in test_loader:
+                if X_cat_test is not None:
+                    X_num_batch, X_cat_batch, y_batch, idx_batch = batch
+                    X_cat_batch = X_cat_batch.to(device)
+                else:
+                    X_num_batch, y_batch, idx_batch = batch
+                    X_cat_batch = None
                 X_num_batch = X_num_batch.to(device)
-                X_cat_batch = X_cat_batch.to(device) if X_cat_batch is not None else None
                 y_batch = y_batch.to(device)
 
-                # Exclude current batch indices from candidates
-                mask = torch.ones(len(candidate_y), dtype=torch.bool)
-                mask[idx_batch] = False
-                candidate_x_num_batch = candidate_x_num[mask]
-                candidate_x_cat_batch = candidate_x_cat[mask] if candidate_x_cat is not None else None
-                candidate_y_batch = candidate_y[mask]
+                # Sample candidates
+                num_candidates = int(len(candidate_y) * sample_rate)
+                if num_candidates < len(candidate_y):
+                    indices = torch.randperm(len(candidate_y))[:num_candidates]
+                    candidate_x_num_batch = candidate_x_num[indices]
+                    candidate_x_cat_batch = candidate_x_cat[indices] if candidate_x_cat is not None else None
+                    candidate_y_batch = candidate_y[indices]
+                candidate_x_num_batch = candidate_x_num_batch.to(device)
+                candidate_x_cat_batch = candidate_x_cat_batch.to(device) if candidate_x_cat_batch is not None else None
+                candidate_y_batch = candidate_y_batch.to(device)
 
                 # Forward pass
                 logits = self(
@@ -252,7 +273,7 @@ class ModernNCA(nn.Module):
                     x_cat=X_cat_batch,
                     candidate_x_num=candidate_x_num_batch,
                     candidate_x_cat=candidate_x_cat_batch,
-                    candidate_y=candidate_y_batch
+                    candidate_y=candidate_y_batch,
                 )
 
                 # Compute metric

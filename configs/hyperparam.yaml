@@ -1,0 +1,94 @@
+MLP:
+  num_layers:
+    - 2
+    - 8
+  d_layers: 
+    - 32
+    - 256
+  dropout: 
+    - 0.1
+    - 0.5
+
+TabTransformer:
+  dim: 
+    - 16
+    - 64
+  depth: 
+    - 2
+    - 8
+  heads: 
+    - 2
+    - 8
+  attn_dropout: 
+    - 0.01
+    - 0.1
+  ff_dropout: 
+    - 0.01
+    - 0.5
+
+FourierFeatures:
+  n_frequencies: 
+    - 8
+    - 64
+  frequency_scale: 
+    - 0.1
+    - 3.0
+
+BinningFeatures:
+  n_bins: 
+    - 10
+    - 100
+  delta_scale: 
+    - 0.1
+    - 10.0
+  delta_min: 
+    - 0.1
+    - 10.0
+  delta_max: 
+    - 11
+    - 100
+
+ComboFeatures:
+  n_frequencies: 
+    - 8
+    - 64
+  frequency_scale: 
+    - 0.1
+    - 3.0
+  n_bins: 
+    - 10
+    - 100
+  delta_scale: 
+    - 0.1
+    - 10.0
+  delta_min: 
+    - 0.1
+    - 10.0
+  delta_max: 
+    - 11
+    - 100
+
+ModernNCA:
+  dim:
+    - 32 
+    - 128
+  dropout: 
+    - 0.01
+    - 0.2
+  temperature: 
+    - 1
+    - 1
+
+training:
+  batch_size: 
+    - 16
+    - 128
+  epochs: 
+    - 10
+    - 10
+  learning_rate: 
+    - 0.00001
+    - 0.01
+  weight_decay: 
+    - 0.00001
+    - 0.01

@@ -15,7 +15,8 @@ class MLP(nn.Module):
             d_in_num: int,
             d_in_cat: int,
             d_out: int,
-            d_layers: List[int],    
+            num_layers: int,
+            d_layers: int,   
             dropout: float,
             num_encoder: Optional[nn.Module] = None,
         ) -> None:
@@ -31,13 +32,14 @@ class MLP(nn.Module):
         self.dropout = dropout
         self.d_out = d_out
         
+        d_layers = [(d_in, d_layers)] + [(d_layers, d_layers) for _ in range(num_layers - 1)]
         self.layers = nn.ModuleList(
             [
-                nn.Linear(d_layers[i - 1] if i else d_in, x)
-                for i, x in enumerate(d_layers)
+                nn.Linear(d_in, d_out)
+                for (d_in, d_out) in d_layers
             ]
         )
-        self.head = nn.Linear(d_layers[-1] if d_layers else d_in, d_out)
+        self.head = nn.Linear(d_layers[-1][1], d_out)
 
 
     def forward(self, x_num, x_cat = None):

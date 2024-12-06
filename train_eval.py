@@ -10,6 +10,7 @@ import pandas as pd
 
 import torch
 import torch.nn as nn
+import optuna
 
 from sklearn.datasets import fetch_openml
 from sklearn.model_selection import train_test_split
@@ -49,7 +50,7 @@ SEEDS = [42, 7, 123, 2020, 999, 77, 88, 1010, 2021, 3030]
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Train and evaluate models with different parameters.')
     parser.add_argument('--dataset_name', type=str, default='adult',
-                        choices=['adult'], help='Name of the dataset to use.')
+                        choices=['adult', 'california_housing', 'otto_group', 'higgs'], help='Name of the dataset to use.')
     parser.add_argument('--test_size', type=float, default=0.2,
                         help='Fraction of the dataset to include in the test split.')
     parser.add_argument('--model_name', type=str, default='TabTransformer',
@@ -123,7 +124,7 @@ def preprocess_data(
         X, y, test_size=params['test_size'], random_state=params['random_state']
     )
     X_train, X_val, y_train, y_val = train_test_split(
-        X_train_full, y_train_full, test_size=params['val_size'], random_state=params['random_state']
+        X_train_full, y_train_full, test_size=params['test_size'], random_state=params['random_state']
     )
 
     # Identify numerical and categorical columns
@@ -202,7 +203,7 @@ def preprocess_data(
         y_val = torch.tensor(y_val, dtype=torch.long)
         y_test = torch.tensor(y_test, dtype=torch.long)
     else:
-        # Scale target variable
+        # Scale target variable to be between 0 and 1
         scaler = StandardScaler()
         y_train = scaler.fit_transform(y_train.values.reshape(-1, 1)).flatten()
         y_val = scaler.transform(y_val.values.reshape(-1, 1)).flatten()
@@ -221,18 +222,10 @@ def train_and_evaluate_model(
         y_train: torch.Tensor,
         y_test: torch.Tensor,
         task_type: str,
+        config: ty.Dict[str, ty.Any],
         params: ty.Dict[str, ty.Any],
         verbose_training: bool = True,
-        verbose_evaluation: bool = True,
 ) -> float:
-    # Load config
-    # if config file string
-    if isinstance(params['config_file'], str):
-        with open(params['config_file'], 'r') as file:
-            config = yaml.safe_load(file)
-    else:
-        config = params['config_file']
-
     # Numerical feature encoder
     if (not params['num_encoder_trainable']) and (params['num_encoder'] is not None):
         # Encode numerical features via random features
@@ -313,11 +306,47 @@ def train_and_evaluate_model(
 
     return metric
 
+def objective(trial):
+    # Sample hyperparameters
+    with open(params['config_file'], 'r') as file:
+        config = yaml.safe_load(file)
+
+    # Sample model hyperparameters
+    for key, value in config[params['model_name']].items():
+        if isinstance(value[0], float):
+            config[params['model_name']][key] = trial.suggest_float(key, value[0], value[1])
+        elif isinstance(value[0], int):
+            config[params['model_name']][key] = trial.suggest_int(key, value[0], value[1])
+        else:
+            raise ValueError(f'Invalid type for {key}: {type(value)}')
+        
+    # Sample traininig hyperparameters
+    for key, value in config['training'].items():
+        if isinstance(value[0], float):
+            config['training'][key] = trial.suggest_float(key, value[0], value[1])
+        elif isinstance(value[0], int):
+            config['training'][key] = trial.suggest_int(key, value[0], value[1])
+        else:
+            raise ValueError(f'Invalid type for {key}: {type(value)}')
+
+    # Train and evaluate model
+    metric = train_and_evaluate_model(
+        X_train_num=X_train_num,
+        X_test_num=X_val_num,
+        X_train_cat=X_train_cat,
+        X_test_cat=X_val_cat,
+        y_train=y_train,
+        y_test=y_val,
+        task_type=task_type,
+        config=config,
+        params=params,
+        verbose_training=False,
+    )
+
+    return metric
+
 if __name__ == '__main__':
     args = parse_arguments()
-    n_run = args.n_run
-    if n_run > len(SEEDS):
-        raise ValueError(f'n_run ({n_run}) is greater than the number of available seeds ({len(SEEDS)}).')
 
     # Set parameters
     params = {
@@ -327,18 +356,45 @@ if __name__ == '__main__':
         'num_encoder': None if args.num_encoder == 'None' else args.num_encoder,
         'num_encoder_trainable': args.num_encoder_trainable,
         'scaler': args.scaler,
-        'n_run': n_run,
         'config_file': args.config_file,
         'output_file': args.output_file,
+        'random_state': 0,
     }
 
     # Run the experiment
     X, y, task_type = load_data(params)
+    (y_train, 
+     y_val, y_test, 
+     X_train_num, 
+     X_val_num, 
+     X_test_num, 
+     X_train_cat, 
+     X_val_cat, 
+     X_test_cat) = preprocess_data(X, y, task_type, params)
+    if task_type in ('binary_classification', 'multiclass_classification'):
+        direction = 'maximize'
+    else:
+        direction = 'minimize'
+    study = optuna.create_study(direction=direction)
+    study.optimize(objective, n_trials=100)
+    best_params = study.best_params
+
+    # Save best params in the config file for this dataset
+    with open(params['config_file'], 'r') as file:
+        config = yaml.safe_load(file)
+    for key, value in best_params.items():
+        if key in config[params['model_name']]:
+            config[params['model_name']][key] = value
+        elif key in config['training']:
+            config['training'][key] = value
+    with open('~/configs/' + params['model_name'] + '_' + params['dataset_name'] + '.yaml', 'w') as file:
+        yaml.dump(config, file)
+
+    # Train and evaluate the model with the best hyperparameters
     metrics = []
-    for idx, seed in enumerate(SEEDS[:n_run]):
+    for idx, seed in enumerate(SEEDS[:args.n_run]):
         set_seed(seed)
         params['random_state'] = seed
-        y_train, y_test, X_train_num, X_train_cat, X_test_num, X_test_cat = preprocess_data(X, y, task_type, params)
         metric = train_and_evaluate_model(
             X_train_num=X_train_num,
             X_test_num=X_test_num,
@@ -348,19 +404,19 @@ if __name__ == '__main__':
             y_test=y_test,
             task_type=task_type,
             params=params,
+            config=config,
             verbose_training=False,
-            verbose_evaluation=False,
         )
         with open(args.output_file, 'a') as f:
             f.write(f'Parameters: {params}\n')
-            f.write(f'Run {idx+1}/{n_run} | Seed: {seed} | Accuracy: {metric:.2f}%\n')
+            f.write(f'Run {idx+1}/{args.n_run} | Seed: {seed} | Accuracy: {metric:.2f}%\n')
             f.write('-------------------------\n')
         metrics.append(metric)
 
     # Print the average accuracy
-    mean_accuracy = sum(metrics) / n_run
+    mean_accuracy = sum(metrics) / args.n_run
     std_accuracy = np.std(metrics)
     with open(args.output_file, 'a') as f:
         f.write('Parameters: {}\n'.format(params))
-        f.write('Overall Average Metric over {} runs: {:.2f}% ± {:.2f}%\n'.format(n_run, mean_accuracy, std_accuracy))
+        f.write('Overall Average Metric over {} runs: {:.2f}% ± {:.2f}%\n'.format(args.n_run, mean_accuracy, std_accuracy))
         f.write('=========================\n')
