@@ -1,0 +1,12 @@
+FourierFeatures:
+  frequency_scale: 0.9519729595495237
+  n_frequencies: 37
+MLP:
+  d_layers: 234
+  dropout: 0.164311658288829
+  num_layers: 5
+training:
+  batch_size: 77
+  epochs: 10
+  learning_rate: 0.0006353422647868271
+  weight_decay: 2.7959836451894437e-05

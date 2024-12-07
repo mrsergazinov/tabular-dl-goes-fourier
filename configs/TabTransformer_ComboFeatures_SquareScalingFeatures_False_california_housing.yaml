@@ -1,0 +1,18 @@
+ComboFeatures:
+  delta_max: 15
+  delta_min: 5.51238011486118
+  delta_scale: 3.252616447666978
+  frequency_scale: 1.6195984663306193
+  n_bins: 33
+  n_frequencies: 62
+TabTransformer:
+  attn_dropout: 0.06781099541745493
+  depth: 7
+  dim: 40
+  ff_dropout: 0.48751937674048285
+  heads: 5
+training:
+  batch_size: 65
+  epochs: 10
+  learning_rate: 0.0030062377341180955
+  weight_decay: 0.00023173008786080064

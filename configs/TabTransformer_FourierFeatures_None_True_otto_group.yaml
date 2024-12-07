@@ -1,0 +1,14 @@
+FourierFeatures:
+  frequency_scale: 0.4804311116959067
+  n_frequencies: 9
+TabTransformer:
+  attn_dropout: 0.08070039171611502
+  depth: 6
+  dim: 58
+  ff_dropout: 0.20409671989049974
+  heads: 4
+training:
+  batch_size: 54
+  epochs: 10
+  learning_rate: 0.0010535495084693191
+  weight_decay: 0.0009699920371834627

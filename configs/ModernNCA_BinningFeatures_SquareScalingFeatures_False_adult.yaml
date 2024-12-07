@@ -1,0 +1,14 @@
+BinningFeatures:
+  delta_max: 35
+  delta_min: 5.6556151967851696
+  delta_scale: 1.0359390454559674
+  n_bins: 11
+ModernNCA:
+  dim: 62
+  dropout: 0.06100760452180189
+  temperature: 1
+training:
+  batch_size: 95
+  epochs: 10
+  learning_rate: 0.008333541851484572
+  weight_decay: 0.002060559416813354

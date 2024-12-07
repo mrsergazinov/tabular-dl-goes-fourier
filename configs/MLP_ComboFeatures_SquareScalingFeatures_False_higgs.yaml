@@ -1,0 +1,16 @@
+ComboFeatures:
+  delta_max: 47
+  delta_min: 1.0946699704401963
+  delta_scale: 1.3654043707911623
+  frequency_scale: 1.7059481102261722
+  n_bins: 7
+  n_frequencies: 15
+MLP:
+  d_layers: 131
+  dropout: 0.16204263405693717
+  num_layers: 3
+training:
+  batch_size: 44
+  epochs: 10
+  learning_rate: 0.00017785777369221426
+  weight_decay: 0.003824768595018235

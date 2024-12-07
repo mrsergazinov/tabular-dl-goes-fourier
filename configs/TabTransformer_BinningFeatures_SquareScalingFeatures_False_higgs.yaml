@@ -1,0 +1,16 @@
+BinningFeatures:
+  delta_max: 19
+  delta_min: 7.946670629405128
+  delta_scale: 1.4709543664516
+  n_bins: 11
+TabTransformer:
+  attn_dropout: 0.03815137907686737
+  depth: 8
+  dim: 34
+  ff_dropout: 0.15894180125873375
+  heads: 4
+training:
+  batch_size: 74
+  epochs: 10
+  learning_rate: 0.0016927500277252661
+  weight_decay: 0.00033058445940867465

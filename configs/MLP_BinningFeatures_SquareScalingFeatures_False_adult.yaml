@@ -1,0 +1,14 @@
+BinningFeatures:
+  delta_max: 67
+  delta_min: 0.7660803506646792
+  delta_scale: 9.515256051508242
+  n_bins: 76
+MLP:
+  d_layers: 94
+  dropout: 0.10130620225778844
+  num_layers: 4
+training:
+  batch_size: 36
+  epochs: 10
+  learning_rate: 0.0008804035234673775
+  weight_decay: 0.0042605009937306

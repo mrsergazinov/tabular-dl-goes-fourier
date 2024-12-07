@@ -44,6 +44,13 @@ SCALERS = {
     'SquareScalingFeatures': SquareScalingFeatures,
 }
 
+TASK_TYPE = {
+    'adult': 'binary_classification',
+    'california_housing': 'regression',
+    'otto_group': 'multiclass_classification',
+    'higgs': 'binary_classification',
+}
+
 # Predefined seeds
 SEEDS = [42, 7, 123, 2020, 999, 77, 88, 1010, 2021, 3030]
 
@@ -93,20 +100,16 @@ def load_data(
     ) -> ty.Tuple[pd.DataFrame, pd.Series, str]:
     dataset_name = params['dataset_name']
     if dataset_name == 'adult':
-        X, y = fetch_openml('adult', version=2, as_frame=True, return_X_y=True)
-        task_type = 'binary_classification'
+        X, y = fetch_openml('adult', version=2, as_frame=True, return_X_y=True) 
     elif dataset_name == 'california_housing':
         X, y = fetch_openml('california_housing', version=7, as_frame=True, return_X_y=True)
-        task_type = 'regression'
     elif dataset_name == 'otto_group':
         X, y = fetch_openml('Otto-Group-Product-Classification-Challenge', version=1, as_frame=True, return_X_y=True)
-        task_type = 'multiclass_classification'
     elif dataset_name == 'higgs':
         X, y = fetch_openml('higgs', version=2, as_frame=True, return_X_y=True)
-        task_type = 'binary_classification'
     else:
         raise ValueError(f'Invalid dataset_name: {dataset_name}')
-    return X, y, task_type
+    return X, y, TASK_TYPE[dataset_name]
 
 def preprocess_data(
         X: pd.DataFrame, 
@@ -254,7 +257,13 @@ def train_and_evaluate_model(
 
     # Determine input dimensions
     d_in_num = X_train_num.shape[1]
-    d_in_cat = X_train_cat.shape[1] if X_train_cat is not None else None
+    if X_train_cat is not None:
+        if params['model_name'] == 'TabTransformer':
+            d_in_cat = [X_train_cat[:, i].max().item() + 1 for i in range(X_train_cat.shape[1])]
+        else:
+            d_in_cat = X_train_cat.shape[1]
+    else:
+        d_in_cat = None
     if task_type in ['binary_classification', 'multiclass_classification']:
         d_out = len(np.unique(y_train))
     elif task_type == 'regression':
@@ -306,45 +315,6 @@ def train_and_evaluate_model(
 
     return metric
 
-def objective(trial):
-    # Sample hyperparameters
-    with open(params['config_file'], 'r') as file:
-        config = yaml.safe_load(file)
-
-    # Sample model hyperparameters
-    for key, value in config[params['model_name']].items():
-        if isinstance(value[0], float):
-            config[params['model_name']][key] = trial.suggest_float(key, value[0], value[1])
-        elif isinstance(value[0], int):
-            config[params['model_name']][key] = trial.suggest_int(key, value[0], value[1])
-        else:
-            raise ValueError(f'Invalid type for {key}: {type(value)}')
-        
-    # Sample traininig hyperparameters
-    for key, value in config['training'].items():
-        if isinstance(value[0], float):
-            config['training'][key] = trial.suggest_float(key, value[0], value[1])
-        elif isinstance(value[0], int):
-            config['training'][key] = trial.suggest_int(key, value[0], value[1])
-        else:
-            raise ValueError(f'Invalid type for {key}: {type(value)}')
-
-    # Train and evaluate model
-    metric = train_and_evaluate_model(
-        X_train_num=X_train_num,
-        X_test_num=X_val_num,
-        X_train_cat=X_train_cat,
-        X_test_cat=X_val_cat,
-        y_train=y_train,
-        y_test=y_val,
-        task_type=task_type,
-        config=config,
-        params=params,
-        verbose_training=False,
-    )
-
-    return metric
-
 if __name__ == '__main__':
     args = parse_arguments()
 
@@ -371,24 +341,14 @@ if __name__ == '__main__':
      X_train_cat, 
      X_val_cat, 
      X_test_cat) = preprocess_data(X, y, task_type, params)
-    if task_type in ('binary_classification', 'multiclass_classification'):
-        direction = 'maximize'
-    else:
-        direction = 'minimize'
-    study = optuna.create_study(direction=direction)
-    study.optimize(objective, n_trials=100)
-    best_params = study.best_params
 
     # Save best params in the config file for this dataset
-    with open(params['config_file'], 'r') as file:
+    if params['num_encoder'] is not None:
+        path = f'configs/{params["model_name"]}_{params["num_encoder"]}_{params["scaler"]}_{params["num_encoder_trainable"]}_{params["dataset_name"]}.yaml'
+    else:
+        path = f'configs/{params["model_name"]}_{params["dataset_name"]}.yaml'
+    with open(path, 'w') as file:
         config = yaml.safe_load(file)
-    for key, value in best_params.items():
-        if key in config[params['model_name']]:
-            config[params['model_name']][key] = value
-        elif key in config['training']:
-            config['training'][key] = value
-    with open('~/configs/' + params['model_name'] + '_' + params['dataset_name'] + '.yaml', 'w') as file:
-        yaml.dump(config, file)
 
     # Train and evaluate the model with the best hyperparameters
     metrics = []

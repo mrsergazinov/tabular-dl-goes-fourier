@@ -100,20 +100,26 @@ def objective(trial):
                 raise ValueError(f'Invalid type for {key}: {type(value)}')
 
     # Train and evaluate model
-    metric = train_and_evaluate_model(
-        X_train_num=X_train_num,
-        X_test_num=X_val_num,
-        X_train_cat=X_train_cat,
-        X_test_cat=X_val_cat,
-        y_train=y_train,
-        y_test=y_val,
-        task_type=task_type,
-        config=config,
-        params=params,
-        verbose_training=True,
-    )
-
-    return metric
+    try:
+        metric = train_and_evaluate_model(
+            X_train_num=X_train_num,
+            X_test_num=X_val_num,
+            X_train_cat=X_train_cat,
+            X_test_cat=X_val_cat,
+            y_train=y_train,
+            y_test=y_val,
+            task_type=task_type,
+            config=config,
+            params=params,
+            verbose_training=False,
+        )
+        return metric
+    except MemoryError:
+        raise optuna.exceptions.TrialPruned()
+    except torch.OutOfMemoryError:
+        raise optuna.exceptions.TrialPruned()
+    except RuntimeError:
+        raise optuna.exceptions.TrialPruned()
 
 if __name__ == '__main__':
     args = parse_arguments()
@@ -147,7 +153,7 @@ if __name__ == '__main__':
     else:
         direction = 'minimize'
     study = optuna.create_study(direction=direction)
-    study.optimize(objective, n_trials=args.n_trials)
+    study.optimize(objective, n_trials=args.n_trials, gc_after_trial=True)
     best_params = study.best_params
 
     # Load the configuration files

@@ -1,0 +1,12 @@
+FourierFeatures:
+  frequency_scale: 2.014017759608276
+  n_frequencies: 15
+ModernNCA:
+  dim: 127
+  dropout: 0.049002835892668795
+  temperature: 1
+training:
+  batch_size: 62
+  epochs: 10
+  learning_rate: 0.0002931455575334598
+  weight_decay: 0.0001602806171541353

@@ -1,0 +1,16 @@
+ComboFeatures:
+  delta_max: 15
+  delta_min: 8.791600639663875
+  delta_scale: 2.759197620343903
+  frequency_scale: 2.1075449139958535
+  n_bins: 12
+  n_frequencies: 62
+ModernNCA:
+  dim: 81
+  dropout: 0.16127857352310046
+  temperature: 1
+training:
+  batch_size: 102
+  epochs: 10
+  learning_rate: 0.007640199700745826
+  weight_decay: 1.7016650284279076e-05
