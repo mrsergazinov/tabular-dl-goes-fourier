@@ -12,9 +12,16 @@ class FourierFeatures(nn.Module):
         n_frequencies: int,
         frequency_scale: float,
         trainable: bool = True,
+        distribution: str = "normal",
     ) -> None:
         super().__init__()
-        self.frequencies = nn.Parameter(torch.normal(0.0, frequency_scale, (n_features, n_frequencies)))
+        self.distribution = distribution
+        if distribution == "normal":
+            self.frequencies = nn.Parameter(torch.normal(0.0, frequency_scale, (n_features, n_frequencies)))
+        elif distribution == "cauchy":
+            self.frequencies = nn.Parameter(torch.distributions.cauchy.Cauchy(0.0, frequency_scale).sample((n_features, n_frequencies)))
+        elif distribution == "laplace":
+            self.frequencies = nn.Parameter(torch.distributions.laplace.Laplace(0.0, frequency_scale).sample((n_features, n_frequencies)))
         self.d_out = n_features * 2 * n_frequencies
 
     def forward(

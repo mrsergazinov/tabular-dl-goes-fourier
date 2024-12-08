@@ -78,6 +78,31 @@ python optim_hyperparam.py --dataset_name adult --model_name TabTransformer --n_
 
 **Note:** currently, all random frequncies for Fourier featurers are sampled from the Gaussian distribution. 
 
+### How to add a new dataset
+
+To add a new data:
+1. Modify the `load_data` function in `train_eval.py` to load the new dataset. The dataset should yield a `pd.DataFrame` with the features, `X`, and the `pd.Series` with the target, `y`.
+2. Add the task type to the dictionary `TASK_TYPES` in the `train_eval.py` file.
+3. Add the dataset to the argument parser in the `optim_hyperparam.py` and `train_eval.py` under `--dataset_name`.
+
+### How to add a new model
+
+To add a new model:
+1. Create a new model class in the `base_models` directory. The model should inherit from `torch.nn.Module`.
+2. Follow examples of the existing models, e.g. `base_models/MLP.py` to define the relevant initialization (e.g. `d_in, d_out` etc.). The model should also implement `fit` and `evaluate` methods.
+3. Add the model to the argument parser in the `optim_hyperparam.py` and `train_eval.py` under `--model_name`.
+4. Add the model to the dictionary `MODELS` in the `train_eval.py` file.
+5. Add model hyperparameter ranges to the `configs/hyperparam.yaml` file for optimization with Optuna.
+
+### How to add a new numerical encoder
+
+To add a new numerical encoder:
+1. Create a new encoder class in the `encoders` directory. The encoder should inherit from `torch.nn.Module`.
+2. Follow examples of the existing encoders, e.g. `encoders/numEncoders.py` to define the relevant initialization (e.g. `d_in, d_out` etc.).
+3. Add the encoder to the argument parser in the `optim_hyperparam.py` and `train_eval.py` under `--num_encoder`.
+4. Add the encoder to the dictionary `NUM_ENCODERS` in the `train_eval.py` file.
+5. Add encoder hyperparameter ranges to the `configs/hyperparam.yaml` file for optimization with Optuna.
+
 ### View Results
 
 Use the code in the `print_results.ipynb` notebook to view the results.
