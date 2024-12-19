@@ -51,6 +51,12 @@ TASK_TYPE = {
     'california_housing': 'regression',
     'otto_group': 'multiclass_classification',
     'higgs': 'binary_classification',
+    'gesture_phase': 'multiclass_classification',
+    'churn': 'binary_classification',
+    'house': 'regression',
+    'santander': 'binary_classification',
+    'covertype': 'multiclass_classification',
+    'microsoft': 'regression',
 }
 
 # Predefined seeds
@@ -102,6 +108,18 @@ def load_data(
         X, y = fetch_openml('Otto-Group-Product-Classification-Challenge', version=1, as_frame=True, return_X_y=True)
     elif dataset_name == 'higgs':
         X, y = fetch_openml('higgs', version=2, as_frame=True, return_X_y=True)
+    elif  dataset_name == 'gesture_phase':
+        X, y = fetch_openml('GesturePhaseSegmentationProcessed', version=1, as_frame=True, return_X_y=True)
+    elif dataset_name == 'churn':
+        X, y = fetch_openml('shrutime', version=1, as_frame=True, return_X_y=True)
+    elif dataset_name == 'house':
+        X, y = fetch_openml('house_16H', version=1, as_frame=True, return_X_y=True)
+    elif dataset_name == 'santander':
+        X, y = fetch_openml('SantanderCustomerSatisfaction', version=1, as_frame=True, return_X_y=True)
+    elif dataset_name == 'covertype':
+        X, y = fetch_openml('covertype', version=5, as_frame=True, return_X_y=True)
+    elif dataset_name == 'microsoft':
+        X, y = fetch_openml('Microsoft', version=3, as_frame=True, return_X_y=True)
     else:
         raise ValueError(f'Invalid dataset_name: {dataset_name}')
     return X, y, TASK_TYPE[dataset_name]
