@@ -34,6 +34,14 @@ FourierFeatures:
     - 0.1
     - 3.0
 
+FourierFeaturesCos:
+  n_frequencies: 
+    - 4
+    - 16
+  frequency_scale: 
+    - 0.01
+    - 3.0
+
 BinningFeatures:
   n_bins: 
     - 4

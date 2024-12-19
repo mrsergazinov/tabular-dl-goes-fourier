@@ -38,6 +38,41 @@ class FourierFeatures(nn.Module):
     def clamp_weights(self):
         pass
 
+class FourierFeaturesCos(nn.Module):
+    def __init__(
+        self,
+        n_features: int,
+        n_frequencies: int,
+        frequency_scale: float,
+        trainable: bool = True,
+        distribution: str = "normal",
+    ) -> None:
+        super().__init__()
+        self.distribution = distribution
+        if distribution == "normal":
+            self.frequencies = nn.Parameter(torch.normal(0.0, frequency_scale, (n_features, n_frequencies)))
+        elif distribution == "cauchy":
+            self.frequencies = nn.Parameter(torch.distributions.cauchy.Cauchy(0.0, frequency_scale).sample((n_features, n_frequencies)))
+        elif distribution == "laplace":
+            self.frequencies = nn.Parameter(torch.distributions.laplace.Laplace(0.0, frequency_scale).sample((n_features, n_frequencies)))
+        # sample bias from Uniform 0 to 1
+        self.bias = nn.Parameter(torch.rand(n_features, n_frequencies))
+        self.d_out = n_features * n_frequencies
+
+    def forward(
+            self, 
+            x: torch.Tensor,
+        ) -> torch.Tensor:
+        x = 2 * torch.pi * (self.frequencies * x[..., None] + self.bias)
+        x = torch.cat([torch.cos(x)], -1)
+        return x.flatten(1)
+    
+    def regularization_loss(self):
+        return 0
+    
+    def clamp_weights(self):
+        pass
+
 
 class BinningFeatures(nn.Module):
     def __init__(

@@ -19,15 +19,6 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 # Import models and encoders
 os.chdir('/home/mrsergazinov/TabLLM/')
-from base_models.mlp import MLP
-from base_models.tabTransformer import TabTransformer
-from base_models.modernNCA import ModernNCA
-from encoders.numEncoders import (
-    FourierFeatures, 
-    BinningFeatures, 
-    ComboFeatures,
-    SquareScalingFeatures,
-)
 from train_eval import (
     set_seed,
     load_data,
@@ -40,23 +31,16 @@ SEEDS = [42, 7, 123, 2020, 999, 77, 88, 1010, 2021, 3030]
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Train and evaluate models with different parameters.')
-    parser.add_argument('--dataset_name', type=str, default='adult',
-                        choices=['adult', 'california_housing', 'otto_group', 'higgs'], help='Name of the dataset to use.')
-    parser.add_argument('--test_size', type=float, default=0.2,
-                        help='Fraction of the dataset to include in the test split.')
-    parser.add_argument('--model_name', type=str, default='TabTransformer',
-                        choices=['MLP', 'TabTransformer', 'ModernNCA'], help='Name of the model to use.')
-    parser.add_argument('--num_encoder', type=str, default='None',
-                        choices=['None', 'FourierFeatures', 'BinningFeatures', 'ComboFeatures'], help='Numerical encoder to use.')
+    parser.add_argument('--dataset_name', type=str, default='adult', help='Name of the dataset to use.')
+    parser.add_argument('--test_size', type=float, default=0.2, help='Fraction of the dataset to include in the test split.')
+    parser.add_argument('--model_name', type=str, default='TabTransformer', help='Name of the model to use.')
+    parser.add_argument('--num_encoder', type=str, default='None', help='Numerical encoder to use.')
     parser.add_argument('--num_encoder_trainable', action='store_true', help='Set numerical encoder as trainable.')
     parser.add_argument('--no_num_encoder_trainable', dest='num_encoder_trainable', action='store_false', help='Set numerical encoder as not trainable.')
     parser.set_defaults(num_encoder_trainable=True)
-    parser.add_argument('--scaler', type=str, default=None,
-                        choices=['SquareScalingFeatures'], help='Name of the scaler to use.')
-    parser.add_argument('--config_file', type=str, default='configs/hyperparam.yaml',
-                        help='Path to the configuration file.')
-    parser.add_argument('--output_file', type=str, default='results.txt',
-                        help='Path to the output text file.')
+    parser.add_argument('--scaler', type=str, default=None, help='Name of the scaler to use.')
+    parser.add_argument('--config_file', type=str, default='configs/hyperparam.yaml', help='Path to the configuration file.')
+    parser.add_argument('--output_file', type=str, default='results.txt', help='Path to the output text file.')
     parser.add_argument('--n_run', type=int, default=10, help='Number of runs for replication.')
     parser.add_argument('--n_trials', type=int, default=10, help='Number of trials for optimization.')
     args = parser.parse_args()
