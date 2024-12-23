@@ -1,0 +1,11 @@
+TabTransformer:
+  attn_dropout: 0.08464842297058268
+  depth: 8
+  dim: 43
+  ff_dropout: 0.19415704963829433
+  heads: 8
+training:
+  batch_size: 83
+  epochs: 10
+  learning_rate: 0.00586247341966677
+  weight_decay: 2.9407735163629176e-05

@@ -1,0 +1,9 @@
+ModernNCA:
+  dim: 85
+  dropout: 0.18072484138226952
+  temperature: 1
+training:
+  batch_size: 29
+  epochs: 10
+  learning_rate: 0.003762214510765062
+  weight_decay: 0.000490372499045282

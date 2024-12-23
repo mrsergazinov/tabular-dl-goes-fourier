@@ -1,0 +1,9 @@
+MLP:
+  d_layers: 241
+  dropout: 0.16669538879912982
+  num_layers: 2
+training:
+  batch_size: 33
+  epochs: 17
+  learning_rate: 0.0006123813021363931
+  weight_decay: 0.004970545939878759

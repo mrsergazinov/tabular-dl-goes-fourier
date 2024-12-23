@@ -37,6 +37,7 @@ class ModernNCA(nn.Module):
         dropout: float,
         temperature: float = 1.0,
         num_encoder: Optional[nn.Module] = None,
+        max_sample_size: int = 10000,
     ) -> None:
         super().__init__()
 
@@ -44,6 +45,7 @@ class ModernNCA(nn.Module):
         # Define the numerical encoder
         self.num_encoder = num_encoder
         d_in_num = d_in_num if num_encoder is None else num_encoder.d_out 
+        self.max_sample_size = max_sample_size
         #----------------------------------------------
 
         self.d_in_num = d_in_num
@@ -98,21 +100,29 @@ class ModernNCA(nn.Module):
             candidate_y = candidate_y.unsqueeze(-1).float()
 
         # Batch softmax
-        logits, logsumexp = 0, 0
-        for idx in range(0, candidate_y.shape[0], 5000):
-            batch_candidate_y = candidate_y[idx:idx+5000]
-            batch_candidate_x = candidate_x[idx:idx+5000]
-            distances = torch.cdist(x, batch_candidate_x, p=2) / self.temperature
-            exp_distances = torch.exp(-distances)
-            logsumexp += torch.logsumexp(-distances, dim=1)
-            logits += torch.mm(exp_distances, batch_candidate_y)
+        # logits, logsumexp = 0, 0
+        # for idx in range(0, candidate_y.shape[0], 5000):
+        #     batch_candidate_y = candidate_y[idx:idx+5000]
+        #     batch_candidate_x = candidate_x[idx:idx+5000]
+        #     distances = torch.cdist(x, batch_candidate_x, p=2) / self.temperature
+        #     exp_distances = torch.exp(-distances)
+        #     logsumexp += torch.logsumexp(-distances, dim=1)
+        #     logits += torch.mm(exp_distances, batch_candidate_y)
         
-        if self.d_out > 1:
-            logits = torch.log(logits) - logsumexp.unsqueeze(1)
-        else:
-            logits = logits.squeeze() / torch.exp(logsumexp)
-        
-        return logits
+        # if self.d_out > 1:
+        #     logits = torch.log(logits) - logsumexp.unsqueeze(1)
+        # else:
+        #     logits = logits.squeeze() / torch.exp(logsumexp)
+
+        # Simple softmax
+        distances = torch.cdist(x, candidate_x, p=2)
+        distances = distances/self.temperature
+        distances = F.softmax(-distances, dim=-1)
+        logits = torch.mm(distances, candidate_y)
+        eps=1e-7
+        if self.d_out>1:
+            logits=torch.log(logits+eps)
+        return logits.squeeze()
 
     def fit(
         self,
@@ -174,7 +184,7 @@ class ModernNCA(nn.Module):
                 candidate_y = y_train[mask]
 
                 # Sample candidates according to sample_rate
-                num_candidates = int(len(candidate_y) * sample_rate)
+                num_candidates = min(int(len(candidate_y) * sample_rate), self.max_sample_size)
                 if num_candidates < len(candidate_y):
                     indices = torch.randperm(len(candidate_y))[:num_candidates]
                     candidate_x_num = candidate_x_num[indices]
@@ -204,9 +214,6 @@ class ModernNCA(nn.Module):
 
                 epoch_loss += loss.item() * y_batch.size(0)
                 total += y_batch.size(0)
-
-                # # print(logits)
-                # print(logits.detach().cpu().numpy())
 
                 if verbose and itr % 50 == 0:
                     print(f'Iteration [{itr}/{len(train_loader)}] | Loss: {loss.item():.4f}')
@@ -257,7 +264,7 @@ class ModernNCA(nn.Module):
                 y_batch = y_batch.to(device)
 
                 # Sample candidates
-                num_candidates = int(len(candidate_y) * sample_rate)
+                num_candidates = min(int(len(candidate_y) * sample_rate), self.max_sample_size)
                 if num_candidates < len(candidate_y):
                     indices = torch.randperm(len(candidate_y))[:num_candidates]
                     candidate_x_num_batch = candidate_x_num[indices]

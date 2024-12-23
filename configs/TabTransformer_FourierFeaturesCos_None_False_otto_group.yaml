@@ -1,3 +1,6 @@
+FourierFeaturesCos:
+  frequency_scale: 0.21706278536745405
+  n_frequencies: 11
 TabTransformer:
   attn_dropout: 0.09011049659884665
   depth: 3

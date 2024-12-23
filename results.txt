@@ -2017,3 +2017,1389 @@ Run 10/10 | Seed: 3030 | Accuracy: 85.04%
 Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeatures', 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
 Overall Average Metric over 10 runs: 85.35% ± 0.21%
 =========================
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 54.48%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 54.63%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 55.24%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 54.38%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 54.38%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 54.89%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 54.89%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 54.99%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 54.84%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 55.29%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 54.80% ± 0.31%
+=========================
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 57.47%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 56.30%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 57.77%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 56.81%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 56.30%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 56.86%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 54.84%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 56.51%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 54.99%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 55.95%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 56.38% ± 0.90%
+=========================
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 85.05%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 85.15%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 85.60%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 85.40%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 85.15%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 85.40%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 84.95%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 85.50%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 85.25%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 85.30%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 85.28% ± 0.19%
+=========================
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 0.61%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 0.60%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 0.60%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 0.61%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 0.60%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 0.62%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 0.61%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 0.60%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 0.60%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 0.62%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 0.61% ± 0.01%
+=========================
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 82.35%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 84.00%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 83.50%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 83.45%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 83.30%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 84.10%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 83.50%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 84.10%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 83.30%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 84.20%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 83.58% ± 0.53%
+=========================
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 0.62%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 0.63%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 0.63%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 0.62%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 0.63%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 0.61%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 0.63%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 0.62%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 0.62%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 0.63%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 0.62% ± 0.01%
+=========================
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 87.66%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 87.75%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 87.81%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 87.52%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 0.45%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 0.45%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 0.45%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 0.46%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 0.49%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 0.42%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 0.46%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 0.45%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 0.45% ± 0.02%
+=========================
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 87.36%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 87.70%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 87.52%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 87.48%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 87.60%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 87.62%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 87.60% ± 0.13%
+=========================
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 76.30%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 76.48%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 76.42%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 75.80%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 76.79%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 76.03%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 75.61%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 76.16%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 75.82%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 76.26%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 76.17% ± 0.34%
+=========================
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 72.02%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 72.09%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 84.11%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 72.30%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 84.88%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 71.96%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 84.07%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 71.93%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 84.98%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 72.08%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 83.90%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 71.47%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 84.52%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 71.90%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 84.36%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 71.75%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 84.09%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 72.14%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 71.96% ± 0.22%
+=========================
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 84.42%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 83.59%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 84.29% ± 0.41%
+=========================
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 0.40%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 0.40%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 0.42%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 0.41%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 0.41%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 0.40%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 0.41%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 0.40%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 0.40%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 0.41%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 0.41% ± 0.01%
+=========================
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 70.25%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 70.49%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 70.30%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 70.41%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 69.85%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 70.59%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 69.87%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 70.31%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 70.59%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 70.63%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 70.33% ± 0.27%
+=========================
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 84.04%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 84.28%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 84.21%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 84.41%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 84.48%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 84.33%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 84.61%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 84.54%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 84.21%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 84.41%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 84.35% ± 0.16%
+=========================
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 91.04%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 91.06%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 91.00%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 90.99%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 91.04%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 91.05%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 72.18%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 91.11%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 72.22%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 91.09%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 72.27%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 72.14%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 91.12%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 71.78%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 91.06%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 91.06% ± 0.04%
+=========================
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 72.05%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 72.09%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 71.79%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 71.73%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 71.91%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 72.02% ± 0.19%
+=========================
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 77.00%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 56.10%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 53.42%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 0.45%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 0.42%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 54.63%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 54.73%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 0.45%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 54.03%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 0.43%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 54.68%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 0.43%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 0.43%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 55.44%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 0.45%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 0.43%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 0.44% ± 0.01%
+=========================
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 53.92%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 53.57%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 53.97%
+-------------------------
+Parameters: {'dataset_name': 'gesture_phase', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 54.45% ± 0.80%
+=========================
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 76.97%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 77.26%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 77.75%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 76.81%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 77.68%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 77.81%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 78.52%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 78.21%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 77.83%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 78.18%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 77.08%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 76.91%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 77.11%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 77.71% ± 0.50%
+=========================
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 77.21%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 77.46%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 77.28%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 77.42%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 85.58%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 85.44%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 84.83%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 85.40%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 85.65%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 77.39%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 84.78%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 84.36%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 84.40%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 84.90%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 84.78%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 85.01% ± 0.45%
+=========================
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 77.00%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': 'SquareScalingFeatures', 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 77.18% ± 0.21%
+=========================
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 91.77%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 92.12%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 91.60%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 91.36%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 92.07%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 91.66%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 92.16%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 92.24%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 92.15%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 92.09%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 91.92% ± 0.29%
+=========================
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 85.75%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 85.50%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 86.05%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 85.20%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 85.80%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 85.65%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 85.70%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 85.80%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 85.30%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 85.25%
+-------------------------
+Parameters: {'dataset_name': 'churn', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 85.60% ± 0.26%
+=========================
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 0.89% ± 0.00%
+=========================
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 0.45%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 0.45%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 0.46%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 0.43%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 0.46%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 0.45%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 0.46%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 0.44% ± 0.01%
+=========================
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 0.47%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 0.47%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 0.46%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 0.45%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 0.48%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 0.45%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 0.46%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 0.46% ± 0.01%
+=========================
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 75.93%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 75.24%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 75.06%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 74.44%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 75.88%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 74.09%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 74.30%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 75.15%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 75.18%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 74.81%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 75.01% ± 0.59%
+=========================
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 72.35%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 71.99%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 72.34%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 84.61%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 72.15%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 84.85%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 72.41%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 72.16%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 84.62%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 72.45%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 84.54%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 72.21%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 84.59%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 71.91%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 84.39%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 71.47%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 72.14% ± 0.28%
+=========================
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 84.59%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 84.40%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 84.83%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 84.60%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 84.60% ± 0.14%
+=========================
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 77.97%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 78.19%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 77.78%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 77.34%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 77.17%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 0.43%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 77.04%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 77.97%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 0.43%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 77.05%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 0.43%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 0.42%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 0.44%
+-------------------------
+Parameters: {'dataset_name': 'california_housing', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 0.44% ± 0.01%
+=========================
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 78.28%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 77.59%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 77.64% ± 0.44%
+=========================
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 71.32%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 71.51%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 71.58%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 71.21%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 71.24%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 70.52%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 71.05%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 71.43%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 71.61%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 71.11%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 71.26% ± 0.31%
+=========================
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 84.28%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 83.87%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 84.01%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 84.42%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 84.71%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 84.44%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 84.54%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 84.48%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 83.92%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 84.54%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 84.32% ± 0.28%
+=========================
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 84.73%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 84.92%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 85.09%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 85.05%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 84.33%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 84.98%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 84.99%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 84.86%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 84.81%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 85.22%
+-------------------------
+Parameters: {'dataset_name': 'adult', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 84.90% ± 0.23%
+=========================
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 0.90%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 0.89%
+-------------------------
+Parameters: {'dataset_name': 'microsoft', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 0.89% ± 0.00%
+=========================
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 77.17%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 76.55%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 77.08%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 77.25%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 77.07%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 76.82%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 77.17%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 77.27%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 77.35%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 77.45%
+-------------------------
+Parameters: {'dataset_name': 'otto_group', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': 'FourierFeaturesCos', 'num_encoder_trainable': False, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 77.12% ± 0.25%
+=========================
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 0.60%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 0.61%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 0.61%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 0.60%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 0.59%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 0.61%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 0.60%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 0.60%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 0.60%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 0.61%
+-------------------------
+Parameters: {'dataset_name': 'house', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 0.60% ± 0.01%
+=========================
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 91.74%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 91.70%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 91.83%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 91.59%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 91.65%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 91.77%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 91.81%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 91.59%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 91.79%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 91.62%
+-------------------------
+Parameters: {'dataset_name': 'covertype', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 91.71% ± 0.09%
+=========================
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 72.00%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 72.09%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 71.81%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 71.94%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 72.00%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 71.77%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 71.72%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 71.61%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 71.97%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 72.05%
+-------------------------
+Parameters: {'dataset_name': 'higgs', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 71.90% ± 0.15%
+=========================
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 91.06%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 90.97%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 90.89%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 90.99%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 91.09%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 91.10%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 91.07%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 90.94%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 91.01%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 91.07%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'TabTransformer', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 91.02% ± 0.07%
+=========================
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 91.15%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 91.20%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 91.21%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 90.93%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 91.23%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 91.19%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 91.13%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 91.12%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 91.21%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 91.16%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'MLP', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 91.15% ± 0.08%
+=========================
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 42}
+Run 1/10 | Seed: 42 | Accuracy: 91.34%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 7}
+Run 2/10 | Seed: 7 | Accuracy: 91.32%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 123}
+Run 3/10 | Seed: 123 | Accuracy: 91.28%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2020}
+Run 4/10 | Seed: 2020 | Accuracy: 91.38%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 999}
+Run 5/10 | Seed: 999 | Accuracy: 91.31%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 77}
+Run 6/10 | Seed: 77 | Accuracy: 91.32%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 88}
+Run 7/10 | Seed: 88 | Accuracy: 91.39%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 1010}
+Run 8/10 | Seed: 1010 | Accuracy: 91.35%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 2021}
+Run 9/10 | Seed: 2021 | Accuracy: 91.38%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Run 10/10 | Seed: 3030 | Accuracy: 91.35%
+-------------------------
+Parameters: {'dataset_name': 'santander', 'test_size': 0.2, 'model_name': 'ModernNCA', 'num_encoder': None, 'num_encoder_trainable': True, 'scaler': None, 'config_file': 'configs/hyperparam.yaml', 'output_file': 'results.txt', 'random_state': 3030}
+Overall Average Metric over 10 runs: 91.34% ± 0.03%
+=========================

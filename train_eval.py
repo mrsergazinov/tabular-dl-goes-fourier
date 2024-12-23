@@ -119,7 +119,7 @@ def load_data(
     elif dataset_name == 'covertype':
         X, y = fetch_openml('covertype', version=5, as_frame=True, return_X_y=True)
     elif dataset_name == 'microsoft':
-        X, y = fetch_openml('Microsoft', version=3, as_frame=True, return_X_y=True)
+        X, y = fetch_openml('Microsoft', version=2, as_frame=True, return_X_y=True)
     else:
         raise ValueError(f'Invalid dataset_name: {dataset_name}')
     return X, y, TASK_TYPE[dataset_name]
@@ -146,6 +146,10 @@ def preprocess_data(
     # Identify numerical and categorical columns
     numerical_columns = X.select_dtypes(include=['int64', 'float64']).columns.tolist()
     categorical_columns = X.select_dtypes(include=['object', 'category']).columns.tolist()
+
+    # Exclude categorical columns with high cardinality
+    high_cardinality_cols = [col for col in categorical_columns if X[col].nunique() > X.shape[0] // 10]
+    categorical_columns = [col for col in categorical_columns if col not in high_cardinality_cols]
 
     # Scale numerical features
     if numerical_columns:
