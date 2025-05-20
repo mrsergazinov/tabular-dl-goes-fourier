@@ -17,6 +17,6 @@ torch==2.5.1
 torchaudio==2.5.1
 torchvision==0.20.1
 accelerate>=0.26.0
-transformers==4.46.2
+transformers==4.50.0
 huggingface-hub==0.26.2
 
